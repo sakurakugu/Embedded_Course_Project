@@ -186,7 +186,7 @@ void bsp_SPI_Init(uint16_t _cr1)
 	//SPI_Cmd(SPI_HARD, ENABLE);			/* 使能SPI  */		    
   SPI_HARD->CR1 |= CR1_SPE_Set;	  /* Enable the selected SPI peripheral */
 }
-#elif def SOFT_SPI
+#elif defined(SOFT_SPI)
 void bsp_SPI_Init(uint16_t _cr1){;}
 #endif
 
@@ -237,6 +237,7 @@ uint8_t bsp_spiWrite0(uint8_t _ucByte)
 		SCK_0();
 	}
 	//bsp_spiDelay();
+	return 0;  // 软件SPI模式下返回0
 #endif
 
 #ifdef HARD_SPI		/* 硬件SPI */
@@ -256,7 +257,7 @@ uint8_t bsp_spiWrite0(uint8_t _ucByte)
     if((SPITimeout--) == 0) return SPI_TIMEOUT_UserCallback(1);
   }
 	/* 读取接收到的数据 */
-	SPI_I2S_ReceiveData(SPI_HARD);
+	return SPI_I2S_ReceiveData(SPI_HARD);  // 硬件SPI模式下返回接收到的数据
 #endif
 }
 

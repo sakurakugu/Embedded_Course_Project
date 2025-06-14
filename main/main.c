@@ -56,24 +56,24 @@ int main(void)
 	//oledWriteByte(0xA7, OLED_CMD); // Disable Inverse Display On (0xa6/a7)
 	
 	//水平滚动
-//	oledWriteByte(0x2E, OLED_CMD);
-//	oledWriteByte(0x29, OLED_CMD);
-//	oledWriteByte(0x00, OLED_CMD);
-//	oledWriteByte(0x04, OLED_CMD);
-//	oledWriteByte(0x00, OLED_CMD);
-//	oledWriteByte(0x07, OLED_CMD);
-//	oledWriteByte(0x00, OLED_CMD);
-//	oledWriteByte(0x2F, OLED_CMD);
-	//GUI_DrawFont16(0,0,RED,WHITE,(u8 *)"深",0);
-//	LCD_Clear(GBLUE);
-//  LCD_ShowChar(80,80,RED,0X0000,'h',16,1);//0带背景，1和背景颜色一样
-//	LCD_ShowChar(50,80,RED,0X0000,'h',16,0);//0带背景，1和背景颜色一样
-//	LCD_ShowString(120,90,16,(u8 *)"ABC",1);
-//	LCD_ShowNum(230,460,234567,6,16);//x:0-320   y:0-480
-//	GUI_DrawFont16(10,50,RED,GBLUE,(u8 *)"深",1);
-//	Show_Str(10,50,RED,WHITE,(u8 *)"深圳市全动电子zsc",16,0);
-//	gui_circle(40,400,RED,10,1);
-//	Gui_Drawbmp16(20,200,242,242,gImage_zsc);
+	// oledWriteByte(0x2E, OLED_CMD);
+	// oledWriteByte(0x29, OLED_CMD);
+	// oledWriteByte(0x00, OLED_CMD);
+	// oledWriteByte(0x04, OLED_CMD);
+	// oledWriteByte(0x00, OLED_CMD);
+	// oledWriteByte(0x07, OLED_CMD);
+	// oledWriteByte(0x00, OLED_CMD);
+	// oledWriteByte(0x2F, OLED_CMD);
+	// GUI_DrawFont16(0,0,RED,WHITE,(u8 *)"深",0);
+	// LCD_Clear(GBLUE);
+	// LCD_ShowChar(80,80,RED,0X0000,'h',16,1);//0带背景，1和背景颜色一样
+	// LCD_ShowChar(50,80,RED,0X0000,'h',16,0);//0带背景，1和背景颜色一样
+	// LCD_ShowString(120,90,16,(u8 *)"ABC",1);
+	// LCD_ShowNum(230,460,234567,6,16);//x:0-320   y:0-480
+	// GUI_DrawFont16(10,50,RED,GBLUE,(u8 *)"深",1);
+	// Show_Str(10,50,RED,WHITE,(u8 *)"深圳市全动电子zsc",16,0);
+	// gui_circle(40,400,RED,10,1);
+	// Gui_Drawbmp16(20,200,242,242,gImage_zsc);
 	
 	SetRGBColor(0x0000FF);
 
@@ -140,7 +140,7 @@ int main(void)
 			{
 				//Txto8266Buf[1] = ;
 				
-				ESP_SendString(ESP_USARTx,Txto8266Buf);
+				ESP_SendString(ESP_USARTx,(char *)Txto8266Buf);
 	      timensflag = 0;
 			}  
 		}

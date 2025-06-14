@@ -442,12 +442,8 @@ uint32_t __STREXW(uint32_t value, uint32_t *addr)
 uint32_t __get_PSP(void) __attribute__( ( naked ) );
 uint32_t __get_PSP(void)
 {
-  uint32_t result=0;
-
-  __ASM volatile ("MRS %0, psp\n\t" 
-                  "MOV r0, %0 \n\t"
-                  "BX  lr     \n\t"  : "=r" (result) );
-  return(result);
+    __asm volatile ("MRS r0, psp\n\t"    /* 将 PSP 的值加载到 r0（返回值寄存器） */
+                    "BX  lr     \n\t");   /* 返回，r0 中的值就是函数返回值 */
 }
 
 /**
@@ -461,8 +457,8 @@ uint32_t __get_PSP(void)
 void __set_PSP(uint32_t topOfProcStack) __attribute__( ( naked ) );
 void __set_PSP(uint32_t topOfProcStack)
 {
-  __ASM volatile ("MSR psp, %0\n\t"
-                  "BX  lr     \n\t" : : "r" (topOfProcStack) );
+    __asm volatile ("MSR psp, r0\n\t"    /* 将 r0（参数寄存器）的值写入 PSP */
+                    "BX  lr     \n\t");   /* 返回 */
 }
 
 /**
@@ -476,12 +472,8 @@ void __set_PSP(uint32_t topOfProcStack)
 uint32_t __get_MSP(void) __attribute__( ( naked ) );
 uint32_t __get_MSP(void)
 {
-  uint32_t result=0;
-
-  __ASM volatile ("MRS %0, msp\n\t" 
-                  "MOV r0, %0 \n\t"
-                  "BX  lr     \n\t"  : "=r" (result) );
-  return(result);
+    __asm volatile ("MRS r0, msp\n\t"    /* 将 MSP 的值加载到 r0（返回值寄存器） */
+                    "BX  lr     \n\t");   /* 返回，r0 中的值就是函数返回值 */
 }
 
 /**
@@ -495,8 +487,8 @@ uint32_t __get_MSP(void)
 void __set_MSP(uint32_t topOfMainStack) __attribute__( ( naked ) );
 void __set_MSP(uint32_t topOfMainStack)
 {
-  __ASM volatile ("MSR msp, %0\n\t"
-                  "BX  lr     \n\t" : : "r" (topOfMainStack) );
+    __asm volatile ("MSR msp, r0\n\t"    /* 将 r0（参数寄存器）的值写入 MSP */
+                    "BX  lr     \n\t");   /* 返回 */
 }
 
 /**

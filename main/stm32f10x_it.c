@@ -267,7 +267,7 @@ void ESP_USART_IRQHandler(void)
 						e8266tomcu_str[e8266tomcu_num-1]='\0';
 						Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
 						
-						if(strstr(e8266tomcu_str,"ok") != 0)
+						if(strstr((const char *)e8266tomcu_str,"ok") != 0)
 						{
 							wifitomcudatastate = 0;
 							break;

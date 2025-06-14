@@ -40,7 +40,7 @@ unsigned char E8266inittotlink(void){
 			timeout = 0;
 			GPIO_SetBits(ESP_EN_PORT,ESP_EN_GPIO_PIN);
 		}
-	  if(strstr(e8266tomcu_str,"ready")!=0){
+	  if(strstr((const char *)e8266tomcu_str,"ready")!=0){
 	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
 			 memset(e8266tomcu_str,0,1024);
 		   timeout = 0;
@@ -52,7 +52,7 @@ unsigned char E8266inittotlink(void){
 	  break;
 	  case 1:
 	  timeout++;
-	  if(strstr(e8266tomcu_str,"OK")!=0){
+	  if(strstr((const char *)e8266tomcu_str,"OK")!=0){
 	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
 			 memset(e8266tomcu_str,0,1024);
 		   timeout = 0;
@@ -64,7 +64,7 @@ unsigned char E8266inittotlink(void){
 	  break;
 	  case 2:
 	  timeout++;
-	  if(strstr(e8266tomcu_str,"OK")!=0){
+	  if(strstr((const char *)e8266tomcu_str,"OK")!=0){
 	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
 			 memset(e8266tomcu_str,0,1024);
 		   timeout = 0;
@@ -76,7 +76,7 @@ unsigned char E8266inittotlink(void){
 	  break;
 	  case 3:
 	  timeout++;
-	  if(strstr(e8266tomcu_str,"OK")!=0){
+	  if(strstr((const char *)e8266tomcu_str,"OK")!=0){
 	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
 			 memset(e8266tomcu_str,0,1024);
 		   timeout = 0;
@@ -88,7 +88,7 @@ unsigned char E8266inittotlink(void){
 	  break;
 	  case 4:
 	  timeout++;
-	  if(strstr(e8266tomcu_str,"OK")!=0){
+	  if(strstr((const char *)e8266tomcu_str,"OK")!=0){
 	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
 			 memset(e8266tomcu_str,0,1024);
 		   timeout = 0;
@@ -99,7 +99,7 @@ unsigned char E8266inittotlink(void){
 	  break;
 	  case 5:
 	  timeout++;
-	  if(strstr(e8266tomcu_str,">")!=0){
+	  if(strstr((const char *)e8266tomcu_str,">")!=0){
 	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
 			 memset(e8266tomcu_str,0,1024);
 		   timeout = 0;
@@ -113,7 +113,7 @@ unsigned char E8266inittotlink(void){
 	  break;
 	  case 6:
 	  timeout++;
-	  if(strstr(e8266tomcu_str,"ok")!=0){
+	  if(strstr((const char *)e8266tomcu_str,"ok")!=0){
 	     //接受到服务器心跳包就亮灯
 			 TLINK_OK_LED_ON();
 	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);

@@ -48,7 +48,7 @@
 #include "bsp_i2c_lm75.h"
 
 #include "bsp_oled.h"
-#include "oledfont.h"
+#include "oledFont.h"
 
 #include "bsp_lcd.h"
 #include "lcdFont.h" 

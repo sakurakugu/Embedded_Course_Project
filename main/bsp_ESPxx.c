@@ -125,7 +125,7 @@ void ESP_SendByte( USART_TypeDef * pUSARTx, uint8_t ch)
 }
 
 /*****************  发送字符串 **********************/
-void ESP_SendString( USART_TypeDef * pUSARTx, unsigned char *str)
+void ESP_SendString( USART_TypeDef * pUSARTx, char *str)
 {
 	unsigned int k=0;
   do 
