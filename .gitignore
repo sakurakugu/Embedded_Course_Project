@@ -1,0 +1,31 @@
+# Build 输出
+build/
+*.o
+*.d
+*.hex
+*.bin
+*.elf
+*.map
+
+# IDE 和编辑器文件
+.vscode/
+*.swp
+*~
+
+# Keil 特定
+*.uvprojx.bak
+*.uvoptx.bak
+*.uvprojx.local
+*.uvoptx.local
+
+# Debug 文件
+*.log
+*.debug
+
+# 依赖
+*.lib
+*.a
+
+# 临时文件
+*.tmp
+*.temp
