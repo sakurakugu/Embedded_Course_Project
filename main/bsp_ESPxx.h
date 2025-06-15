@@ -19,15 +19,15 @@
 #define  ESP_USART_GPIO_APBxClkCmd    RCC_APB2PeriphClockCmd
 
 #define  UART1_PB6_PB7
-#define  ESP_USART_TX_GPIO_PORT         GPIOB   
-#define  ESP_USART_TX_GPIO_PIN          GPIO_Pin_6
-#define  ESP_USART_RX_GPIO_PORT       GPIOB
-#define  ESP_USART_RX_GPIO_PIN        GPIO_Pin_7
+#define  ESP_USART_TX_GPIO_PORT        GPIOB   
+#define  ESP_USART_TX_GPIO_PIN         GPIO_Pin_6
+#define  ESP_USART_RX_GPIO_PORT        GPIOB
+#define  ESP_USART_RX_GPIO_PIN         GPIO_Pin_7
 
-#define  ESP_EN_GPIO_CLK           (RCC_APB2Periph_GPIOE)
-#define  ESP_EN_GPIO_APBxClkCmd    RCC_APB2PeriphClockCmd
-#define  ESP_EN_PORT       			GPIOE
-#define  ESP_EN_GPIO_PIN        GPIO_Pin_3
+#define  ESP_EN_GPIO_CLK              (RCC_APB2Periph_GPIOE)
+#define  ESP_EN_GPIO_APBxClkCmd       RCC_APB2PeriphClockCmd
+#define  ESP_EN_PORT       			      GPIOE
+#define  ESP_EN_GPIO_PIN              GPIO_Pin_3
 
 #define  ESP_USART_IRQ                USART1_IRQn
 #define  ESP_USART_IRQHandler         USART1_IRQHandler

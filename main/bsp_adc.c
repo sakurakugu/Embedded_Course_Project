@@ -111,7 +111,7 @@ void ADCx_Init(void) {
 uint16_t getAdc(uint8_t ADC_CHANNEL_X) {
     ADCx_Mode_Config(ADC_CHANNEL_X);
     while (!ADC_GetFlagStatus(ADCx, ADC_FLAG_EOC)) {
-    };                                   // 等待转换完成
+    }; // 等待转换完成
     return ADC_GetConversionValue(ADCx); // 返回12位ADC值
 }
 /*********************************************END OF FILE**********************/

@@ -20,7 +20,7 @@
  */
 	
 
-#define EEPROM_DEV_ADDR			0xA0		/* 24xx02的设备地址 */
+#define EEPROM_DEV_ADDR			  0xA0	          /* 24xx02的设备地址 */
 #define EEPROM_PAGE_SIZE		  16			  /* 24xx02的页面大小 */
 #define EEPROM_SIZE				  256			  /* 24xx02总容量 */
 

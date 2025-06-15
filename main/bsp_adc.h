@@ -16,10 +16,10 @@
 #define    ADC_GPIO_CLK                  RCC_APB2Periph_GPIOC  
 #define    ADC_PORT                      GPIOC
 #define    RV_ADC_PIN                    GPIO_Pin_4
-#define    NTC_ADC_PIN                    GPIO_Pin_0
+#define    NTC_ADC_PIN                   GPIO_Pin_0
 // ADC 通道宏定义
-#define    RV_ADC_CHANNEL                   ADC_Channel_14
-#define    NTC_ADC_CHANNEL                  ADC_Channel_10
+#define    RV_ADC_CHANNEL                ADC_Channel_14
+#define    NTC_ADC_CHANNEL               ADC_Channel_10
 
 // ADC 中断相关宏定义
 #define    ADC_IRQ                       ADC1_2_IRQn
