@@ -25,7 +25,7 @@ void SetRGBColor(uint32_t rgb) {
     TIM_SetCompare2(TIM8, (uint8_t)(rgb >> 16));
     TIM_SetCompare3(TIM8, (uint8_t)(rgb >> 8));
     // COLOR_TIMx->COLOR_RED_CCRx = (uint8_t)(rgb>>16);      //R
-    // COLOR_TIMx->COLOR_GREEN_CCRx = (uint8_t)(rgb>>8);   //G
+    // COLOR_TIMx->COLOR_GREEN_CCRx = (uint8_t)(rgb>>8);     //G
     // COLOR_TIMx->COLOR_BLUE_CCRx = (uint8_t)rgb;           //B
 }
 

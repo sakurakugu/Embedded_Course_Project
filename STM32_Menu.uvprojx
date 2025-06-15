@@ -48,14 +48,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>..\build\output\</OutputDirectory>
+          <OutputDirectory>.\build\</OutputDirectory>
           <OutputName>STM32_Menu</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>..\build\listing\</ListingPath>
+          <ListingPath>.\build\listing\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>1</CreateBatchFile>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\lib\CMSIS;..\main;..\lib\FWlib\inc;..\main\Key;..\main\Led</IncludePath>
+              <IncludePath>.\lib\CMSIS;.\lib\FWlib\inc;.\main;.\main\display;.\main\key;.\main\led</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -382,12 +382,22 @@
       </TargetOption>
       <Groups>
         <Group>
+          <GroupName>docs</GroupName>
+          <Files>
+            <File>
+              <FileName>README.md</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\README.md</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>lib/STARTUP</GroupName>
           <Files>
             <File>
               <FileName>startup_stm32f10x_hd.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\lib\CMSIS\startup\startup_stm32f10x_hd.s</FilePath>
+              <FilePath>.\lib\CMSIS\startup\startup_stm32f10x_hd.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -395,24 +405,14 @@
           <GroupName>lib/CMSIS</GroupName>
           <Files>
             <File>
-              <FileName>stm32f10x.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\lib\CMSIS\stm32f10x.h</FilePath>
-            </File>
-            <File>
-              <FileName>system_stm32f10x.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\lib\CMSIS\system_stm32f10x.h</FilePath>
-            </File>
-            <File>
               <FileName>system_stm32f10x.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\lib\CMSIS\system_stm32f10x.c</FilePath>
+              <FilePath>.\lib\CMSIS\system_stm32f10x.c</FilePath>
             </File>
             <File>
               <FileName>core_cm3.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\lib\CMSIS\core_cm3.c</FilePath>
+              <FilePath>.\lib\CMSIS\core_cm3.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -420,199 +420,264 @@
           <GroupName>lib/FWLB</GroupName>
           <Files>
             <File>
-              <FileName>stm32f10x_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\lib\FWlib\src\stm32f10x_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_rcc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\lib\FWlib\src\stm32f10x_rcc.c</FilePath>
-            </File>
-            <File>
               <FileName>misc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\lib\FWlib\src\misc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_exti.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\lib\FWlib\src\stm32f10x_exti.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_flash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\lib\FWlib\src\stm32f10x_flash.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\lib\FWlib\src\stm32f10x_usart.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\lib\FWlib\src\stm32f10x_spi.c</FilePath>
+              <FilePath>.\lib\FWlib\src\misc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\lib\FWlib\src\stm32f10x_adc.c</FilePath>
+              <FilePath>.\lib\FWlib\src\stm32f10x_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_bkp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_bkp.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_can.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_cec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_cec.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_crc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_crc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_dac.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dbgmcu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_dbgmcu.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_exti.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_fsmc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_fsmc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_iwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_pwr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_pwr.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_rcc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_rcc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_sdio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_sdio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_spi.c</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\lib\FWlib\src\stm32f10x_tim.c</FilePath>
+              <FilePath>.\lib\FWlib\src\stm32f10x_tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_wwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\FWlib\src\stm32f10x_wwdg.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>mian</GroupName>
+          <GroupName>main</GroupName>
           <Files>
-            <File>
-              <FileName>stm32f10x_conf.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\main\stm32f10x_conf.h</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_it.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\main\stm32f10x_it.h</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\stm32f10x_it.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\Led\bsp_led.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\Key\bsp_key.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_segdz.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_segdz.c</FilePath>
-            </File>
             <File>
               <FileName>bsp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\main\bsp.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_exti.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_exti.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_SysTick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_SysTick.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_usart.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_JQ8900.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_JQ8900.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_ESPxx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_ESPxx.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_tlink.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_tlink.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_i2c_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_ee.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_i2c_ee.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_lm75.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_i2c_lm75.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_oled.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_oled.c</FilePath>
-            </File>
-            <File>
-              <FileName>oledFont.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\oledFont.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_gui.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_gui.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\bsp_lcd.c</FilePath>
-            </File>
-            <File>
-              <FileName>lcdFont.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\lcdFont.c</FilePath>
-            </File>
-            <File>
-              <FileName>touch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\touch.c</FilePath>
+              <FilePath>.\main\bsp.c</FilePath>
             </File>
             <File>
               <FileName>bsp_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\main\bsp_adc.c</FilePath>
+              <FilePath>.\main\bsp_adc.c</FilePath>
             </File>
             <File>
               <FileName>bsp_AdvanceTim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\main\bsp_AdvanceTim.c</FilePath>
+              <FilePath>.\main\bsp_AdvanceTim.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_ESPxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\bsp_ESPxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\bsp_exti.c</FilePath>
             </File>
             <File>
               <FileName>bsp_GeneralTim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\main\bsp_GeneralTim.c</FilePath>
+              <FilePath>.\main\bsp_GeneralTim.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_gui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\bsp_gui.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_i2c_ee.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\bsp_i2c_ee.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_i2c_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\bsp_i2c_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_i2c_lm75.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\bsp_i2c_lm75.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_JQ8900.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\bsp_JQ8900.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_segdz.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\bsp_segdz.c</FilePath>
             </File>
             <File>
               <FileName>bsp_spi_bus.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\main\bsp_spi_bus.c</FilePath>
+              <FilePath>.\main\bsp_spi_bus.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_SysTick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\bsp_SysTick.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_tlink.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\bsp_tlink.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\bsp_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcdFont.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\lcdFont.c</FilePath>
+            </File>
+            <File>
+              <FileName>oledFont.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\oledFont.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\stm32f10x_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>touch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\touch.c</FilePath>
             </File>
             <File>
               <FileName>main.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\main\main.cpp</FilePath>
+              <FilePath>.\main\main.cpp</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>docs</GroupName>
+          <GroupName>main/display</GroupName>
           <Files>
             <File>
-              <FileName>readme.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\Doc\readme.txt</FilePath>
+              <FileName>bsp_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\display\bsp_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\display\bsp_oled.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>main/key</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\key\bsp_key.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>main/led</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main\led\bsp_led.c</FilePath>
             </File>
           </Files>
         </Group>

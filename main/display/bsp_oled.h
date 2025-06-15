@@ -41,9 +41,6 @@ extern "C" {
 
 //void delay_ms(unsigned int ms);
 
-
- 		     
-  
 void oledDisplayOn(void);
 void oledDisplayOff(void);	   							   		    
 void oled_Init(void);
