@@ -5,7 +5,7 @@
 class GpioLed {
   public:
     GpioLed();  // 构造函数
-    ~GpioLed(); // 析构函数
+    virtual ~GpioLed(); // 析构函数
 
     void assert_failed(uint8_t *file, uint32_t line) {
         // 断言错误时执行的代码

@@ -2,6 +2,7 @@
 
 GpioLed::GpioLed() {
     // 构造函数
+    Init(); // 调用初始化函数
 }
 
 GpioLed::~GpioLed() {
