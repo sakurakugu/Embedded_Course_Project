@@ -5,7 +5,7 @@
 
 typedef struct
 {
-    unsigned char value[3];   //UTF-8
+    unsigned char value[4];   //UTF-8
 	unsigned char data[24];   //
 }HZZM_12;
 

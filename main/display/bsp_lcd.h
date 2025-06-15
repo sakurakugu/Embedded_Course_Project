@@ -1,19 +1,15 @@
 #ifndef __LCD_H
 #define __LCD_H	
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include "bsp.h"
 
 //LCD重要参数集
 typedef struct  
 {										    
-	u16 width;			//LCD 宽度
-	u16 height;			//LCD 高度
-	u16 id;				  //LCD ID
-	u8  dir;			  //横屏还是竖屏控制：0，竖屏；1，横屏。	
+	u16  width;			//LCD 宽度
+	u16  height;			//LCD 高度
+	u16  id;				  //LCD ID
+	u8   dir;			  //横屏还是竖屏控制：0，竖屏；1，横屏。	
 	u16	 wramcmd;		//开始写gram指令
 	u16  setxcmd;		//设置x坐标指令
 	u16  setycmd;		//设置y坐标指令	 
@@ -103,10 +99,6 @@ void LCD_SetCursor(u16 Xpos, u16 Ypos);
 void LCD_WriteData_16Bit(u16 Data);
 
 
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif  
 	 

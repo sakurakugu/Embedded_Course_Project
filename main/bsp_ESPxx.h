@@ -110,7 +110,7 @@
 
 void ESP_Config(void);
 void ESP_SendByte( USART_TypeDef * pUSARTx, uint8_t ch);
-void ESP_SendString( USART_TypeDef * pUSARTx, char *str);
+void ESP_SendString( USART_TypeDef * pUSARTx, const char *str);
 void ESP_SendCommand(unsigned char * str,unsigned char num);
 
 #endif /* __USART_H */

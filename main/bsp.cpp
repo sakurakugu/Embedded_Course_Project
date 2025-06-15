@@ -128,7 +128,8 @@ void bsp_Init(void)
 {
 		/* LED端口初始化 */
 	//HSI_SetSysClock(RCC_PLLMul_9);
-	LED_GPIO_Config();
+	// LED_GPIO_Config();
+  GpioLed led; // 创建GpioLed对象
 	//LED1_ON;
 	//LED2_ON;
 	//LED3_ON;
@@ -212,28 +213,28 @@ void test(uint8_t ch)
     switch(ch)
     {
       case '1':
-        LED_RED;
+        // LED_RED;
       break;
       case '2':
-        LED_GREEN;
+        // LED_GREEN;
       break;
       case '3':
-        LED_BLUE;
+        // LED_BLUE;
       break;
       case '4':
-        LED_YELLOW;
+        // LED_YELLOW;
       break;
       case '5':
-        LED_PURPLE;
+        // LED_PURPLE;
       break;
       case '6':
-        LED_CYAN;
+        // LED_CYAN;
       break;
       case '7':
-        LED_WHITE;
+        // LED_WHITE;
       break;
       case '8':
-        LED_RGBOFF;
+        // LED_RGBOFF;
       break;
       default:
         /* 如果不是指定指令字符，打印提示信息 */

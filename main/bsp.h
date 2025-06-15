@@ -10,10 +10,6 @@
 #ifndef __BSP_H
 #define __BSP_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /*
 	stm32f10x.h :STM32F10x系列CPU的标准外设固件库。这个固件包含了很多型号的CPU，
 		使用这个库必须在工程中添加预编译的宏:
@@ -36,7 +32,7 @@ extern "C" {
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "bsp_led.h"
+#include "gpio_led.h"
 #include "bsp_key.h"
 #include "bsp_spi_bus.h"
 #include "stm32f10x_spi.h"
@@ -105,10 +101,6 @@ void dispdata(uint16_t count);
 void Show_Message(void);
 
 void test(uint8_t ch);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

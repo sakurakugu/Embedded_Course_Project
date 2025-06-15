@@ -15,7 +15,7 @@ typedef struct
 
 typedef struct 
 {
-    unsigned char Index[3];	
+    unsigned char Index[4];	
     char Msk[128];
 }typFNT_GB32; 
 

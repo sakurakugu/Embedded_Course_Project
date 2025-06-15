@@ -190,7 +190,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>1</useUlib>
+            <useUlib>0</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\lib\CMSIS;.\lib\FWlib\inc;.\main;.\main\display;.\main\key;.\main\led</IncludePath>
+              <IncludePath>.\lib\CMSIS;.\lib\FWlib\inc;.\main;.\main\boards;.\main\display;.\main\key;.\main\led</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -408,11 +408,6 @@
               <FileName>system_stm32f10x.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\lib\CMSIS\system_stm32f10x.c</FilePath>
-            </File>
-            <File>
-              <FileName>core_cm3.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\lib\CMSIS\core_cm3.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -540,109 +535,109 @@
           <GroupName>main</GroupName>
           <Files>
             <File>
-              <FileName>bsp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp.c</FilePath>
+              <FileName>bsp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_adc.c</FilePath>
+              <FileName>bsp_adc.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_adc.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_AdvanceTim.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_AdvanceTim.c</FilePath>
+              <FileName>bsp_AdvanceTim.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_AdvanceTim.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_ESPxx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_ESPxx.c</FilePath>
+              <FileName>bsp_ESPxx.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_ESPxx.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_exti.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_exti.c</FilePath>
+              <FileName>bsp_exti.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_exti.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_GeneralTim.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_GeneralTim.c</FilePath>
+              <FileName>bsp_GeneralTim.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_GeneralTim.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_gui.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_gui.c</FilePath>
+              <FileName>bsp_gui.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_gui.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_i2c_ee.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_i2c_ee.c</FilePath>
+              <FileName>bsp_i2c_ee.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_i2c_ee.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_i2c_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_i2c_gpio.c</FilePath>
+              <FileName>bsp_i2c_gpio.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_i2c_gpio.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_i2c_lm75.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_i2c_lm75.c</FilePath>
+              <FileName>bsp_i2c_lm75.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_i2c_lm75.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_JQ8900.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_JQ8900.c</FilePath>
+              <FileName>bsp_JQ8900.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_JQ8900.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_segdz.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_segdz.c</FilePath>
+              <FileName>bsp_segdz.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_segdz.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_spi_bus.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_spi_bus.c</FilePath>
+              <FileName>bsp_spi_bus.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_spi_bus.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_SysTick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_SysTick.c</FilePath>
+              <FileName>bsp_SysTick.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_SysTick.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_tlink.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_tlink.c</FilePath>
+              <FileName>bsp_tlink.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_tlink.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\bsp_usart.c</FilePath>
+              <FileName>bsp_usart.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\bsp_usart.cpp</FilePath>
             </File>
             <File>
-              <FileName>lcdFont.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\lcdFont.c</FilePath>
-            </File>
-            <File>
-              <FileName>oledFont.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\oledFont.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\stm32f10x_it.c</FilePath>
-            </File>
-            <File>
-              <FileName>touch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\touch.c</FilePath>
+              <FileName>lcdFont.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\lcdFont.cpp</FilePath>
             </File>
             <File>
               <FileName>main.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\main\main.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>oledFont.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\oledFont.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_it.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\stm32f10x_it.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>touch.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\touch.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -650,14 +645,14 @@
           <GroupName>main/display</GroupName>
           <Files>
             <File>
-              <FileName>bsp_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\display\bsp_lcd.c</FilePath>
+              <FileName>bsp_lcd.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\display\bsp_lcd.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_oled.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\display\bsp_oled.c</FilePath>
+              <FileName>bsp_oled.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\display\bsp_oled.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -665,9 +660,9 @@
           <GroupName>main/key</GroupName>
           <Files>
             <File>
-              <FileName>bsp_key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\key\bsp_key.c</FilePath>
+              <FileName>bsp_key.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\key\bsp_key.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -675,11 +670,24 @@
           <GroupName>main/led</GroupName>
           <Files>
             <File>
-              <FileName>bsp_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main\led\bsp_led.c</FilePath>
+              <FileName>gpio_led.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\led\gpio_led.cpp</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>main/boards</GroupName>
+          <Files>
+            <File>
+              <FileName>config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\main\boards\config.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
     </Target>
@@ -687,7 +695,14 @@
 
   <RTE>
     <apis/>
-    <components/>
+    <components>
+      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="6.1.0" condition="ARMv6_7_8-M Device">
+        <package name="CMSIS" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="6.1.0"/>
+        <targetInfos>
+          <targetInfo name="系统定时器"/>
+        </targetInfos>
+      </component>
+    </components>
     <files>
       <file attr="config" category="header" name="RTE_Driver\Config\RTE_Device.h" version="1.1.2">
         <instance index="0" removed="1">RTE\Device\STM32F103VC\RTE_Device.h</instance>

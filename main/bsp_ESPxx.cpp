@@ -123,7 +123,7 @@ void ESP_SendByte(USART_TypeDef *pUSARTx, uint8_t ch) {
 }
 
 /*****************  发送字符串 **********************/
-void ESP_SendString(USART_TypeDef *pUSARTx, char *str) {
+void ESP_SendString(USART_TypeDef *pUSARTx, const char *str) {
     unsigned int k = 0;
     do {
         ESP_SendByte(pUSARTx, *(str + k));
