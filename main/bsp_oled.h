@@ -1,6 +1,9 @@
-
 #ifndef __OLED_H
 #define __OLED_H			  	 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "bsp.h"
 
@@ -55,6 +58,10 @@ void oled_ShowString(uint8_t x,uint8_t y, uint8_t *p);
 void oled_Set_Pos(unsigned char x, unsigned char y);
 void oled_ShowCHStr(unsigned char X , unsigned char Y, unsigned char *pstr);
 void oled_DrawBMP(unsigned char X,unsigned char Y,unsigned char Pix_x,unsigned char Pix_y,const unsigned char *BMP);
+#ifdef __cplusplus
+}
+#endif
+
 #endif  
 	 
 

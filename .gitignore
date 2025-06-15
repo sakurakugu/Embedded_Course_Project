@@ -17,6 +17,7 @@ build/
 *.uvoptx.bak
 *.uvprojx.local
 *.uvoptx.local
+*.uvguix.*
 
 # Debug 文件
 *.log

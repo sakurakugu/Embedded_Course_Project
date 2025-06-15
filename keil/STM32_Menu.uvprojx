@@ -470,11 +470,6 @@
           <GroupName>mian</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\main\main.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f10x_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\main\stm32f10x_conf.h</FilePath>
@@ -603,6 +598,11 @@
               <FileName>bsp_spi_bus.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\main\bsp_spi_bus.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\main\main.cpp</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,6 +1,10 @@
-
 #ifndef __LCD_H
 #define __LCD_H	
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "bsp.h"
 
 //LCD重要参数集
@@ -99,6 +103,10 @@ void LCD_SetCursor(u16 Xpos, u16 Ypos);
 void LCD_WriteData_16Bit(u16 Data);
 
 
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif  
 	 

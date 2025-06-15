@@ -43,7 +43,7 @@ int main(void)
 	uint8_t KeyNum = 0,MotorSpeed = 170;
 	float temprature = 0,Rt,Temp;
 	uint16_t adcValue;
-  bsp_Init();
+    bsp_Init();
 	/* 发送一个字符串 */
 	printf("OLED测试例程\r\n");		//lm75A软件模拟i2c测试例程
 	oled_ShowCHStr(0,0,(u8 *)"我们");
@@ -104,7 +104,7 @@ int main(void)
 			}
 			if(KeyNum == 2){
 				LED2_TOGGLE;
-				JQ8x00_AppointPlay(JQ8X00_FLASH,"01");
+				JQ8x00_AppointPlay(JQ8X00_FLASH, const_cast<char*>("01"));
 				DCMotor_Dir_Config(1);
 			}
 			if(KeyNum == 3){
