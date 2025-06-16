@@ -121,13 +121,13 @@ int main(void) {
             bsp_RunPer1s = 0;
 
             adcValue = getAdc(RV_ADC_CHANNEL);
-            printf("RV_ADC值是 %d\r\n", adcValue);
+            // printf("RV_ADC值是 %d\r\n", adcValue);
             adcValue = getAdc(NTC_ADC_CHANNEL);
 
-            printf("NTC_ADC值是 %d\r\n", adcValue);
+            // printf("NTC_ADC值是 %d\r\n", adcValue);
             Rt = adcValue * 10000UL / (4095 - adcValue);
             Temp = 1 / (log(Rt / 10000) / 3950 + 1 / (25 + 273.15)) - 273.15;
-            printf("NTC_温度是 %.3f\r\n", Temp);
+            // printf("NTC_温度是 %.3f\r\n", Temp);
 
             E8266inittotlink();
             // printf("1S\r\n");

@@ -36,25 +36,25 @@ void GpioLed::Init() {
 
 void GpioLed::SetLed1(bool state) {
     if (state) {
-        GPIO_SetBits(LED1_GPIO_PORT, LED1_GPIO_PIN);
-    } else {
         GPIO_ResetBits(LED1_GPIO_PORT, LED1_GPIO_PIN);
+    } else {
+        GPIO_SetBits(LED1_GPIO_PORT, LED1_GPIO_PIN);
     }
 }
 
 void GpioLed::SetLed2(bool state) {
     if (state) {
-        GPIO_SetBits(LED2_GPIO_PORT, LED2_GPIO_PIN);
-    } else {
         GPIO_ResetBits(LED2_GPIO_PORT, LED2_GPIO_PIN);
+    } else {
+        GPIO_SetBits(LED2_GPIO_PORT, LED2_GPIO_PIN);
     }
 }
 
 void GpioLed::SetLed3(bool state) {
     if (state) {
-        GPIO_SetBits(LED3_GPIO_PORT, LED3_GPIO_PIN);
-    } else {
         GPIO_ResetBits(LED3_GPIO_PORT, LED3_GPIO_PIN);
+    } else {
+        GPIO_SetBits(LED3_GPIO_PORT, LED3_GPIO_PIN);
     }
 }
 

@@ -533,11 +533,11 @@ void TP_Adjust(void)
 					d2=sqrt(tem1+tem2);//得到3,4的距离
 					fac=(float)d1/d2;
 
-					printf("The first: %f,%d,%d\n",fac,d1,d2);
+					// printf("The first: %f,%d,%d\n",fac,d1,d2);
 
 					if(fac<0.95||fac>1.05||d1==0||d2==0)//不合格
 					{
-						printf("The first is fail!\n");
+						// printf("The first is fail!\n");
 						cnt=0;
  				    	TP_Drow_Touch_Point(lcddev.width-20,lcddev.height-20,WHITE);	//清除点4
    	 					TP_Drow_Touch_Point(20,20,RED);								//画点1
@@ -557,11 +557,11 @@ void TP_Adjust(void)
 					d2=sqrt(tem1+tem2);//得到2,4的距离
 					fac=(float)d1/d2;
 
-					printf("The second: %f,%d,%d\n",fac,d1,d2);
+					// printf("The second: %f,%d,%d\n",fac,d1,d2);
 
 					if(fac<0.95||fac>1.05)//不合格
 					{
-						printf("The second is fail!\n");
+						// printf("The second is fail!\n");
 						cnt=0;
  				    	TP_Drow_Touch_Point(lcddev.width-20,lcddev.height-20,WHITE);	//清除点4
    	 					TP_Drow_Touch_Point(20,20,RED);								//画点1

@@ -446,7 +446,7 @@ void bsp_SetSpiSck(uint8_t _data)
 static  uint16_t SPI_TIMEOUT_UserCallback(uint8_t errorCode)
 {
   /* 等待超时后的处理,输出错误信息 */
-  printf("SPI 等待超时!errorCode = %d",errorCode);
+//   printf("SPI 等待超时!errorCode = %d",errorCode);
   return 0;
 }
 

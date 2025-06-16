@@ -191,10 +191,10 @@ void ee_Erase(void) {
 
     /* 写EEPROM, 起始地址 = 0，数据长度为 256 */
     if (ee_WriteBytes(buf, 0, EEPROM_SIZE) == 0) {
-        printf("擦除eeprom出错！\r\n");
+        // printf("擦除eeprom出错！\r\n");
         return;
     } else {
-        printf("擦除eeprom成功！\r\n");
+        // printf("擦除eeprom成功！\r\n");
     }
 }
 
@@ -217,7 +217,7 @@ uint8_t ee_Test(void) {
     /*-----------------------------------------------------------------------------------*/
     if (ee_CheckOk() == 0) {
         /* 没有检测到EEPROM */
-        printf("没有检测到串行EEPROM!\r\n");
+        // printf("没有检测到串行EEPROM!\r\n");
 
         return 0;
     }
@@ -228,35 +228,35 @@ uint8_t ee_Test(void) {
     }
     /*------------------------------------------------------------------------------------*/
     if (ee_WriteBytes(write_buf, 0, EEPROM_SIZE) == 0) {
-        printf("写eeprom出错！\r\n");
+        // printf("写eeprom出错！\r\n");
         return 0;
     } else {
-        printf("写eeprom成功！\r\n");
+        // printf("写eeprom成功！\r\n");
     }
 
     /*写完之后需要适当的延时再去读，不然会出错*/
     ee_Delay(0x0FFFFF);
     /*-----------------------------------------------------------------------------------*/
     if (ee_ReadBytes(read_buf, 0, EEPROM_SIZE) == 0) {
-        printf("读eeprom出错！\r\n");
+        // printf("读eeprom出错！\r\n");
         return 0;
     } else {
-        printf("读eeprom成功，数据如下：\r\n");
+        // printf("读eeprom成功，数据如下：\r\n");
     }
     /*-----------------------------------------------------------------------------------*/
     for (i = 0; i < EEPROM_SIZE; i++) {
         if (read_buf[i] != write_buf[i]) {
-            printf("0x%02X ", read_buf[i]); // X 表示以十六进制形式输出  02 表示不足两位，前面补0输出；出过两位，不影响
-            printf("错误:EEPROM读出与写入的数据不一致");
+            // printf("0x%02X ", read_buf[i]); // X 表示以十六进制形式输出  02 表示不足两位，前面补0输出；出过两位，不影响
+            // printf("错误:EEPROM读出与写入的数据不一致");
             return 0;
         }
-        printf(" %02X", read_buf[i]);
+        // printf(" %02X", read_buf[i]);
 
         if ((i & 15) == 15) {
-            printf("\r\n");
+            // printf("\r\n");
         }
     }
-    printf("eeprom读写测试成功\r\n");
+    // printf("eeprom读写测试成功\r\n");
     return 1;
 }
 /*********************************************END OF FILE**********************/

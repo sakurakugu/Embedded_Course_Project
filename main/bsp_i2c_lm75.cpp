@@ -48,7 +48,7 @@ float LM75_readTemp(void) {
 
     if (LM75_CheckOk() == 0) {
         /* 没有检测到LM75温度传感器 */
-        printf("没有检测到LM75温度传感器!\r\n");
+        // printf("没有检测到LM75温度传感器!\r\n");
 
         return 0;
     }
