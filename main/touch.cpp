@@ -132,7 +132,10 @@ u16 TP_Read_AD(u8 CMD)
 	u16 Num=0; 
 	TCS(0); 		//选中触摸屏IC
 	TP_Write_Byte(CMD);//发送命令字
-	DelayUs(6);//ADS7846的转换时间最长为6us
+	// DelayUs(6);//ADS7846的转换时间最长为6us
+	uint32_t nCount = 60; // 延时60us
+	for (; nCount != 0; nCount--){
+	}
 	// TCLK=0; 	     	    
 	// delay_us(1);    	   
 	// TCLK=1;		//给1个时钟，清除BUSY	    	    
@@ -617,13 +620,19 @@ void TP_Adjust(void)
 					POINT_COLOR=BLUE;
 					LCD_Clear(WHITE);//清屏
 					LCD_ShowString(35,110, 16,(u8 *)"Touch Screen Adjust OK!",1);//校正完成
-					DelayMs(1000);
+					// DelayMs(1000);
+					uint32_t nCount = 100000;
+					for (; nCount != 0; nCount--){
+					}
 					TP_Save_Adjdata();  
  					LCD_Clear(WHITE);//清屏   
 					return;//校正完成				 
 			}
 		}
-		DelayMs(10);
+		// DelayMs(10);
+		uint32_t nCount = 1000;
+		for (; nCount != 0; nCount--){
+		}
 		outtime++;
 		if(outtime>1000)
 		{
@@ -680,7 +689,9 @@ u8 TP_Init(void)
 	    TP_Adjust();  //屏幕校准 
 		TP_Save_Adjdata();	 
 	}		
-	DelayMs(1000);
+	uint32_t nCount = 100000;
+	for (; nCount != 0; nCount--){
+	}
 	TP_Get_Adjdata();	
 	return 1; 									 
 }

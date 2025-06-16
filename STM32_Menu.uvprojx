@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\lib\CMSIS;.\lib\FWlib\inc;.\main;.\main\boards;.\main\display;.\main\key;.\main\led</IncludePath>
+              <IncludePath>.\lib\CMSIS;.\lib\FWlib\inc;.\main;.\main\display;.\main\key;.\main\led;.\main\spi;.\main\boards;.\main\boards\common;.\main\boards\school-STM32F103VCT6</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -535,9 +535,9 @@
           <GroupName>main</GroupName>
           <Files>
             <File>
-              <FileName>bsp.cpp</FileName>
+              <FileName>application.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\main\bsp.cpp</FilePath>
+              <FilePath>.\main\application.cpp</FilePath>
             </File>
             <File>
               <FileName>bsp_adc.cpp</FileName>
@@ -595,11 +595,6 @@
               <FilePath>.\main\bsp_segdz.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_spi_bus.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_spi_bus.cpp</FilePath>
-            </File>
-            <File>
               <FileName>bsp_SysTick.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\main\bsp_SysTick.cpp</FilePath>
@@ -654,15 +649,30 @@
               <FileType>8</FileType>
               <FilePath>.\main\display\bsp_oled.cpp</FilePath>
             </File>
+            <File>
+              <FileName>display.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\display\display.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_display.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\display\lcd_display.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>oled_display.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\display\oled_display.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>main/key</GroupName>
           <Files>
             <File>
-              <FileName>bsp_key.cpp</FileName>
+              <FileName>gpio_key.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\main\key\bsp_key.cpp</FilePath>
+              <FilePath>.\main\key\gpio_key.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -677,17 +687,45 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>main/boards</GroupName>
+          <GroupName>miain/spi</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_spi_bus.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\spi\bsp_spi_bus.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>main/boards/common</GroupName>
+          <Files>
+            <File>
+              <FileName>board.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\boards\common\board.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>main/boards/school-STM32F103VCT6</GroupName>
           <Files>
             <File>
               <FileName>config.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\main\boards\config.h</FilePath>
+              <FilePath>.\main\boards\school-STM32F103VCT6\config.h</FilePath>
+            </File>
+            <File>
+              <FileName>school-STM32F103VCT6.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\boards\school-STM32F103VCT6\school-STM32F103VCT6.cpp</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS-Compiler</GroupName>
         </Group>
       </Groups>
     </Target>
@@ -696,6 +734,12 @@
   <RTE>
     <apis/>
     <components>
+      <component Cclass="CMSIS-Compiler" Cgroup="CORE" Cvendor="ARM" Cversion="1.1.0" condition="ARMCC CortexDevice">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
+        <targetInfos>
+          <targetInfo name="系统定时器"/>
+        </targetInfos>
+      </component>
       <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="6.1.0" condition="ARMv6_7_8-M Device">
         <package name="CMSIS" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="6.1.0"/>
         <targetInfos>
