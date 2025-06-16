@@ -1,4 +1,3 @@
-  
 #include "bsp.h"
 
 static __IO u32 TimingDelay;

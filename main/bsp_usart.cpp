@@ -20,6 +20,34 @@
 #include "bsp.h"
 #include <stdio.h>
 
+// 重定向c库函数printf到串口，重定向后可使用printf函数
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+int fgetc(FILE *stream) {
+    /* 等待串口输入数据 */
+    while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_RXNE) == RESET)
+        ;
+
+    return (int)USART_ReceiveData(DEBUG_USARTx);
+}
+
+int fputc(int ch, FILE *stream) {
+    /* 发送一个字节数据到串口 */
+    USART_SendData(DEBUG_USARTx, (uint8_t)ch);
+
+    /* 等待发送完毕 */
+    while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_TXE) == RESET)
+        ;
+
+    return (ch);
+}
+
+#ifdef __cplusplus
+}
+#endif
+
 /**
  * @brief  配置嵌套向量中断控制器NVIC
  * @param  无
@@ -144,111 +172,3 @@ void Usart_SendHalfWord(USART_TypeDef *pUSARTx, uint16_t ch) {
     while (USART_GetFlagStatus(pUSARTx, USART_FLAG_TXE) == RESET)
         ;
 }
-
-
-// #ifdef __cplusplus
-//  extern "C" {
-// #endif
-
-
-// // #pragma import(__use_no_semihosting) // 禁用半主机模式
-
-// // 请不要勾选Use MicroLib
-// #ifdef __MICROLIB
-// #error "Please do not use MicroLib!"
-// #endif
-
-// // 定义_sys_exit()以避免使用半主机模式
-// void _sys_exit(int x) {
-//     x = x;
-// }
-// void _ttywrch(int ch) {
-//     ch = ch;
-// }
-
-// // void _sys_exit(int returncode) {
-// //     printf("Exited! returncode=%d\n", returncode);
-// //     while (1)
-// //         ;
-// // }
-
-// // void _ttywrch(int ch) {
-// //     if (ch == '\n')
-// //         HAL_UART_Transmit(&huart1, (uint8_t *)"\r\n", 2, HAL_MAX_DELAY);
-// //     else
-// //         HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
-// // }
-// // }
-
-// namespace std {
-// // 标准库需要的支持函数
-// // struct __FILE {
-// //     int handle;
-// //     /* Whatever you require here. If the only file you are using is */
-// //     /* standard output using printf() for debugging, no file handling */
-// //     /* is required. */
-// // };
-
-// // FILE __stdin = {0};
-// // FILE __stdout = {1};
-// // FILE __stderr = {2};
-
-// // 重定向c库函数printf到串口，重定向后可使用printf函数
-// int fgetc(FILE *stream) {
-// // int fgetc(FILE *stream) {
-//     /* 等待串口输入数据 */
-//     while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_RXNE) == RESET)
-//         ;
-
-//     return (int)USART_ReceiveData(DEBUG_USARTx);
-// }
-//     // int c = 0;
-
-//     // if (stream->handle == 0) {
-//     //     while (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_RXNE) == RESET)
-//     //         ;
-//     //     HAL_UART_Receive(&huart1, (uint8_t *)&c, 1, HAL_MAX_DELAY);
-
-//     //     _ttywrch((c == '\r') ? '\n' : c); // 回显
-//     //     return c;
-//     // }
-//     // return EOF;
-// // }
-
-// // 重定向c库函数printf到串口，重定向后可使用printf函数
-// int fputc(int ch, FILE *stream) {
-//     /* 发送一个字节数据到串口 */
-//     USART_SendData(DEBUG_USARTx, (uint8_t)ch);
-
-//     /* 等待发送完毕 */
-//     while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_TXE) == RESET)
-//         ;
-
-//     return (ch);
-// }
-//     // if (stream->handle == 1 || stream->handle == 2) {
-//     //     _ttywrch(c);
-//     //     return c;
-//     // }
-//     // return EOF;
-// // }
-
-// // int fclose(FILE *stream) {
-// //     return 0;
-// // }
-
-// // int fseek(FILE *stream, long int offset, int whence) {
-// //     return -1;
-// // }
-
-// // int fflush(FILE *stream) {
-// //     if (stream->handle == 1 || stream->handle == 2)
-// //         while (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_TC) == RESET)
-// //             ;
-// //     return 0;
-// // }
-// } // namespace std
-
-// #ifdef __cplusplus
-// }
-// #endif

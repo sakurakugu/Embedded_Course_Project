@@ -10,10 +10,6 @@ Application::~Application() {
 
 void Application::Start() {
     auto &board = Board::GetInstance(); // 获取板子实例
-
-    auto lcd_display = board.GetLcdDisplay();   // 获取LCD显示屏实例
-    auto oled_display = board.GetOledDisplay(); // 获取OLED显示屏实例
-
     // 进入主事件循环
     MainEventLoop();
 }
@@ -31,6 +27,14 @@ void Application::MainEventLoop() {
     auto led = board.GetLed(); // 直接使用Led基类指针
     auto touch_screen = board.GetTouchScreen(); // 获取触摸屏实例
     auto key = board.GetKey();                  // 获取按键实例
+
+    printf("OLED测试例程\r\n");		//lm75A软件模拟i2c测试例程
+	oled_display->ShowCHStr(0,0,(u8 *)"我们");
+	oled_display->ShowNum(30,0,3251546,7,16);//不支持自动换行
+	oled_display->ShowString(0,2,(u8 *)"hello");//不够自动换行
+	oled_display->ShowChar(70,2,(u8)'A');//页地址模式，x坐标回0
+	oled_display->ShowChinese(90,2,1);//显示第1个汉字 
+	oled_display->DrawBMP(20,4,64,32,(u8 *)BMP1);
     while (true) {
         if (bsp_RunPer1ms == 1) {
             bsp_RunPer1ms = 0;

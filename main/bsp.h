@@ -78,8 +78,8 @@ class TouchScreen;
 #include "core_cm3.h"
 #include "misc.h"
 
-
-
+// 声明BSP初始化函数
+void BSP_Init(void);
 
 //#define	systick_demo
 //#define	seg_dz_demo
