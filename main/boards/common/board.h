@@ -2,8 +2,12 @@
 
 #include "led.h"
 #include "display.h"
-#include "lcd_display.h"
-#include "oled_display.h"
+
+// 前向声明
+class LcdDisplay;
+class OledDisplay;
+class TouchScreen;
+class Gui;
 
 void *create_board();
 class Board {
@@ -20,6 +24,8 @@ class Board {
     virtual Led *GetLed();
     virtual LcdDisplay *GetLcdDisplay();
     virtual OledDisplay *GetOledDisplay();
+    virtual TouchScreen *GetTouchScreen();
+    virtual Gui *GetGui();
 
   protected:
     Board();

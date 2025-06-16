@@ -32,6 +32,13 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+
+// 前向声明
+class LcdDisplay;
+class OledDisplay;
+class Gui;
+class TouchScreen;
+
 #include "gpio_led.h"
 #include "gpio_key.h"
 #include "bsp_spi_bus.h"

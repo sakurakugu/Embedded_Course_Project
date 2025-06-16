@@ -1,5 +1,5 @@
-#include "bsp_lcd.h" // 假设需要调用LCD函数进行显示
 #include "touch.h"
+#include "gui.h"
 
 // 构造函数
 TouchScreen::TouchScreen() {
@@ -16,6 +16,9 @@ TouchScreen::TouchScreen() {
     touchtype = 0;
     CMD_RDX = 0XD0;
     CMD_RDY = 0X90;
+    display = Board::GetInstance().GetLcdDisplay(); // 获取LCD显示实例
+    gui = Board::GetInstance().GetGui();            // 获取GUI实例
+    Init();                                         // 调用初始化函数
 }
 
 // 析构函数
@@ -51,21 +54,21 @@ u8 TouchScreen::Init() {
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // 上拉输入
     GPIO_Init(GPIOE, &GPIO_InitStructure);
 
-    TP_Read_XY(&tp_dev.x, &tp_dev.y); // 第一次读取初始化
+    ReadXY(&x, &y); // 第一次读取初始化
     // AT24CXX_Init();//初始化24CXX
-    LCD_Clear(WHITE);
-    if (TP_Get_Adjdata())
+    display->Clear(WHITE);
+    if (GetAdjData())
         return 0; // 已经校准
     else          // 未校准?
     {
-        LCD_Clear(WHITE); // 清屏
-        TP_Adjust();      // 屏幕校准
-        TP_Save_Adjdata();
+        display->Clear(WHITE); // 清屏
+        Adjust();              // 屏幕校准
+        SaveAdjData();
     }
     uint32_t nCount = 100000;
     for (; nCount != 0; nCount--) {
     }
-    TP_Get_Adjdata();
+    GetAdjData();
     return 1;
 }
 
@@ -75,34 +78,34 @@ u8 TouchScreen::Init() {
  * @return u8 触摸状态
  */
 u8 TouchScreen::Scan(u8 tp) {
-    if (PEN() == 0) // 有按键按下
+    if (ReadPEN() == 0) // 有按键按下
     {
         if (tp)
-            TP_Read_XY2(&tp_dev.x, &tp_dev.y);      // 读取物理坐标
-        else if (TP_Read_XY2(&tp_dev.x, &tp_dev.y)) // 读取屏幕坐标
+            ReadXY2(&x, &y);      // 读取物理坐标
+        else if (ReadXY2(&x, &y)) // 读取屏幕坐标
         {
-            tp_dev.x = tp_dev.xfac * tp_dev.x + tp_dev.xoff; // 将结果转换为屏幕坐标
-            tp_dev.y = tp_dev.yfac * tp_dev.y + tp_dev.yoff;
+            x = xfac * x + xoff; // 将结果转换为屏幕坐标
+            y = yfac * y + yoff;
         }
-        if ((tp_dev.sta & TP_PRES_DOWN) == 0) // 之前没有被按下
+        if ((sta & TP_PRES_DOWN) == 0) // 之前没有被按下
         {
-            tp_dev.sta = TP_PRES_DOWN | TP_CATH_PRES; // 按键按下
-            tp_dev.x0 = tp_dev.x;                     // 记录第一次按下时的坐标
-            tp_dev.y0 = tp_dev.y;
+            sta = TP_PRES_DOWN | TP_CATH_PRES; // 按键按下
+            x0 = x;                            // 记录第一次按下时的坐标
+            y0 = y;
         }
     } else {
-        if (tp_dev.sta & TP_PRES_DOWN) // 之前是被按下的
+        if (sta & TP_PRES_DOWN) // 之前是被按下的
         {
-            tp_dev.sta &= ~(1 << 7); // 标记按键松开
-        } else                       // 之前就没有被按下
+            sta &= ~(1 << 7); // 标记按键松开
+        } else                // 之前就没有被按下
         {
-            tp_dev.x0 = 0;
-            tp_dev.y0 = 0;
-            tp_dev.x = 0xffff;
-            tp_dev.y = 0xffff;
+            x0 = 0;
+            y0 = 0;
+            x = 0xffff;
+            y = 0xffff;
         }
     }
-    return tp_dev.sta & TP_PRES_DOWN; // 返回当前的触屏状态
+    return sta & TP_PRES_DOWN; // 返回当前的触屏状态
 }
 
 // 触摸屏校准
@@ -114,44 +117,44 @@ void TouchScreen::Adjust() {
     float fac;
     u16 outtime = 0;
     cnt = 0;
-    POINT_COLOR = BLUE;
-    BACK_COLOR = WHITE;
-    LCD_Clear(WHITE);  // 清屏
-    POINT_COLOR = RED; // 红色
-    LCD_Clear(WHITE);  // 清屏
-    POINT_COLOR = BLACK;
-    LCD_ShowString(10, 40, 16, (u8 *)"Please use the stylus click the", 1);    // 显示提示信息
-    LCD_ShowString(10, 56, 16, (u8 *)"cross on the screen.The cross will", 1); // 显示提示信息
-    LCD_ShowString(10, 72, 16, (u8 *)"always move until the screen ", 1);      // 显示提示信息
-    LCD_ShowString(10, 88, 16, (u8 *)"adjustment is completed.", 1);           // 显示提示信息
+    display->POINT_COLOR = BLUE;
+    display->BACK_COLOR = WHITE;
+    display->Clear(WHITE); // 清屏
+    display->POINT_COLOR = RED;     // 红色
+    display->Clear(WHITE); // 清屏
+    display->POINT_COLOR = BLACK;
+    gui->ShowString(10, 40, 16, (u8 *)"Please use the stylus click the", 1);    // 显示提示信息
+    gui->ShowString(10, 56, 16, (u8 *)"cross on the screen.The cross will", 1); // 显示提示信息
+    gui->ShowString(10, 72, 16, (u8 *)"always move until the screen ", 1);      // 显示提示信息
+    gui->ShowString(10, 88, 16, (u8 *)"adjustment is completed.", 1);           // 显示提示信息
 
-    TP_Drow_Touch_Point(20, 20, RED); // 画点1
-    tp_dev.sta = 0;                   // 消除触发信号
-    tp_dev.xfac = 0;                  // xfac用来标记是否校准过,所以校准之前必须清掉!以免错误
+    DrawTouchPoint(20, 20, RED); // 画点1
+    sta = 0;                          // 消除触发信号
+    xfac = 0;                         // xfac用来标记是否校准过,所以校准之前必须清掉!以免错误
     while (1)                         // 如果连续10秒钟没有按下,则自动退出
     {
-        tp_dev.scan(1); // 扫描物理坐标
+        Scan(1); // 扫描物理坐标
         // printf("The first: %f,%d,%d\n",fac,d1,d2);
-        if ((tp_dev.sta & 0xc0) == TP_CATH_PRES) // 按键按下了一次(此时按键松开了.)
+        if ((sta & 0xc0) == TP_CATH_PRES) // 按键按下了一次(此时按键松开了.)
         {
             outtime = 0;
-            tp_dev.sta &= ~(1 << 6); // 标记按键已经被处理过了.
+            sta &= ~(1 << 6); // 标记按键已经被处理过了.
 
-            pos_temp[cnt][0] = tp_dev.x;
-            pos_temp[cnt][1] = tp_dev.y;
+            pos_temp[cnt][0] = x;
+            pos_temp[cnt][1] = y;
             cnt++;
             switch (cnt) {
             case 1:
-                TP_Drow_Touch_Point(20, 20, WHITE);              // 清除点1
-                TP_Drow_Touch_Point(lcddev.width - 20, 20, RED); // 画点2
+                DrawTouchPoint(20, 20, WHITE);                       // 清除点1
+                DrawTouchPoint(display->lcddev.width - 20, 20, RED); // 画点2
                 break;
             case 2:
-                TP_Drow_Touch_Point(lcddev.width - 20, 20, WHITE); // 清除点2
-                TP_Drow_Touch_Point(20, lcddev.height - 20, RED);  // 画点3
+                DrawTouchPoint(display->lcddev.width - 20, 20, WHITE); // 清除点2
+                DrawTouchPoint(20, display->lcddev.height - 20, RED);  // 画点3
                 break;
             case 3:
-                TP_Drow_Touch_Point(20, lcddev.height - 20, WHITE);              // 清除点3
-                TP_Drow_Touch_Point(lcddev.width - 20, lcddev.height - 20, RED); // 画点4
+                DrawTouchPoint(20, display->lcddev.height - 20, WHITE);                       // 清除点3
+                DrawTouchPoint(display->lcddev.width - 20, display->lcddev.height - 20, RED); // 画点4
                 break;
             case 4: // 全部四个点已经得到
                 // 对边相等
@@ -159,13 +162,13 @@ void TouchScreen::Adjust() {
                 tem2 = abs(pos_temp[0][1] - pos_temp[1][1]); // y1-y2
                 tem1 *= tem1;
                 tem2 *= tem2;
-                d1 = sqrt(tem1 + tem2); // 得到1,2的距离
+                d1 = std::sqrt(tem1 + tem2); // 得到1,2的距离
 
                 tem1 = abs(pos_temp[2][0] - pos_temp[3][0]); // x3-x4
                 tem2 = abs(pos_temp[2][1] - pos_temp[3][1]); // y3-y4
                 tem1 *= tem1;
                 tem2 *= tem2;
-                d2 = sqrt(tem1 + tem2); // 得到3,4的距离
+                d2 = std::sqrt(tem1 + tem2); // 得到3,4的距离
                 fac = (float)d1 / d2;
 
                 // printf("The first: %f,%d,%d\n",fac,d1,d2);
@@ -174,23 +177,23 @@ void TouchScreen::Adjust() {
                 {
                     // printf("The first is fail!\n");
                     cnt = 0;
-                    TP_Drow_Touch_Point(lcddev.width - 20, lcddev.height - 20, WHITE); // 清除点4
-                    TP_Drow_Touch_Point(20, 20, RED);                                  // 画点1
-                    TP_Adj_Info_Show(pos_temp[0][0], pos_temp[0][1], pos_temp[1][0], pos_temp[1][1], pos_temp[2][0],
-                                     pos_temp[2][1], pos_temp[3][0], pos_temp[3][1], fac * 100); // 显示数据
+                    DrawTouchPoint(display->lcddev.width - 20, display->lcddev.height - 20, WHITE); // 清除点4
+                    DrawTouchPoint(20, 20, RED);                                                    // 画点1
+                    ShowAdjInfo(pos_temp[0][0], pos_temp[0][1], pos_temp[1][0], pos_temp[1][1], pos_temp[2][0],
+                                pos_temp[2][1], pos_temp[3][0], pos_temp[3][1], fac * 100); // 显示数据
                     continue;
                 }
                 tem1 = abs(pos_temp[0][0] - pos_temp[2][0]); // x1-x3
                 tem2 = abs(pos_temp[0][1] - pos_temp[2][1]); // y1-y3
                 tem1 *= tem1;
                 tem2 *= tem2;
-                d1 = sqrt(tem1 + tem2); // 得到1,3的距离
+                d1 = std::sqrt(tem1 + tem2); // 得到1,3的距离
 
                 tem1 = abs(pos_temp[1][0] - pos_temp[3][0]); // x2-x4
                 tem2 = abs(pos_temp[1][1] - pos_temp[3][1]); // y2-y4
                 tem1 *= tem1;
                 tem2 *= tem2;
-                d2 = sqrt(tem1 + tem2); // 得到2,4的距离
+                d2 = std::sqrt(tem1 + tem2); // 得到2,4的距离
                 fac = (float)d1 / d2;
 
                 // printf("The second: %f,%d,%d\n",fac,d1,d2);
@@ -199,10 +202,10 @@ void TouchScreen::Adjust() {
                 {
                     // printf("The second is fail!\n");
                     cnt = 0;
-                    TP_Drow_Touch_Point(lcddev.width - 20, lcddev.height - 20, WHITE); // 清除点4
-                    TP_Drow_Touch_Point(20, 20, RED);                                  // 画点1
-                    TP_Adj_Info_Show(pos_temp[0][0], pos_temp[0][1], pos_temp[1][0], pos_temp[1][1], pos_temp[2][0],
-                                     pos_temp[2][1], pos_temp[3][0], pos_temp[3][1], fac * 100); // 显示数据
+                    DrawTouchPoint(display->lcddev.width - 20, display->lcddev.height - 20, WHITE); // 清除点4
+                    DrawTouchPoint(20, 20, RED);                                                    // 画点1
+                    ShowAdjInfo(pos_temp[0][0], pos_temp[0][1], pos_temp[1][0], pos_temp[1][1], pos_temp[2][0],
+                                pos_temp[2][1], pos_temp[3][0], pos_temp[3][1], fac * 100); // 显示数据
                     continue;
                 } // 正确了
 
@@ -211,37 +214,37 @@ void TouchScreen::Adjust() {
                 tem2 = abs(pos_temp[1][1] - pos_temp[2][1]); // y1-y3
                 tem1 *= tem1;
                 tem2 *= tem2;
-                d1 = sqrt(tem1 + tem2); // 得到1,4的距离
+                d1 = std::sqrt(tem1 + tem2); // 得到1,4的距离
 
                 tem1 = abs(pos_temp[0][0] - pos_temp[3][0]); // x2-x4
                 tem2 = abs(pos_temp[0][1] - pos_temp[3][1]); // y2-y4
                 tem1 *= tem1;
                 tem2 *= tem2;
-                d2 = sqrt(tem1 + tem2); // 得到2,3的距离
+                d2 = std::sqrt(tem1 + tem2); // 得到2,3的距离
                 fac = (float)d1 / d2;
                 if (fac < 0.95 || fac > 1.05) // 不合格
                 {
                     cnt = 0;
-                    TP_Drow_Touch_Point(lcddev.width - 20, lcddev.height - 20, WHITE); // 清除点4
-                    TP_Drow_Touch_Point(20, 20, RED);                                  // 画点1
-                    TP_Adj_Info_Show(pos_temp[0][0], pos_temp[0][1], pos_temp[1][0], pos_temp[1][1], pos_temp[2][0],
-                                     pos_temp[2][1], pos_temp[3][0], pos_temp[3][1], fac * 100); // 显示数据
+                    DrawTouchPoint(display->lcddev.width - 20, display->lcddev.height - 20, WHITE); // 清除点4
+                    DrawTouchPoint(20, 20, RED);                                                    // 画点1
+                    ShowAdjInfo(pos_temp[0][0], pos_temp[0][1], pos_temp[1][0], pos_temp[1][1], pos_temp[2][0],
+                                pos_temp[2][1], pos_temp[3][0], pos_temp[3][1], fac * 100); // 显示数据
                     continue;
                 } // 正确了
                 // 计算结果
-                tp_dev.xfac = (float)(lcddev.width - 40) / (pos_temp[1][0] - pos_temp[0][0]);       // 得到xfac
-                tp_dev.xoff = (lcddev.width - tp_dev.xfac * (pos_temp[1][0] + pos_temp[0][0])) / 2; // 得到xoff
+                xfac = (float)(display->lcddev.width - 40) / (pos_temp[1][0] - pos_temp[0][0]); // 得到xfac
+                xoff = (display->lcddev.width - xfac * (pos_temp[1][0] + pos_temp[0][0])) / 2;  // 得到xoff
 
-                tp_dev.yfac = (float)(lcddev.height - 40) / (pos_temp[2][1] - pos_temp[0][1]);       // 得到yfac
-                tp_dev.yoff = (lcddev.height - tp_dev.yfac * (pos_temp[2][1] + pos_temp[0][1])) / 2; // 得到yoff
-                if (fabsf(tp_dev.xfac) > 2 || fabsf(tp_dev.yfac) > 2) // 触屏和预设的相反了.
+                yfac = (float)(display->lcddev.height - 40) / (pos_temp[2][1] - pos_temp[0][1]); // 得到yfac
+                yoff = (display->lcddev.height - yfac * (pos_temp[2][1] + pos_temp[0][1])) / 2;  // 得到yoff
+                if (fabsf(xfac) > 2 || fabsf(yfac) > 2)                                          // 触屏和预设的相反了.
                 {
                     cnt = 0;
-                    TP_Drow_Touch_Point(lcddev.width - 20, lcddev.height - 20, WHITE); // 清除点4
-                    TP_Drow_Touch_Point(20, 20, RED);                                  // 画点1
-                    LCD_ShowString(40, 26, 16, (u8 *)"TP Need readjust!", 1);
-                    tp_dev.touchtype = !tp_dev.touchtype; // 修改触屏类型.
-                    if (tp_dev.touchtype)                 // X,Y方向与屏幕相反
+                    DrawTouchPoint(display->lcddev.width - 20, display->lcddev.height - 20, WHITE); // 清除点4
+                    DrawTouchPoint(20, 20, RED);                                                    // 画点1
+                    gui->ShowString(40, 26, 16, (u8 *)"TP Need readjust!", 1);
+                    touchtype = !touchtype; // 修改触屏类型.
+                    if (touchtype)          // X,Y方向与屏幕相反
                     {
                         CMD_RDX = 0X90;
                         CMD_RDY = 0XD0;
@@ -252,16 +255,16 @@ void TouchScreen::Adjust() {
                     }
                     continue;
                 }
-                POINT_COLOR = BLUE;
-                LCD_Clear(WHITE);                                                // 清屏
-                LCD_ShowString(35, 110, 16, (u8 *)"Touch Screen Adjust OK!", 1); // 校正完成
+                display->POINT_COLOR = BLUE;
+                display->Clear(WHITE);                                            // 清屏
+                gui->ShowString(35, 110, 16, (u8 *)"Touch Screen Adjust OK!", 1); // 校正完成
                 // DelayMs(1000);
                 uint32_t nCount = 100000;
                 for (; nCount != 0; nCount--) {
                 }
-                TP_Save_Adjdata();
-                LCD_Clear(WHITE); // 清屏
-                return;           // 校正完成
+                SaveAdjData();
+                display->Clear(WHITE); // 清屏
+                return;       // 校正完成
             }
         }
         // DelayMs(10);
@@ -270,7 +273,7 @@ void TouchScreen::Adjust() {
         }
         outtime++;
         if (outtime > 1000) {
-            TP_Get_Adjdata();
+            GetAdjData();
             break;
         }
     }
@@ -281,21 +284,21 @@ void TouchScreen::SaveAdjData() {
     s32 temp;
     u8 flag;
     // 保存校正结果!
-    temp = tp_dev.xfac * 100000000; // 保存x校正因素
+    temp = xfac * 100000000; // 保存x校正因素
     AT24CXX_WriteLenByte(SAVE_ADDR_BASE, temp, 4);
     // ee_WriteBytes((u8 *)&temp,SAVE_ADDR_BASE,4);
-    temp = tp_dev.yfac * 100000000; // 保存y校正因素
+    temp = yfac * 100000000; // 保存y校正因素
     AT24CXX_WriteLenByte(SAVE_ADDR_BASE + 4, temp, 4);
     // ee_WriteBytes((uint8_t *)&temp,SAVE_ADDR_BASE+4,4);
     // 保存x偏移量
-    AT24CXX_WriteLenByte(SAVE_ADDR_BASE + 8, tp_dev.xoff, 2);
-    // ee_WriteBytes((uint8_t *)&tp_dev.xoff,SAVE_ADDR_BASE+8,2);
+    AT24CXX_WriteLenByte(SAVE_ADDR_BASE + 8, xoff, 2);
+    // ee_WriteBytes((uint8_t *)&xoff,SAVE_ADDR_BASE+8,2);
     // 保存y偏移量
-    AT24CXX_WriteLenByte(SAVE_ADDR_BASE + 10, tp_dev.yoff, 2);
-    // ee_WriteBytes((uint8_t *)&tp_dev.yoff,SAVE_ADDR_BASE+10,2);
+    AT24CXX_WriteLenByte(SAVE_ADDR_BASE + 10, yoff, 2);
+    // ee_WriteBytes((uint8_t *)&yoff,SAVE_ADDR_BASE+10,2);
     // 保存触屏类型
-    // AT24CXX_WriteOneByte(SAVE_ADDR_BASE+12,tp_dev.touchtype);
-    ee_WriteBytes(&tp_dev.touchtype, SAVE_ADDR_BASE + 12, 1);
+    // AT24CXX_WriteOneByte(SAVE_ADDR_BASE+12,touchtype);
+    ee_WriteBytes(&touchtype, SAVE_ADDR_BASE + 12, 1);
     flag = 0X0A; // 标记校准过了
     // AT24CXX_WriteOneByte(SAVE_ADDR_BASE+13,temp);
     ee_WriteBytes(&flag, SAVE_ADDR_BASE + 13, 1);
@@ -314,19 +317,19 @@ u8 TouchScreen::GetAdjData() {
     {
         tempfac = AT24CXX_ReadLenByte(SAVE_ADDR_BASE, 4);
         // ee_ReadBytes((uint8_t *)&tempfac, SAVE_ADDR_BASE, 4);
-        tp_dev.xfac = (float)tempfac / 100000000; // 得到x校准参数
+        xfac = (float)tempfac / 100000000; // 得到x校准参数
         tempfac = AT24CXX_ReadLenByte(SAVE_ADDR_BASE + 4, 4);
         // ee_ReadBytes((uint8_t *)&tempfac, SAVE_ADDR_BASE+4, 4);
-        tp_dev.yfac = (float)tempfac / 100000000; // 得到y校准参数
+        yfac = (float)tempfac / 100000000; // 得到y校准参数
         // 得到x偏移量
-        tp_dev.xoff = AT24CXX_ReadLenByte(SAVE_ADDR_BASE + 8, 2);
-        // ee_ReadBytes((uint8_t *)&tp_dev.xoff, SAVE_ADDR_BASE+8, 2);
+        xoff = AT24CXX_ReadLenByte(SAVE_ADDR_BASE + 8, 2);
+        // ee_ReadBytes((uint8_t *)&xoff, SAVE_ADDR_BASE+8, 2);
         // 得到y偏移量
-        tp_dev.yoff = AT24CXX_ReadLenByte(SAVE_ADDR_BASE + 10, 2);
-        // ee_ReadBytes((uint8_t *)&tp_dev.yoff, SAVE_ADDR_BASE+10, 2);
-        // tp_dev.touchtype=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+12);//读取触屏类型标记
-        ee_ReadBytes(&tp_dev.touchtype, SAVE_ADDR_BASE + 12, 1);
-        if (tp_dev.touchtype) // X,Y方向与屏幕相反
+        yoff = AT24CXX_ReadLenByte(SAVE_ADDR_BASE + 10, 2);
+        // ee_ReadBytes((uint8_t *)&yoff, SAVE_ADDR_BASE+10, 2);
+        // touchtype=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+12);//读取触屏类型标记
+        ee_ReadBytes(&touchtype, SAVE_ADDR_BASE + 12, 1);
+        if (touchtype) // X,Y方向与屏幕相反
         {
             CMD_RDX = 0X90;
             CMD_RDY = 0XD0;
@@ -341,17 +344,17 @@ u8 TouchScreen::GetAdjData() {
 }
 
 // 读取触摸屏坐标
-int TouchScreen::ReadTouch(uint16_t *x, uint16_t *y) {
+int TouchScreen::ReadTouch(uint16_t *x1, uint16_t *y1) {
     int rtn = 0;
-    if (PEN() == 0) // 有按键按下
+    if (ReadPEN() == 0) // 有按键按下
     {
-        if (TP_Read_XY2(&tp_dev.x, &tp_dev.y)) // 读取屏幕坐标
+        if (ReadXY2(&x, &y)) // 读取屏幕坐标
         {
-            tp_dev.x = tp_dev.xfac * tp_dev.x + tp_dev.xoff; // 将结果转换为屏幕坐标
-            tp_dev.y = tp_dev.yfac * tp_dev.y + tp_dev.yoff;
+            x = xfac * x + xoff; // 将结果转换为屏幕坐标
+            y = yfac * y + yoff;
         }
-        *x = tp_dev.x;
-        *y = tp_dev.y;
+        *x1 = x;
+        *y1 = y;
         rtn = 1;
     }
     return rtn;
@@ -363,14 +366,14 @@ int TouchScreen::ReadTouch(uint16_t *x, uint16_t *y) {
  * @param color 点的颜色
  */
 void TouchScreen::DrawTouchPoint(u16 x, u16 y, u16 color) {
-    POINT_COLOR = color;
-    LCD_DrawLine(x - 12, y, x + 13, y); // 横线
-    LCD_DrawLine(x, y - 12, x, y + 13); // 竖线
-    LCD_DrawPoint(x + 1, y + 1);
-    LCD_DrawPoint(x - 1, y + 1);
-    LCD_DrawPoint(x + 1, y - 1);
-    LCD_DrawPoint(x - 1, y - 1);
-    gui_circle(x, y, POINT_COLOR, 6, 0); // 画中心圈
+    display->POINT_COLOR = color;
+    gui->DrawLine(x - 12, y, x + 13, y); // 横线
+    gui->DrawLine(x, y - 12, x, y + 13); // 竖线
+    display->DrawPoint(x + 1, y + 1);
+    display->DrawPoint(x - 1, y + 1);
+    display->DrawPoint(x + 1, y - 1);
+    display->DrawPoint(x - 1, y - 1);
+    gui->Circle(x, y, display->POINT_COLOR, 6, 0); // 画中心圈
 }
 
 /**
@@ -379,11 +382,11 @@ void TouchScreen::DrawTouchPoint(u16 x, u16 y, u16 color) {
  * @param color 点的颜色
  */
 void TouchScreen::DrawBigPoint(u16 x, u16 y, u16 color) {
-    POINT_COLOR = color;
-    LCD_DrawPoint(x, y); // 中心点
-    LCD_DrawPoint(x + 1, y);
-    LCD_DrawPoint(x, y + 1);
-    LCD_DrawPoint(x + 1, y + 1);
+    display->POINT_COLOR = color;
+    display->DrawPoint(x, y); // 中心点
+    display->DrawPoint(x + 1, y);
+    display->DrawPoint(x, y + 1);
+    display->DrawPoint(x + 1, y + 1);
 }
 
 /**
@@ -395,37 +398,37 @@ void TouchScreen::DrawBigPoint(u16 x, u16 y, u16 color) {
  * @param fac 校准系数
  */
 void TouchScreen::ShowAdjInfo(u16 x0, u16 y0, u16 x1, u16 y1, u16 x2, u16 y2, u16 x3, u16 y3, u16 fac) {
-    POINT_COLOR = RED;
-    LCD_ShowString(40, 160, 16, (u8 *)"x1:", 1);
-    LCD_ShowString(40 + 80, 160, 16, (u8 *)"y1:", 1);
-    LCD_ShowString(40, 180, 16, (u8 *)"x2:", 1);
-    LCD_ShowString(40 + 80, 180, 16, (u8 *)"y2:", 1);
-    LCD_ShowString(40, 200, 16, (u8 *)"x3:", 1);
-    LCD_ShowString(40 + 80, 200, 16, (u8 *)"y3:", 1);
-    LCD_ShowString(40, 220, 16, (u8 *)"x4:", 1);
-    LCD_ShowString(40 + 80, 220, 16, (u8 *)"y4:", 1);
-    LCD_ShowString(40, 240, 16, (u8 *)"fac is:", 1);
-    LCD_ShowNum(40 + 24, 160, x0, 4, 16);           // 显示数值
-    LCD_ShowNum(40 + 24 + 80, 160, y0, 4, 16);      // 显示数值
-    LCD_ShowNum(40 + 24, 180, x1, 4, 16);           // 显示数值
-    LCD_ShowNum(40 + 24 + 80, 180, y1, 4, 16);      // 显示数值
-    LCD_ShowNum(40 + 24, 200, x2, 4, 16);           // 显示数值
-    LCD_ShowNum(40 + 24 + 80, 200, y2, 4, 16);      // 显示数值
-    LCD_ShowNum(40 + 24, 220, x3, 4, 16);           // 显示数值
-    LCD_ShowNum(40 + 24 + 80, 220, y3, 4, 16);      // 显示数值
-    LCD_ShowNum(40 + 56, lcddev.width, fac, 3, 16); // 显示数值,该数值必须在95~105范围之内.
+    display->POINT_COLOR = RED;
+    gui->ShowString(40, 160, 16, (u8 *)"x1:", 1);
+    gui->ShowString(40 + 80, 160, 16, (u8 *)"y1:", 1);
+    gui->ShowString(40, 180, 16, (u8 *)"x2:", 1);
+    gui->ShowString(40 + 80, 180, 16, (u8 *)"y2:", 1);
+    gui->ShowString(40, 200, 16, (u8 *)"x3:", 1);
+    gui->ShowString(40 + 80, 200, 16, (u8 *)"y3:", 1);
+    gui->ShowString(40, 220, 16, (u8 *)"x4:", 1);
+    gui->ShowString(40 + 80, 220, 16, (u8 *)"y4:", 1);
+    gui->ShowString(40, 240, 16, (u8 *)"fac is:", 1);
+    gui->ShowNum(40 + 24, 160, x0, 4, 16);                    // 显示数值
+    gui->ShowNum(40 + 24 + 80, 160, y0, 4, 16);               // 显示数值
+    gui->ShowNum(40 + 24, 180, x1, 4, 16);                    // 显示数值
+    gui->ShowNum(40 + 24 + 80, 180, y1, 4, 16);               // 显示数值
+    gui->ShowNum(40 + 24, 200, x2, 4, 16);                    // 显示数值
+    gui->ShowNum(40 + 24 + 80, 200, y2, 4, 16);               // 显示数值
+    gui->ShowNum(40 + 24, 220, x3, 4, 16);                    // 显示数值
+    gui->ShowNum(40 + 24 + 80, 220, y3, 4, 16);               // 显示数值
+    gui->ShowNum(40 + 56, display->lcddev.width, fac, 3, 16); // 显示数值,该数值必须在95~105范围之内.
 }
 
 // 运行触摸屏测试
 void TouchScreen::Test() {
-    TP_Scan(0);
-    // oled_ShowNum(0,0,tp_dev.x,4,17);
-    // oled_ShowNum(0,2,tp_dev.y,4,17);
-    // oled_ShowNum(40,0,lcddev.width,4,17);
-    // oled_ShowNum(40,2,lcddev.height,4,17);
-    if (tp_dev.sta & TP_PRES_DOWN) // 触摸屏被按下
+    Scan(0);
+    // oled_ShowNum(0,0,x,4,17);
+    // oled_ShowNum(0,2,y,4,17);
+    // oled_ShowNum(40,0,display->lcddev.width,4,17);
+    // oled_ShowNum(40,2,display->lcddev.height,4,17);
+    if (sta & TP_PRES_DOWN) // 触摸屏被按下
     {
-        TP_Draw_Big_Point(tp_dev.x, tp_dev.y, POINT_COLOR);
+        DrawBigPoint(x, y, display->POINT_COLOR);
     }
     // DelayMs(3);
 }
@@ -455,8 +458,8 @@ void TouchScreen::WriteByte(u8 num) {
 u16 TouchScreen::ReadAD(u8 CMD) {
     u8 count = 0;
     u16 Num = 0;
-    TCS(0);             // 选中触摸屏IC
-    TP_Write_Byte(CMD); // 发送命令字
+    SetTCS(0);      // 选中触摸屏IC
+    WriteByte(CMD); // 发送命令字
     // DelayUs(6);//ADS7846的转换时间最长为6us
     uint32_t nCount = 60; // 延时60us
     for (; nCount != 0; nCount--) {
@@ -476,7 +479,7 @@ u16 TouchScreen::ReadAD(u8 CMD) {
     Num <<= 8;
     Num |= (uint16_t)bsp_spiRead1();
     Num >>= 4; // 只有高12位有效.
-    TCS(1);    // 释放片选
+    SetTCS(1); // 释放片选
     return (Num);
 }
 
@@ -491,7 +494,7 @@ u16 TouchScreen::ReadXOY(u8 xy) {
     u16 sum = 0;
     u16 temp;
     for (i = 0; i < READ_TIMES; i++)
-        buf[i] = TP_Read_AD(xy);
+        buf[i] = ReadAD(xy);
     for (i = 0; i < READ_TIMES - 1; i++) // 排序
     {
         for (j = i + 1; j < READ_TIMES; j++) {
@@ -517,15 +520,15 @@ u16 TouchScreen::ReadXOY(u8 xy) {
  * @return u8 返回1表示成功，0表示失败
  */
 u8 TouchScreen::ReadXY(u16 *x, u16 *y) {
-    TPSPI_SpeedToggle(SPI_BaudRatePrescaler_16); // SPI速度切换至5MHZ以下
+    SetSPISpeed(SPI_BaudRatePrescaler_16); // SPI速度切换至5MHZ以下
     u16 xtemp, ytemp;
-    xtemp = TP_Read_XOY(CMD_RDX);
-    ytemp = TP_Read_XOY(CMD_RDY);
+    xtemp = ReadXOY(CMD_RDX);
+    ytemp = ReadXOY(CMD_RDY);
     // if(xtemp<100||ytemp<100)return 0;//读数失败
     *x = xtemp;
     *y = ytemp;
-    TPSPI_SpeedToggle(SPI_BaudRatePrescaler_2); // SPI速度切换回36MHZ
-    return 1;                                   // 读数成功
+    SetSPISpeed(SPI_BaudRatePrescaler_2); // SPI速度切换回36MHZ
+    return 1;                             // 读数成功
 }
 
 /**
@@ -538,10 +541,10 @@ u8 TouchScreen::ReadXY2(u16 *x, u16 *y) {
     u16 x1, y1;
     u16 x2, y2;
     u8 flag;
-    flag = TP_Read_XY(&x1, &y1);
+    flag = ReadXY(&x1, &y1);
     if (flag == 0)
         return (0);
-    flag = TP_Read_XY(&x2, &y2);
+    flag = ReadXY(&x2, &y2);
     if (flag == 0)
         return (0);
     if (((x2 <= x1 && x1 < x2 + ERR_RANGE) || (x1 <= x2 && x2 < x1 + ERR_RANGE)) // 前后两次采样在+-50内
@@ -603,4 +606,20 @@ u32 TouchScreen::ReadEEPROM(u16 ReadAddr, u8 Len) {
         temp += data;
     }
     return temp;
+}
+
+u16 TouchScreen::GetX0() const {
+    return x0;
+}
+u16 TouchScreen::GetY0() const {
+    return y0;
+}
+u16 TouchScreen::GetX() const {
+    return x;
+}
+u16 TouchScreen::GetY() const {
+    return y;
+}
+u8 TouchScreen::GetStatus() const {
+    return sta;
 }

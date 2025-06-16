@@ -1,7 +1,8 @@
 #include "oled_display.h"
-#include "bsp_oled.h"
 
 OledDisplay::OledDisplay() {
+    // 初始化OLED显示屏
+    Init();
 }
 
 OledDisplay::~OledDisplay() {
@@ -39,7 +40,7 @@ void OledDisplay::GpioInit() {
 }
 
 void OledDisplay::Init() {
-    OLED_gpioInit();
+    GpioInit();
     OLED_RST_SET();
     OLED_RST_CLR();
     SysTick_Delay_Ms(100);
@@ -75,7 +76,7 @@ void OledDisplay::Init() {
     WriteByte(0xAF, OLED_CMD); //--turn on oled panel
 
     WriteByte(0xAF, OLED_CMD); /*display ON*/
-    oled_Clear();
+    Clear();
     SetPos(0, 0);
 }
 
@@ -104,7 +105,7 @@ void OledDisplay::Fill(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t d
  * @details 该函数在指定的x, y坐标位置显示一个字符，支持8*16或6*8字模。
  */
 void OledDisplay::ShowChar(uint8_t x, uint8_t y, uint8_t ch) {
-    unsigned char c = 0, i = 0;
+    uint8_t c = 0, i = 0;
     c = ch - ' '; // 得到偏移后的值
     // 如果设定的X值大于127时，在下一行显示这个字符
     if (x > Max_Column - 1) {
@@ -143,7 +144,7 @@ void OledDisplay::WriteByte(u8 dat, u8 cmd) {
     OLED_DC_SET();
 }
 
-uint32_t OledDisplay::Pow(uint8_t m, uint8_t n) {
+uint32_t Pow(uint8_t m, uint8_t n) {
     uint32_t result = 1;
     while (n--)
         result *= m;
@@ -163,15 +164,15 @@ void OledDisplay::ShowNum(uint8_t x, uint8_t y, u32 num, uint8_t len, uint8_t si
     u8 t, temp;
     u8 enshow = 0;
     for (t = 0; t < len; t++) {
-        temp = (num / oled_pow(10, len - t - 1)) % 10; // 取数值的各位数
+        temp = (num / Pow(10, len - t - 1)) % 10; // 取数值的各位数
         if (enshow == 0 && t < (len - 1)) {
             if (temp == 0) {
-                oled_ShowChar(x + (size2 / 2) * t, y, ' '); // 当len长度大于num的位数时，前面填充空白
+                ShowChar(x + (size2 / 2) * t, y, ' '); // 当len长度大于num的位数时，前面填充空白
                 continue;
             } else
                 enshow = 1;
         }
-        oled_ShowChar(x + (size2 / 2) * t, y, temp + '0');
+        ShowChar(x + (size2 / 2) * t, y, temp + '0');
     }
 }
 
@@ -190,10 +191,10 @@ void OledDisplay::ShowChinese(u8 x, u8 y, u8 no) {
     }
 }
 
-void OledDisplay::ShowString(uint8_t x, uint8_t y, uint8_t *p) {
-    unsigned char j = 0;
-    while (chr[j] != '\0') {
-        oled_ShowChar(x, y, chr[j]);
+void OledDisplay::ShowString(uint8_t x, uint8_t y, uint8_t *ch) {
+    uint8_t j = 0;
+    while (ch[j] != '\0') {
+        ShowChar(x, y, ch[j]);
         x += 8;      // 写完一个字符后，地址加
         if (x > 120) // 换行
         {
@@ -212,7 +213,7 @@ void OledDisplay::ShowString(uint8_t x, uint8_t y, uint8_t *p) {
  * @note
  * 注意：x坐标范围为0~127，y坐标范围为0~7（对应8页），每页8行。但是在实际显示字符或汉字时，x的取值要相应减少字模占的列数
  */
-void OledDisplay::SetPos(unsigned char x, unsigned char y) {
+void OledDisplay::SetPos(uint8_t x, uint8_t y) {
     WriteByte(0xb0 + y,
               OLED_CMD); // 页地址模式P31,Set GDDRAM Page Start Address(PAGE0~PAGE7) for Page Addressing Mode
     WriteByte(((x & 0xf0) >> 4) | 0x10, OLED_CMD); // P30高起始列地址
@@ -220,10 +221,10 @@ void OledDisplay::SetPos(unsigned char x, unsigned char y) {
 }
 
 // ShowCHStr(0,0,"我们嵌入式");
-void OledDisplay::ShowCHStr(unsigned char X, unsigned char Y, unsigned char *pstr) {
-    unsigned char i;
-    unsigned char Addr = 0;
-    unsigned char count = 0;
+void OledDisplay::ShowCHStr(uint8_t X, uint8_t Y, uint8_t *pstr) {
+    uint8_t i;
+    uint8_t Addr = 0;
+    uint8_t count = 0;
     // SetPos(X,Y);                             //设置初始位置
     while (*pstr) //*pstr操作是返回p的值作为地址的那个空间的取值
     {
@@ -259,17 +260,18 @@ void OledDisplay::ShowCHStr(unsigned char X, unsigned char Y, unsigned char *pst
  * @param BMP: 位图数据指针
  * @details 该函数将指定的位图数据绘制到OLED显示屏上，从指定的起始坐标开始。
  */
-void OledDisplay::DrawBMP(unsigned char X, unsigned char Y, unsigned char Pix_x, unsigned char Pix_y,
-                          const unsigned char *BMP) {
+void OledDisplay::DrawBMP(uint8_t X, uint8_t Y, uint8_t Pix_x, uint8_t Pix_y,
+                          const uint8_t *BMP) {
+    uint8_t row;
     if (Pix_y % 8 == 0)
         row = Pix_y / 8; // 计算位图所占行数
     else
         row = Pix_y / 8 + 1;
 
-    for (n = 0; n < row; n++) {
+    for (int i = 0; i < row; i++) {
         SetPos(X, Y);
-        for (i = 0; i < Pix_x; i++) {
-            WriteByte(BMP[i + n * Pix_x], OLED_DATA);
+        for (int j = 0; j < Pix_x; j++) {
+            WriteByte(BMP[j + i * Pix_x], OLED_DATA);
         }
         Y++; // 换行
     }

@@ -3,6 +3,9 @@
 #include "bsp.h"
 #include "display.h"
 
+// 前向声明
+class Board;
+
 // OLED模式设置常量
 #define OLED_CMD 0  // 写命令
 #define OLED_DATA 1 // 写数据
@@ -48,13 +51,12 @@ class OledDisplay : public Display {
     void Fill(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t dot);
     void ShowChar(uint8_t x, uint8_t y, uint8_t ch);
     void WriteByte(u8 dat, u8 cmd);
-    uint32_t Pow(uint8_t m, uint8_t n);
     void ShowNum(uint8_t x, uint8_t y, u32 num, uint8_t len, uint8_t size2);
     void ShowChinese(u8 x, u8 y, u8 no);
     void ShowString(uint8_t x, uint8_t y, uint8_t *p);
-    void SetPos(unsigned char x, unsigned char y);
-    void ShowCHStr(unsigned char X, unsigned char Y, unsigned char *pstr);
-    void DrawBMP(unsigned char X, unsigned char Y, unsigned char Pix_x, unsigned char Pix_y, const unsigned char *BMP);
+    void SetPos(uint8_t x, uint8_t y);
+    void ShowCHStr(uint8_t X, uint8_t Y, uint8_t *pstr);
+    void DrawBMP(uint8_t X, uint8_t Y, uint8_t Pix_x, uint8_t Pix_y, const uint8_t *BMP);
 };
 
 class NoOledDisplay : public OledDisplay {
@@ -64,3 +66,5 @@ class NoOledDisplay : public OledDisplay {
     ~NoOledDisplay() {
     }
 };
+
+uint32_t Pow(uint8_t m, uint8_t n);

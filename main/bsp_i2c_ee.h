@@ -24,6 +24,9 @@
 #define EEPROM_PAGE_SIZE		  16			  /* 24xx02的页面大小 */
 #define EEPROM_SIZE				  256			  /* 24xx02总容量 */
 
+// AT24CXX函数声明
+void AT24CXX_WriteLenByte(u16 WriteAddr, u32 DataToWrite, u8 Len);
+u32 AT24CXX_ReadLenByte(u16 ReadAddr, u8 Len);
 
 uint8_t ee_CheckOk(void);
 uint8_t ee_ReadBytes(uint8_t *_pReadBuf, uint16_t _usAddress, uint16_t _usSize);

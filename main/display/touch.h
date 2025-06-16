@@ -54,7 +54,16 @@
  *************************************************************************************************
  */
 #pragma once
+#include "board.h"
 #include "bsp.h"
+
+// 前向声明
+class LcdDisplay;
+class Gui;
+
+// AT24CXX函数声明
+void AT24CXX_WriteLenByte(u16 WriteAddr, u32 DataToWrite, u8 Len);
+u32 AT24CXX_ReadLenByte(u16 ReadAddr, u8 Len);
 
 #define SPI_Mode_Select ((uint16_t)0xF7FF)
 #define SPI_HARD SPI1
@@ -72,13 +81,13 @@
 
 #define ERR_RANGE 50 // 误差范围
 
-    /**
-     * @brief 触摸屏控制类
-     *
-     * 这个类封装了所有与触摸屏相关的操作，包括初始化、校准、扫描和坐标读取等。
-     * 该类使用单例模式，确保全局只有一个触摸屏控制实例。
-     */
-    class TouchScreen {
+/**
+ * @brief 触摸屏控制类
+ *
+ * 这个类封装了所有与触摸屏相关的操作，包括初始化、校准、扫描和坐标读取等。
+ * 该类使用单例模式，确保全局只有一个触摸屏控制实例。
+ */
+class TouchScreen {
   public:
     static TouchScreen &GetInstance() {
         static TouchScreen instance;
@@ -88,6 +97,10 @@
     // 禁止拷贝构造和赋值操作
     TouchScreen(const TouchScreen &) = delete;
     TouchScreen &operator=(const TouchScreen &) = delete;
+
+    // 友元声明
+    friend class Board;
+
     u8 Init();
     u8 Scan(u8 tp);
     void Adjust();
@@ -98,24 +111,14 @@
     void DrawBigPoint(u16 x, u16 y, u16 color);
     void ShowAdjInfo(u16 x0, u16 y0, u16 x1, u16 y1, u16 x2, u16 y2, u16 x3, u16 y3, u16 fac);
     void Test();
-    u16 GetX0() const {
-        return x0;
-    }
-    u16 GetY0() const {
-        return y0;
-    }
-    u16 GetX() const {
-        return x;
-    }
-    u16 GetY() const {
-        return y;
-    }
-    u8 GetStatus() const {
-        return sta;
-    }
+    u16 GetX0() const;
+    u16 GetY0() const;
+    u16 GetX() const;
+    u16 GetY() const;
+    u8 GetStatus() const;
 
-  private:
-    // 私有构造函数，实现单例模式
+  protected:
+    // 将构造函数改为protected
     TouchScreen();
     ~TouchScreen();
     void WriteByte(u8 num);
@@ -147,4 +150,7 @@
 
     u8 CMD_RDX;
     u8 CMD_RDY;
+
+    LcdDisplay *display;
+    Gui *gui;
 };

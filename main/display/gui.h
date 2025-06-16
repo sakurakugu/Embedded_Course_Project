@@ -2,6 +2,12 @@
 
 #include "bsp.h"
 #include "display.h"
+#include "lcd_display.h"
+#include "oled_display.h"
+#include <utility>  // 导入 std::swap
+
+// 前向声明
+class OledDisplay;
 
 // 声明GUI类
 class Gui {
@@ -42,9 +48,8 @@ class Gui {
     void StrCenter(u16 x, u16 y, u16 fc, u16 bc, u8 *str, u8 size, u8 mode);
 
     // 图像显示函数
-    void Drawbmp16(u16 x, u16 y, uint16_t bmp_x, uint16_t bmp_y, const unsigned char *p);
+    void Drawbmp16(u16 x, u16 y, uint16_t bmp_x, uint16_t bmp_y, const uint8_t *p);
 
   private:
-    // 可能需要的私有成员变量
-    Display *display;
+    LcdDisplay *display; // LCD显示对象指针
 };

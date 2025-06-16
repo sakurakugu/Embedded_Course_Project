@@ -1,7 +1,7 @@
 #include "bsp.h"
 #include "application.h"
 
-unsigned char JQ8900Buff[] = {0xAA, 0X07, 0X02, 0X00, 0X00, 0X00};
+uint8_t JQ8900Buff[] = {0xAA, 0X07, 0X02, 0X00, 0X00, 0X00};
 
 void SetRGBColor(uint32_t rgb) {
     // 根据颜色值修改定时器的比较寄存器值

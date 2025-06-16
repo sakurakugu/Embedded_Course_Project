@@ -15,6 +15,8 @@
  */
 
 #include "bsp.h"
+#include "bsp_i2c_ee.h"
+#include "bsp_i2c_gpio.h"
 
 /*
 *********************************************************************************************************
@@ -259,4 +261,23 @@ uint8_t ee_Test(void) {
     // printf("eeprom读写测试成功\r\n");
     return 1;
 }
+
+// AT24CXX函数实现
+void AT24CXX_WriteLenByte(u16 WriteAddr, u32 DataToWrite, u8 Len) {
+    u8 t;
+    for(t=0; t<Len; t++) {
+        ee_WriteBytes((uint8_t *)&DataToWrite, WriteAddr+t, 1);
+    }
+}
+
+u32 AT24CXX_ReadLenByte(u16 ReadAddr, u8 Len) {
+    u8 t;
+    u32 temp=0;
+    for(t=0; t<Len; t++) {
+        temp<<=8;
+        ee_ReadBytes((uint8_t *)&temp, ReadAddr+t, 1);
+    }
+    return temp;
+}
+
 /*********************************************END OF FILE**********************/

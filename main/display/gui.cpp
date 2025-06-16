@@ -1,10 +1,11 @@
 #include "gui.h"
+#include "board.h"
 #include "lcd_display.h"
 
 // 构造函数
 Gui::Gui() {
     // 初始化代码
-    display = nullptr;
+    display = Board::GetInstance().GetLcdDisplay();
 }
 
 // 析构函数
@@ -20,8 +21,8 @@ Gui::~Gui() {
  * @details 该函数在LCD屏幕上绘制一个指定颜色的像素点。
  */
 void Gui::DrawPoint(u16 x, u16 y, u16 color) {
-    SetCursor(x, y); // 设置光标位置
-    SetPosWriteData_16Bit(color);
+    display->SetCursor(x, y); // 设置光标位置
+    display->WriteData_16Bit(color);
 }
 
 /**
@@ -35,14 +36,14 @@ void Gui::DrawPoint(u16 x, u16 y, u16 color) {
  */
 void Gui::Fill(u16 sx, u16 sy, u16 ex, u16 ey, u16 color) {
     u16 i, j;
-    u16 width = ex - sx + 1;        // 得到填充的宽度
-    u16 height = ey - sy + 1;       // 高度
-    SetPosSetWindows(sx, sy, ex, ey); // 设置显示窗口
+    u16 width = ex - sx + 1;             // 得到填充的宽度
+    u16 height = ey - sy + 1;            // 高度
+    display->SetWindows(sx, sy, ex, ey); // 设置显示窗口
     for (i = 0; i < height; i++) {
         for (j = 0; j < width; j++)
-            SetPosWriteData_16Bit(color); // 写入数据
+            display->WriteData_16Bit(color); // 写入数据
     }
-    SetPosSetWindows(0, 0, lcddev.width - 1, lcddev.height - 1); // 恢复窗口设置为全屏
+    display->SetWindows(0, 0, display->lcddev.width - 1, display->lcddev.height - 1); // 恢复窗口设置为全屏
 }
 
 /**
@@ -84,7 +85,7 @@ void Gui::DrawLine(u16 x1, u16 y1, u16 x2, u16 y2) {
         distance = delta_y;
     for (t = 0; t <= distance + 1; t++) // 画线输出
     {
-        SetPosDrawPoint(uRow, uCol); // 画点
+        display->DrawPoint(uRow, uCol); // 画点
         xerr += delta_x;
         yerr += delta_y;
         if (xerr > distance) {
@@ -108,10 +109,10 @@ void Gui::DrawLine(u16 x1, u16 y1, u16 x2, u16 y2) {
  *          矩形的边框由四条直线组成。
  */
 void Gui::DrawRectangle(u16 x1, u16 y1, u16 x2, u16 y2) {
-    SetPosDrawLine(x1, y1, x2, y1);
-    SetPosDrawLine(x1, y1, x1, y2);
-    SetPosDrawLine(x1, y2, x2, y2);
-    SetPosDrawLine(x2, y1, x2, y2);
+    DrawLine(x1, y1, x2, y1);
+    DrawLine(x1, y1, x1, y2);
+    DrawLine(x1, y2, x2, y2);
+    DrawLine(x2, y1, x2, y2);
 }
 
 /**
@@ -123,7 +124,7 @@ void Gui::DrawRectangle(u16 x1, u16 y1, u16 x2, u16 y2) {
  * @details 该函数在LCD屏幕上填充一个矩形区域，使用当前设置的点颜色。
  */
 void Gui::DrawFillRectangle(u16 x1, u16 y1, u16 x2, u16 y2) {
-    SetPosFill(x1, y1, x2, y2, POINT_COLOR);
+    Fill(x1, y1, x2, y2, display->POINT_COLOR);
 }
 
 /**
@@ -137,14 +138,14 @@ void Gui::DrawFillRectangle(u16 x1, u16 y1, u16 x2, u16 y2) {
  *          通过对称点的方式减少绘制点的数量，提高绘制效率。
  */
 void Gui::DrawCircle(int xc, int yc, int x, int y, u16 c) {
-    GUI_DrawPoint(xc + x, yc + y, c);
-    GUI_DrawPoint(xc - x, yc + y, c);
-    GUI_DrawPoint(xc + x, yc - y, c);
-    GUI_DrawPoint(xc - x, yc - y, c);
-    GUI_DrawPoint(xc + y, yc + x, c);
-    GUI_DrawPoint(xc - y, yc + x, c);
-    GUI_DrawPoint(xc + y, yc - x, c);
-    GUI_DrawPoint(xc - y, yc - x, c);
+    DrawPoint(xc + x, yc + y, c);
+    DrawPoint(xc - x, yc + y, c);
+    DrawPoint(xc + x, yc - y, c);
+    DrawPoint(xc - x, yc - y, c);
+    DrawPoint(xc + y, yc + x, c);
+    DrawPoint(xc - y, yc + x, c);
+    DrawPoint(xc + y, yc - x, c);
+    DrawPoint(xc - y, yc - x, c);
 }
 
 /**
@@ -198,9 +199,9 @@ void Gui::Circle(int xc, int yc, u16 c, int r, int fill) {
  * @details 该函数在LCD屏幕上绘制一个三角形的边框。
  */
 void Gui::DrawTriangel(u16 x0, u16 y0, u16 x1, u16 y1, u16 x2, u16 y2) {
-    SetPosDrawLine(x0, y0, x1, y1);
-    SetPosDrawLine(x1, y1, x2, y2);
-    SetPosDrawLine(x2, y2, x0, y0);
+    DrawLine(x0, y0, x1, y1);
+    DrawLine(x1, y1, x2, y2);
+    DrawLine(x2, y2, x0, y0);
 }
 
 /**
@@ -217,18 +218,18 @@ void Gui::FillTriangel(u16 x0, u16 y0, u16 x1, u16 y1, u16 x2, u16 y2) {
     u16 a, b, y, last;
     int dx01, dy01, dx02, dy02, dx12, dy12;
     long sa = 0;
-    long sb = 0;
+    long sb = 0;    
     if (y0 > y1) {
-        _swap(&y0, &y1);
-        _swap(&x0, &x1);
+        std::swap(y0, y1);
+        std::swap(x0, x1);
     }
     if (y1 > y2) {
-        _swap(&y2, &y1);
-        _swap(&x2, &x1);
+        std::swap(y2, y1);
+        std::swap(x2, x1);
     }
     if (y0 > y1) {
-        _swap(&y0, &y1);
-        _swap(&x0, &x1);
+        std::swap(y0, y1);
+        std::swap(x0, x1);
     }
     if (y0 == y2) {
         a = b = x0;
@@ -242,7 +243,7 @@ void Gui::FillTriangel(u16 x0, u16 y0, u16 x1, u16 y1, u16 x2, u16 y2) {
         } else if (x2 > b) {
             b = x2;
         }
-        SetPosFill(a, y0, b, y0, POINT_COLOR);
+        Fill(a, y0, b, y0, display->POINT_COLOR);
         return;
     }
     dx01 = x1 - x0;
@@ -261,11 +262,11 @@ void Gui::FillTriangel(u16 x0, u16 y0, u16 x1, u16 y1, u16 x2, u16 y2) {
         a = x0 + sa / dy01;
         b = x0 + sb / dy02;
         sa += dx01;
-        sb += dx02;
+        sb += dx02;        
         if (a > b) {
-            _swap(&a, &b);
+            std::swap(a, b);
         }
-        SetPosFill(a, y, b, y, POINT_COLOR);
+        Fill(a, y, b, y, display->POINT_COLOR);
     }
     sa = dx12 * (y - y1);
     sb = dx02 * (y - y0);
@@ -275,9 +276,9 @@ void Gui::FillTriangel(u16 x0, u16 y0, u16 x1, u16 y1, u16 x2, u16 y2) {
         sa += dx12;
         sb += dx02;
         if (a > b) {
-            _swap(&a, &b);
+            std::swap(a, b);
         }
-        SetPosFill(a, y, b, y, POINT_COLOR);
+        Fill(a, y, b, y, display->POINT_COLOR);
     }
 }
 
@@ -294,11 +295,11 @@ void Gui::FillTriangel(u16 x0, u16 y0, u16 x1, u16 y1, u16 x2, u16 y2) {
 void Gui::ShowChar(u16 x, u16 y, u16 fc, u16 bc, u8 num, u8 size, u8 mode) {
     u8 temp;
     u8 pos, t;
-    u16 colortemp = POINT_COLOR;
+    u16 colortemp = display->POINT_COLOR;
 
-    num = num - ' ';                                      // 得到偏移后的值
-    SetPosSetWindows(x, y, x + size / 2 - 1, y + size - 1); // 设置单个文字显示窗口
-    if (!mode)                                            // 非叠加方式
+    num = num - ' ';                                           // 得到偏移后的值
+    display->SetWindows(x, y, x + size / 2 - 1, y + size - 1); // 设置单个文字显示窗口
+    if (!mode)                                                 // 非叠加方式
     {
         for (pos = 0; pos < size; pos++) {
             if (size == 12)
@@ -307,9 +308,9 @@ void Gui::ShowChar(u16 x, u16 y, u16 fc, u16 bc, u8 num, u8 size, u8 mode) {
                 temp = asc2_1608[num][pos]; // 调用1608字体
             for (t = 0; t < size / 2; t++) {
                 if (temp & 0x01)
-                    SetPosWriteData_16Bit(fc);
+                    display->WriteData_16Bit(fc);
                 else
-                    SetPosWriteData_16Bit(bc);
+                    display->WriteData_16Bit(bc);
                 temp >>= 1;
             }
         }
@@ -321,15 +322,15 @@ void Gui::ShowChar(u16 x, u16 y, u16 fc, u16 bc, u8 num, u8 size, u8 mode) {
             else
                 temp = asc2_1608[num][pos]; // 调用1608字体
             for (t = 0; t < size / 2; t++) {
-                POINT_COLOR = fc;
+                display->POINT_COLOR = fc;
                 if (temp & 0x01)
-                    SetPosDrawPoint(x + t, y + pos); // 画一个点
+                    display->DrawPoint(x + t, y + pos); // 画一个点
                 temp >>= 1;
             }
         }
     }
-    POINT_COLOR = colortemp;
-    SetPosSetWindows(0, 0, lcddev.width - 1, lcddev.height - 1); // 恢复窗口为全屏
+    display->POINT_COLOR = colortemp;
+    display->SetWindows(0, 0, display->lcddev.width - 1, display->lcddev.height - 1); // 恢复窗口为全屏
 }
 
 /**
@@ -345,15 +346,15 @@ void Gui::ShowNum(u16 x, u16 y, u32 num, u8 len, u8 size) {
     u8 t, temp;
     u8 enshow = 0;
     for (t = 0; t < len; t++) {
-        temp = (num / mypow(10, len - t - 1)) % 10;
+        temp = (num / Pow(10, len - t - 1)) % 10;
         if (enshow == 0 && t < (len - 1)) {
             if (temp == 0) {
-                SetPosShowChar(x + (size / 2) * t, y, POINT_COLOR, BACK_COLOR, ' ', size, 0);
+                ShowChar(x + (size / 2) * t, y, display->POINT_COLOR, display->BACK_COLOR, ' ', size, 0);
                 continue;
             } else
                 enshow = 1;
         }
-        SetPosShowChar(x + (size / 2) * t, y, POINT_COLOR, BACK_COLOR, temp + '0', size, 0);
+        ShowChar(x + (size / 2) * t, y, display->POINT_COLOR, display->BACK_COLOR, temp + '0', size, 0);
     }
 }
 
@@ -369,9 +370,9 @@ void Gui::ShowNum(u16 x, u16 y, u32 num, u8 len, u8 size) {
 void Gui::ShowString(u16 x, u16 y, u8 size, u8 *p, u8 mode) {
     while ((*p <= '~') && (*p >= ' ')) // 判断是不是非法字符!
     {
-        if (x > (lcddev.width - 1) || y > (lcddev.height - 1))
+        if (x > (display->lcddev.width - 1) || y > (display->lcddev.height - 1))
             return;
-        SetPosShowChar(x, y, POINT_COLOR, BACK_COLOR, *p, size, mode);
+        ShowChar(x, y, display->POINT_COLOR, display->BACK_COLOR, *p, size, mode);
         x += size / 2;
         p++;
     }
@@ -396,19 +397,19 @@ void Gui::DrawFont16(u16 x, u16 y, u16 fc, u16 bc, u8 *s, u8 mode) {
 
     for (k = 0; k < HZnum; k++) {
         if ((tfont16[k].Index[0] == *(s)) && (tfont16[k].Index[1] == *(s + 1)) && (tfont16[k].Index[2] == *(s + 2))) {
-            SetPosSetWindows(x, y, x + 16 - 1, y + 16 - 1);
+            display->SetWindows(x, y, x + 16 - 1, y + 16 - 1);
             for (i = 0; i < 16 * 2; i++) {
                 for (j = 0; j < 8; j++) {
                     if (!mode) // 非叠加方式
                     {
                         if (tfont16[k].Msk[i] & (0x80 >> j))
-                            SetPosWriteData_16Bit(fc);
+                            display->WriteData_16Bit(fc);
                         else
-                            SetPosWriteData_16Bit(bc);
+                            display->WriteData_16Bit(bc);
                     } else {
-                        POINT_COLOR = fc;
+                        display->POINT_COLOR = fc;
                         if (tfont16[k].Msk[i] & (0x80 >> j))
-                            SetPosDrawPoint(x, y); // 画一个点
+                            display->DrawPoint(x, y); // 画一个点
                         x++;
                         if ((x - x0) == 16) {
                             x = x0;
@@ -422,7 +423,7 @@ void Gui::DrawFont16(u16 x, u16 y, u16 fc, u16 bc, u8 *s, u8 mode) {
         continue; // 查找到对应点阵字库立即退出，防止多个汉字重复取模带来影响
     }
 
-    SetPosSetWindows(0, 0, lcddev.width - 1, lcddev.height - 1); // 恢复窗口为全屏
+    display->SetWindows(0, 0, display->lcddev.width - 1, display->lcddev.height - 1); // 恢复窗口为全屏
 }
 
 /**
@@ -444,19 +445,19 @@ void Gui::DrawFont24(u16 x, u16 y, u16 fc, u16 bc, u8 *s, u8 mode) {
 
     for (k = 0; k < HZnum; k++) {
         if ((tfont24[k].Index[0] == *(s)) && (tfont24[k].Index[1] == *(s + 1)) && (tfont24[k].Index[2] == *(s + 2))) {
-            SetPosSetWindows(x, y, x + 24 - 1, y + 24 - 1);
+            display->SetWindows(x, y, x + 24 - 1, y + 24 - 1);
             for (i = 0; i < 24 * 3; i++) {
                 for (j = 0; j < 8; j++) {
                     if (!mode) // 非叠加方式
                     {
                         if (tfont24[k].Msk[i] & (0x80 >> j))
-                            SetPosWriteData_16Bit(fc);
+                            display->WriteData_16Bit(fc);
                         else
-                            SetPosWriteData_16Bit(bc);
+                            display->WriteData_16Bit(bc);
                     } else {
-                        POINT_COLOR = fc;
+                        display->POINT_COLOR = fc;
                         if (tfont24[k].Msk[i] & (0x80 >> j))
-                            SetPosDrawPoint(x, y); // 画一个点
+                            display->DrawPoint(x, y); // 画一个点
                         x++;
                         if ((x - x0) == 24) {
                             x = x0;
@@ -470,7 +471,7 @@ void Gui::DrawFont24(u16 x, u16 y, u16 fc, u16 bc, u8 *s, u8 mode) {
         continue; // 查找到对应点阵字库立即退出，防止多个汉字重复取模带来影响
     }
 
-    SetPosSetWindows(0, 0, lcddev.width - 1, lcddev.height - 1); // 恢复窗口为全屏
+    display->SetWindows(0, 0, display->lcddev.width - 1, display->lcddev.height - 1); // 恢复窗口为全屏
 }
 
 /**
@@ -491,19 +492,19 @@ void Gui::DrawFont32(u16 x, u16 y, u16 fc, u16 bc, u8 *s, u8 mode) {
     HZnum = sizeof(tfont32) / sizeof(typFNT_GB32); // 自动统计汉字数目
     for (k = 0; k < HZnum; k++) {
         if ((tfont32[k].Index[0] == *(s)) && (tfont32[k].Index[1] == *(s + 1)) && (tfont32[k].Index[2] == *(s + 2))) {
-            SetPosSetWindows(x, y, x + 32 - 1, y + 32 - 1);
+            display->SetWindows(x, y, x + 32 - 1, y + 32 - 1);
             for (i = 0; i < 32 * 4; i++) {
                 for (j = 0; j < 8; j++) {
                     if (!mode) // 非叠加方式
                     {
                         if (tfont32[k].Msk[i] & (0x80 >> j))
-                            SetPosWriteData_16Bit(fc);
+                            display->WriteData_16Bit(fc);
                         else
-                            SetPosWriteData_16Bit(bc);
+                            display->WriteData_16Bit(bc);
                     } else {
-                        POINT_COLOR = fc;
+                        display->POINT_COLOR = fc;
                         if (tfont32[k].Msk[i] & (0x80 >> j))
-                            SetPosDrawPoint(x, y); // 画一个点
+                            display->DrawPoint(x, y); // 画一个点
                         x++;
                         if ((x - x0) == 32) {
                             x = x0;
@@ -517,7 +518,7 @@ void Gui::DrawFont32(u16 x, u16 y, u16 fc, u16 bc, u8 *s, u8 mode) {
         continue; // 查找到对应点阵字库立即退出，防止多个汉字重复取模带来影响
     }
 
-    SetPosSetWindows(0, 0, lcddev.width - 1, lcddev.height - 1); // 恢复窗口为全屏
+    display->SetWindows(0, 0, display->lcddev.width - 1, display->lcddev.height - 1); // 恢复窗口为全屏
 }
 
 /**
@@ -537,7 +538,7 @@ void Gui::ShowStr(u16 x, u16 y, u16 fc, u16 bc, u8 *str, u8 size, u8 mode) {
     while (*str != 0) // 数据未结束
     {
         if (!bHz) {
-            if (x > (lcddev.width - size / 2) || y > (lcddev.height - size))
+            if (x > (display->lcddev.width - size / 2) || y > (display->lcddev.height - size))
                 return;
             if (*str > 0x80)
                 bHz = 1; // 中文
@@ -551,10 +552,10 @@ void Gui::ShowStr(u16 x, u16 y, u16 fc, u16 bc, u8 *str, u8 size, u8 mode) {
                 } else {
                     if (size > 16) // 字库中没有集成12X24 16X32的英文字体,用8X16代替
                     {
-                        SetPosShowChar(x, y, fc, bc, *str, 16, mode);
+                        ShowChar(x, y, fc, bc, *str, 16, mode);
                         x += 8; // 字符,为全字的一半
                     } else {
-                        SetPosShowChar(x, y, fc, bc, *str, size, mode);
+                        ShowChar(x, y, fc, bc, *str, size, mode);
                         x += size / 2; // 字符,为全字的一半
                     }
                 }
@@ -562,15 +563,15 @@ void Gui::ShowStr(u16 x, u16 y, u16 fc, u16 bc, u8 *str, u8 size, u8 mode) {
             }
         } else // 中文
         {
-            if (x > (lcddev.width - size) || y > (lcddev.height - size))
+            if (x > (display->lcddev.width - size) || y > (display->lcddev.height - size))
                 return;
             bHz = 0; // 有汉字库
             if (size == 32)
-                GUI_DrawFont32(x, y, fc, bc, str, mode);
+                DrawFont32(x, y, fc, bc, str, mode);
             else if (size == 24)
-                GUI_DrawFont24(x, y, fc, bc, str, mode);
+                DrawFont24(x, y, fc, bc, str, mode);
             else
-                GUI_DrawFont16(x, y, fc, bc, str, mode);
+                DrawFont16(x, y, fc, bc, str, mode);
 
             str += 3;
             x += size; // 下一个汉字偏移
@@ -592,8 +593,8 @@ void Gui::ShowStr(u16 x, u16 y, u16 fc, u16 bc, u8 *str, u8 size, u8 mode) {
  */
 void Gui::StrCenter(u16 x, u16 y, u16 fc, u16 bc, u8 *str, u8 size, u8 mode) {
     u16 len = strlen((const char *)str);
-    u16 x1 = (lcddev.width - len * 8) / 2;
-    Show_Str(x1, y, fc, bc, str, size, mode);
+    u16 x1 = (display->lcddev.width - len * 8) / 2;
+    ShowStr(x1, y, fc, bc, str, size, mode);
 }
 
 /**
@@ -605,14 +606,14 @@ void Gui::StrCenter(u16 x, u16 y, u16 fc, u16 bc, u8 *str, u8 size, u8 mode) {
  * @param p: 指向图像数据的指针
  * @details 该函数在LCD屏幕上绘制一个16位BMP图像。
  */
-void Gui::Drawbmp16(u16 x, u16 y, uint16_t bmp_x, uint16_t bmp_y, const unsigned char *p) {
+void Gui::Drawbmp16(u16 x, u16 y, uint16_t bmp_x, uint16_t bmp_y, const uint8_t *p) {
     uint64_t i;
-    unsigned char picH, picL;
-    SetPosSetWindows(x, y, x + bmp_x - 1, y + bmp_y - 1); // 窗口设置
+    uint8_t picH, picL;
+    display->SetWindows(x, y, x + bmp_x - 1, y + bmp_y - 1); // 窗口设置
     for (i = 0; i < (bmp_x * bmp_y); i++) {
         picL = *(p + i * 2); // 数据低位在前
         picH = *(p + i * 2 + 1);
-        SetPosWriteData_16Bit(picH << 8 | picL);
+        display->WriteData_16Bit(picH << 8 | picL);
     }
-    SetPosSetWindows(0, 0, lcddev.width - 1, lcddev.height - 1); // 恢复显示窗口为全屏
+    display->SetWindows(0, 0, display->lcddev.width - 1, display->lcddev.height - 1); // 恢复显示窗口为全屏
 }

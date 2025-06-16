@@ -3,6 +3,7 @@
 LcdDisplay::LcdDisplay() {
     POINT_COLOR = RED;  // 默认红色
     BACK_COLOR = WHITE; // 默认背景白色
+    Init();             // 初始化LCD显示
 }
 
 LcdDisplay::~LcdDisplay() {
@@ -112,6 +113,7 @@ void LcdDisplay::DisplayOff() {
 }
 
 u16 LcdDisplay::ReadPoint(u16 x, u16 y) {
+    return 0;
 }
 
 void LcdDisplay::DrawLine(u16 x1, u16 y1, u16 x2, u16 y2) {
@@ -121,6 +123,7 @@ void LcdDisplay::DrawRectangle(u16 x1, u16 y1, u16 x2, u16 y2) {
 }
 
 u16 LcdDisplay::RD_DATA() {
+    return 0;
 }
 
 /**
@@ -150,6 +153,7 @@ void LcdDisplay::WR_REG(u8 data) {
 }
 
 u16 LcdDisplay::ReadReg(u8 LCD_Reg) {
+    return 0;
 }
 
 /**
@@ -161,9 +165,11 @@ void LcdDisplay::WriteRAM_Prepare() {
 }
 
 u16 LcdDisplay::ReadRAM() {
+    return 0;
 }
 
 u16 LcdDisplay::BGR2RGB(u16 c) {
+    return 0;
 }
 
 void LcdDisplay::SetParam() {

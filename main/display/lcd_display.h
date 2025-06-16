@@ -45,10 +45,6 @@ struct lcd_dev_ {
 #define LCD_W 320
 #define LCD_H 480
 
-// TFTLCD部分外要调用的函数
-extern u16 POINT_COLOR; // 默认红色
-extern u16 BACK_COLOR;  // 背景颜色.默认为白色
-
 #define LCD_DC_SET() GPIO_WriteBit(GPIOB, GPIO_Pin_2, Bit_SET)
 #define LCD_DC_CLR() GPIO_WriteBit(GPIOB, GPIO_Pin_2, Bit_RESET)
 
@@ -64,7 +60,7 @@ extern u16 BACK_COLOR;  // 背景颜色.默认为白色
 class LcdDisplay : public Display {
   public:
     LcdDisplay();
-    ~LcdDisplay();
+    ~LcdDisplay() override;
 
     // 从bsp_lcd.h移植的方法
     void Init();
@@ -91,7 +87,7 @@ class LcdDisplay : public Display {
     void WriteData_16Bit(u16 Data);
     void GPIOInit();
 
-  protected:
+  // protected:
     lcd_dev_ lcddev; // 管理LCD重要参数，默认为竖屏
     u16 POINT_COLOR; // 默认红色
     u16 BACK_COLOR;  // 背景颜色，默认为白色

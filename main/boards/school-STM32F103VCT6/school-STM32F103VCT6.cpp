@@ -4,6 +4,8 @@
 #include "gpio_led.h"
 #include "lcd_display.h"
 #include "oled_display.h"
+#include "touch.h"
+#include "gui.h"
 
 #include "bsp.h"
 
@@ -19,6 +21,8 @@ class SchoolSTM32F103VCT6 : public Board {
     GpioLed led_;               // 声明LED
     LcdDisplay *lcd_display_;   // 声明液晶屏
     OledDisplay *oled_display_; // 声明OLED显示屏
+    TouchScreen *touch_;        // 声明触摸屏
+    Gui *gui_;                 // 声明GUI对象
   public:
     SchoolSTM32F103VCT6() {
         InitSpiBus(); // 初始化SPI总线
@@ -27,14 +31,14 @@ class SchoolSTM32F103VCT6 : public Board {
 #ifdef exti_key_demo // 如果是外部中断按键演示
         EXTI_Key_Config();
 #endif
-        InitLcdDisplay(); // 初始化液晶屏
+        InitLcdDisplay();  // 初始化液晶屏
+        InitTouchScreen(); // 初始化触摸屏
         InitOledDisplay(); // 初始化OLED显示屏
         SysTick_Init();
         USART_Config();
         JQ8900setup();
         ESP_Config();
         ee_CheckOk();
-        TP_Init();
         ADCx_Init();
         GENERAL_TIM_Init();
         ADVANCE_TIM_Init();
@@ -49,6 +53,14 @@ class SchoolSTM32F103VCT6 : public Board {
         return lcd_display_;
     }
 
+    virtual Gui *GetGui() override {
+        return gui_;
+    }
+
+    virtual TouchScreen *GetTouchScreen() override {
+        return touch_;
+    }
+
     virtual OledDisplay *GetOledDisplay() override {
         return oled_display_;
     }
@@ -59,11 +71,16 @@ class SchoolSTM32F103VCT6 : public Board {
     }
 
     void InitLcdDisplay() {
-        LCD_Init();
+        lcd_display_ = new LcdDisplay();
+    }
+
+    void InitTouchScreen() {
+        gui_ = new Gui();
+        touch_ = &TouchScreen::GetInstance();
     }
 
     void InitOledDisplay() {
-        oled_Init();
+        oled_display_ = new OledDisplay();
     }
 };
 
