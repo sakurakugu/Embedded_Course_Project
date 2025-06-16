@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 class Key {
 public:
     virtual ~Key() = default;

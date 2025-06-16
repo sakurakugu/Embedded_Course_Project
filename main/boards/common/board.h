@@ -2,9 +2,16 @@
 
 #include "led.h"
 #include "display.h"
+#include "key.h"
+#include "lcd_display.h"
+#include "oled_display.h"
+#include "touch.h"
+#include "gui.h"
+#include "led_display.h"
 
 // 前向声明
 class LcdDisplay;
+class LedDisplay;
 class OledDisplay;
 class TouchScreen;
 class Gui;
@@ -28,6 +35,7 @@ class Board {
     virtual OledDisplay *GetOledDisplay();
     virtual TouchScreen *GetTouchScreen();
     virtual Gui *GetGui();
+    virtual LedDisplay *GetLedDisplay();
 
   protected:
     Board();

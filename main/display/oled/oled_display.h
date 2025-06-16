@@ -1,7 +1,11 @@
 #pragma once
 
-#include "bsp.h"
+#include <stm32f10x_gpio.h>
+#include <stm32f10x_rcc.h>
+#include "oled_font.h"
 #include "display.h"
+#include "bsp_SysTick.h"
+#include "bsp_spi_bus.h"
 
 // 前向声明
 class Board;
@@ -46,13 +50,13 @@ class OledDisplay : public Display {
     void DisplayOff();
     void GpioInit();
     void Init();
-    void Clear();
     void DrawPoint(uint8_t x, uint8_t y, uint8_t t);
+    void Clear();
     void Fill(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t dot);
     void ShowChar(uint8_t x, uint8_t y, uint8_t ch);
-    void WriteByte(u8 dat, u8 cmd);
-    void ShowNum(uint8_t x, uint8_t y, u32 num, uint8_t len, uint8_t size2);
-    void ShowChinese(u8 x, u8 y, u8 no);
+    void WriteByte(uint8_t dat, uint8_t cmd);
+    void ShowNum(uint8_t x, uint8_t y, uint32_t num, uint8_t len, uint8_t size2);
+    void ShowChinese(uint8_t x, uint8_t y, uint8_t no);
     void ShowString(uint8_t x, uint8_t y, uint8_t *p);
     void SetPos(uint8_t x, uint8_t y);
     void ShowCHStr(uint8_t X, uint8_t Y, uint8_t *pstr);

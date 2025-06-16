@@ -11,121 +11,117 @@
 *********************************************************************************************************
 */
 
-#include "bsp.h"
+#include "bsp_tlink.h"
+#include <string.h>
+#include <cstdint>
 
-unsigned char e8266tomcu_str[1024];//用来保存wifi模块发过来的数据
-unsigned char Txto8266Buf[1024] = "#11,22,1,1,30#";
-unsigned int e8266tomcu_num=0;
+uint8_t e8266tomcu_str[1024]; // 用来保存wifi模块发过来的数据
+uint8_t Txto8266Buf[1024] = "#11,22,1,1,30#";
+unsigned int e8266tomcu_num = 0;
 
+uint8_t time1sflag = 0;
+uint8_t timensflag = 0;
+uint8_t linkokflag = 0;
 
-unsigned char time1sflag = 0;
-unsigned char timensflag = 0;
-unsigned char linkokflag = 0;
-
-unsigned char E8266inittotlink(void){
-    static unsigned char E8266state = 0,timeout = 0;
-		if(timeout>60){
-	     E8266state = 0; //如果超时没有接收到心跳包则进入异常处理
-			 linkokflag = 0; //连接失效
-		   timeout = 0;
-			 TLINK_OK_LED_OFF();//连接云平台指示灯
-	  }	
-		switch(E8266state){
-	  case 0:
-		timeout++;
-	  if(timeout == 3)
-			GPIO_ResetBits(ESP_EN_PORT,ESP_EN_GPIO_PIN);
-		if(timeout == 4)
-		{
-			timeout = 0;
-			GPIO_SetBits(ESP_EN_PORT,ESP_EN_GPIO_PIN);
-		}
-	  if(strstr((const char *)e8266tomcu_str,"ready")!=0){
-	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
-			 memset(e8266tomcu_str,0,1024);
-		   timeout = 0;
-		   e8266tomcu_num = 0;
-	     //mcuto8266_str("AT+CWMODE=1\r\n");
-			 ESP_SendString(ESP_USARTx,"AT+CWMODE=1\r\n");
-		   E8266state = 1;
-	  }
-	  break;
-	  case 1:
-	  timeout++;
-	  if(strstr((const char *)e8266tomcu_str,"OK")!=0){
-	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
-			 memset(e8266tomcu_str,0,1024);
-		   timeout = 0;
-		   e8266tomcu_num = 0;
-			 ESP_SendString(ESP_USARTx,"AT+CWJAP=\"B702\",\"123456789\"\r\n");
-		 //mcuto8266_str("AT+CWJAP=\"zsc\",\"13631103\"\r\n");
-			 E8266state = 2;
-	  }
-	  break;
-	  case 2:
-	  timeout++;
-	  if(strstr((const char *)e8266tomcu_str,"OK")!=0){
-	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
-			 memset(e8266tomcu_str,0,1024);
-		   timeout = 0;
-		   e8266tomcu_num = 0;
-			 ESP_SendString(ESP_USARTx,"AT+CIPSTART=\"TCP\",\"tcp.tlink.io\",8647\r\n");
-		   //mcuto8266_str("AT+CIPSTART=\"TCP\",\"tcp.tlink.io\",8647\r\n");
-		   E8266state = 3;
-	  }
-	  break;
-	  case 3:
-	  timeout++;
-	  if(strstr((const char *)e8266tomcu_str,"OK")!=0){
-	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
-			 memset(e8266tomcu_str,0,1024);
-		   timeout = 0;
-		   e8266tomcu_num = 0;
-			 ESP_SendString(ESP_USARTx,"AT+CIPMODE=1\r\n");
-		   //mcuto8266_str("AT+CIPMODE=1\r\n");
-		   E8266state = 4;
-	  }
-	  break;
-	  case 4:
-	  timeout++;
-	  if(strstr((const char *)e8266tomcu_str,"OK")!=0){
-	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
-			 memset(e8266tomcu_str,0,1024);
-		   timeout = 0;
-		   e8266tomcu_num = 0;
-			 ESP_SendString(ESP_USARTx,"AT+CIPSEND\r\n");
-		   E8266state = 5;
-	  }
-	  break;
-	  case 5:
-	  timeout++;
-	  if(strstr((const char *)e8266tomcu_str,">")!=0){
-	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
-			 memset(e8266tomcu_str,0,1024);
-		   timeout = 0;
-		   e8266tomcu_num = 0;
-			 ESP_SendString(ESP_USARTx,"U1M7X495G1571V38");
-		 //mcuto8266_str("XXUN3WE5D1U74ARO");  //发送设备序列号
-		   E8266state = 6;
-		   linkokflag = 1;
-		   timensflag = 0;//必须重新开始计时，否则程序不正常
-	  }
-	  break;
-	  case 6:
-	  timeout++;
-	  if(strstr((const char *)e8266tomcu_str,"ok")!=0){
-	     //接受到服务器心跳包就亮灯
-			 TLINK_OK_LED_ON();
-	     Usart_SendString(DEBUG_USARTx,e8266tomcu_str);
-			 memset(e8266tomcu_str,0,1024);
-		   timeout = 0;
-		   e8266tomcu_num = 0;
-	  }
-	  break;
-  }
-	return 1;
+uint8_t E8266inittotlink(void) {
+    static uint8_t E8266state = 0, timeout = 0;
+    if (timeout > 60) {
+        E8266state = 0; // 如果超时没有接收到心跳包则进入异常处理
+        linkokflag = 0; // 连接失效
+        timeout = 0;
+        TLINK_OK_LED_OFF(); // 连接云平台指示灯
+    }
+    switch (E8266state) {
+    case 0:
+        timeout++;
+        if (timeout == 3)
+            GPIO_ResetBits(ESP_EN_PORT, ESP_EN_GPIO_PIN);
+        if (timeout == 4) {
+            timeout = 0;
+            GPIO_SetBits(ESP_EN_PORT, ESP_EN_GPIO_PIN);
+        }
+        if (strstr((const char *)e8266tomcu_str, "ready") != 0) {
+            Usart_SendString(DEBUG_USARTx, e8266tomcu_str);
+            memset(e8266tomcu_str, 0, 1024);
+            timeout = 0;
+            e8266tomcu_num = 0;
+            // mcuto8266_str("AT+CWMODE=1\r\n");
+            ESP_SendString(ESP_USARTx, "AT+CWMODE=1\r\n");
+            E8266state = 1;
+        }
+        break;
+    case 1:
+        timeout++;
+        if (strstr((const char *)e8266tomcu_str, "OK") != 0) {
+            Usart_SendString(DEBUG_USARTx, e8266tomcu_str);
+            memset(e8266tomcu_str, 0, 1024);
+            timeout = 0;
+            e8266tomcu_num = 0;
+            ESP_SendString(ESP_USARTx, "AT+CWJAP=\"B702\",\"123456789\"\r\n");
+            // mcuto8266_str("AT+CWJAP=\"zsc\",\"13631103\"\r\n");
+            E8266state = 2;
+        }
+        break;
+    case 2:
+        timeout++;
+        if (strstr((const char *)e8266tomcu_str, "OK") != 0) {
+            Usart_SendString(DEBUG_USARTx, e8266tomcu_str);
+            memset(e8266tomcu_str, 0, 1024);
+            timeout = 0;
+            e8266tomcu_num = 0;
+            ESP_SendString(ESP_USARTx, "AT+CIPSTART=\"TCP\",\"tcp.tlink.io\",8647\r\n");
+            // mcuto8266_str("AT+CIPSTART=\"TCP\",\"tcp.tlink.io\",8647\r\n");
+            E8266state = 3;
+        }
+        break;
+    case 3:
+        timeout++;
+        if (strstr((const char *)e8266tomcu_str, "OK") != 0) {
+            Usart_SendString(DEBUG_USARTx, e8266tomcu_str);
+            memset(e8266tomcu_str, 0, 1024);
+            timeout = 0;
+            e8266tomcu_num = 0;
+            ESP_SendString(ESP_USARTx, "AT+CIPMODE=1\r\n");
+            // mcuto8266_str("AT+CIPMODE=1\r\n");
+            E8266state = 4;
+        }
+        break;
+    case 4:
+        timeout++;
+        if (strstr((const char *)e8266tomcu_str, "OK") != 0) {
+            Usart_SendString(DEBUG_USARTx, e8266tomcu_str);
+            memset(e8266tomcu_str, 0, 1024);
+            timeout = 0;
+            e8266tomcu_num = 0;
+            ESP_SendString(ESP_USARTx, "AT+CIPSEND\r\n");
+            E8266state = 5;
+        }
+        break;
+    case 5:
+        timeout++;
+        if (strstr((const char *)e8266tomcu_str, ">") != 0) {
+            Usart_SendString(DEBUG_USARTx, e8266tomcu_str);
+            memset(e8266tomcu_str, 0, 1024);
+            timeout = 0;
+            e8266tomcu_num = 0;
+            ESP_SendString(ESP_USARTx, "U1M7X495G1571V38");
+            // mcuto8266_str("XXUN3WE5D1U74ARO");  //发送设备序列号
+            E8266state = 6;
+            linkokflag = 1;
+            timensflag = 0; // 必须重新开始计时，否则程序不正常
+        }
+        break;
+    case 6:
+        timeout++;
+        if (strstr((const char *)e8266tomcu_str, "ok") != 0) {
+            // 接受到服务器心跳包就亮灯
+            TLINK_OK_LED_ON();
+            Usart_SendString(DEBUG_USARTx, e8266tomcu_str);
+            memset(e8266tomcu_str, 0, 1024);
+            timeout = 0;
+            e8266tomcu_num = 0;
+        }
+        break;
+    }
+    return 1;
 }
-
-
-
-

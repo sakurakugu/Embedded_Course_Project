@@ -14,7 +14,7 @@
 #ifndef __BSP_SPI_BUS_H
 #define __BSP_SPI_BUS_H
 
-#include "bsp.h"
+#include <cstdint>
 
 //#define SOFT_SPI		/* 定义此行表示使用GPIO模拟SPI接口 */
 #define HARD_SPI		/* 定义此行表示使用CPU的硬件SPI接口 */

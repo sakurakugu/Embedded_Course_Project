@@ -1,8 +1,10 @@
 #ifndef __JQ8900_H
 #define	__JQ8900_H
 
+#include "stm32f10x.h"
+#include <string.h>
+#include "bsp_usart.h"
 
-#include "bsp.h"
 //#include <stdio.h>
 
 /** 
@@ -29,8 +31,8 @@
 
 typedef enum
 {
-		Reset                             = 0xAA,                 /*串口通信起始码，单发此指令为重置串口缓存*/
-		CheckPlayState                    = 0x01,                 /*查询播报状态*/
+		Reset                           = 0xAA,                 /*串口通信起始码，单发此指令为重置串口缓存*/
+		CheckPlayState                  = 0x01,                 /*查询播报状态*/
     
     Play                            = 0x02,                 /*播放*/
     pause                           = 0x03,                 /*暂停*/

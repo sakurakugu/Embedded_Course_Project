@@ -1,4 +1,4 @@
-#include "bsp.h"
+#include "bsp_JQ8900.h"
 
 /**
  * @brief  USART GPIO 配置,工作参数配置

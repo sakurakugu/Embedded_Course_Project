@@ -1,8 +1,7 @@
 #ifndef __EXTI_H
 #define	__EXTI_H
 
-
-#include "bsp.h"
+#include "stm32f10x.h"
 
 #ifdef	proteus
 //引脚定义

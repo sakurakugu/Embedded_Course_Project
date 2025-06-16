@@ -10,7 +10,8 @@
 *********************************************************************************************************
 */
 
-#include "bsp.h"
+#include "bsp_spi_bus.h"
+#include "stm32f10x.h"
 
 static __IO uint32_t  SPITimeout = SPIT_LONG_TIMEOUT;    
 static uint16_t SPI_TIMEOUT_UserCallback(uint8_t errorCode);

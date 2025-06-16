@@ -3,8 +3,18 @@
 #include <cstdint>
 #include "board.h"
 #include "stm32f10x_it.h"
-#include "bsp_segdz.h"
+#include "led_display.h"
 #include "bsp_usart.h"
+#include "bsp_JQ8900.h"
+#include "bsp_i2c_lm75.h"
+#include "bsp_i2c_ee.h"
+#include "bsp_adc.h"
+#include "bsp_GeneralTim.h"
+#include "gui.h"
+#include "touch.h"
+#include "oled_display.h"
+#include "bsp_ESPxx.h"
+#include "bsp_tlink.h"
 
 class Application {
   public:

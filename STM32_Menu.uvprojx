@@ -190,7 +190,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>1</useUlib>
+            <useUlib>0</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\lib\CMSIS;.\lib\FWlib\inc;.\main;.\main\display;.\main\key;.\main\led;.\main\spi;.\main\boards;.\main\boards\common;.\main\boards\school-STM32F103VCT6</IncludePath>
+              <IncludePath>.\lib\CMSIS;.\lib\FWlib\inc;.\main;.\main\display;.\main\display\lcd;.\main\display\led;.\main\display\oled;.\main\key;.\main\led;.\main\spi;.\main\boards;.\main\boards\common;.\main\boards\school-STM32F103VCT6</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -392,7 +392,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>lib/FWLB</GroupName>
+          <GroupName>lib/FWlib</GroupName>
           <Files>
             <File>
               <FileName>misc.c</FileName>
@@ -565,11 +565,6 @@
               <FilePath>.\main\bsp_JQ8900.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_segdz.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_segdz.cpp</FilePath>
-            </File>
-            <File>
               <FileName>bsp_SysTick.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\main\bsp_SysTick.cpp</FilePath>
@@ -607,32 +602,42 @@
             <File>
               <FileName>gui.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\main\display\gui.cpp</FilePath>
+              <FilePath>.\main\display\lcd\gui.cpp</FilePath>
             </File>
             <File>
               <FileName>lcd_display.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\main\display\lcd_display.cpp</FilePath>
+              <FilePath>.\main\display\lcd\lcd_display.cpp</FilePath>
             </File>
             <File>
               <FileName>lcd_font.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\main\display\lcd_font.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>oled_display.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\display\oled_display.cpp</FilePath>
+              <FilePath>.\main\display\lcd\lcd_font.cpp</FilePath>
             </File>
             <File>
               <FileName>oled_font.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\main\display\oled_font.cpp</FilePath>
+              <FilePath>.\main\display\oled\oled_font.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>oled_display.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\display\oled\oled_display.cpp</FilePath>
             </File>
             <File>
               <FileName>touch.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\main\display\touch.cpp</FilePath>
+              <FilePath>.\main\display\lcd\touch.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>led_display.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\display\led\led_display.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>led_font.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\display\led\led_font.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -657,7 +662,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>miain/spi</GroupName>
+          <GroupName>main/spi</GroupName>
           <Files>
             <File>
               <FileName>bsp_spi_bus.cpp</FileName>
@@ -695,6 +700,9 @@
           <GroupName>::CMSIS</GroupName>
         </Group>
         <Group>
+          <GroupName>::CMSIS-Compiler</GroupName>
+        </Group>
+        <Group>
           <GroupName>::Device</GroupName>
         </Group>
       </Groups>
@@ -702,8 +710,51 @@
   </Targets>
 
   <RTE>
-    <apis/>
+    <apis>
+      <api Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDERR" condition="CortexDevice" exclusive="1">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
+        <targetInfos>
+          <targetInfo name="系统定时器"/>
+        </targetInfos>
+      </api>
+      <api Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDIN" condition="CortexDevice" exclusive="1">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
+        <targetInfos>
+          <targetInfo name="系统定时器"/>
+        </targetInfos>
+      </api>
+      <api Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDOUT" condition="CortexDevice" exclusive="1">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
+        <targetInfos>
+          <targetInfo name="系统定时器"/>
+        </targetInfos>
+      </api>
+    </apis>
     <components>
+      <component Cclass="CMSIS-Compiler" Cgroup="CORE" Cvendor="ARM" Cversion="1.1.0" condition="ARMCC CortexDevice">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
+        <targetInfos>
+          <targetInfo name="系统定时器"/>
+        </targetInfos>
+      </component>
+      <component Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDERR" Csub="ITM" Cvendor="ARM" Cversion="1.1.0" condition="CORE ITM">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
+        <targetInfos>
+          <targetInfo name="系统定时器"/>
+        </targetInfos>
+      </component>
+      <component Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDIN" Csub="ITM" Cvendor="ARM" Cversion="1.1.0" condition="CORE ITM">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
+        <targetInfos>
+          <targetInfo name="系统定时器"/>
+        </targetInfos>
+      </component>
+      <component Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDOUT" Csub="ITM" Cvendor="ARM" Cversion="1.1.0" condition="CORE ITM">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
+        <targetInfos>
+          <targetInfo name="系统定时器"/>
+        </targetInfos>
+      </component>
       <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="6.1.0" condition="ARMv6_7_8-M Device">
         <package name="CMSIS" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="6.1.0"/>
         <targetInfos>
@@ -733,6 +784,12 @@
         <targetInfos>
           <targetInfo name="系统定时器"/>
         </targetInfos>
+      </file>
+      <file attr="config" category="source" name="Device\StdPeriph_Driver\templates\stm32f10x_conf.h" version="3.6.0">
+        <instance index="0" removed="1">RTE\Device\STM32F103VC\stm32f10x_conf.h</instance>
+        <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="Framework" Cvendor="Keil" Cversion="3.6.0" condition="STM32F1xx STDPERIPH"/>
+        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="https://www.keil.com/pack/" vendor="Keil" version="2.4.1"/>
+        <targetInfos/>
       </file>
       <file attr="config" category="source" name="Device\Source\system_stm32f10x.c" version="1.0.1">
         <instance index="0">RTE\Device\STM32F103VC\system_stm32f10x.c</instance>

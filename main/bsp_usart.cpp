@@ -17,7 +17,7 @@
 // 禁止半主机模式（不使用Microlib并且使用C++时用）
 // #pragma import(__use_no_semihosting)
 
-#include "bsp.h"
+#include "bsp_usart.h"
 #include <stdio.h>
 
 // 重定向c库函数printf到串口，重定向后可使用printf函数

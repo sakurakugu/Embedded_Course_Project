@@ -1,4 +1,4 @@
-#include "bsp.h"
+#include "bsp_adc.h"
 
 __IO uint16_t ADC_ConvertedValue;
 

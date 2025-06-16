@@ -5,6 +5,10 @@
 #include "stm32f10x.h"
 #include <stdio.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** 
   * 串口宏定义，不同的串口挂载的总线和IO不一样，移植时需要修改这几个宏
   */
@@ -107,5 +111,9 @@ void USART_Config(void);
 void Usart_SendByte( USART_TypeDef * pUSARTx, uint8_t ch);
 void Usart_SendString( USART_TypeDef * pUSARTx, unsigned char *str);
 void Usart_SendHalfWord( USART_TypeDef * pUSARTx, uint16_t ch);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __USART_H */

@@ -27,6 +27,7 @@ void Application::MainEventLoop() {
     auto led = board.GetLed(); // 直接使用Led基类指针
     auto touch_screen = board.GetTouchScreen(); // 获取触摸屏实例
     auto key = board.GetKey();                  // 获取按键实例
+    auto led_display = board.GetLedDisplay(); // 获取LED显示屏实例
 
     printf("OLED测试例程\r\n");		//lm75A软件模拟i2c测试例程
 	oled_display->ShowCHStr(0,0,(u8 *)"我们");
@@ -38,8 +39,8 @@ void Application::MainEventLoop() {
     while (true) {
         if (bsp_RunPer1ms == 1) {
             bsp_RunPer1ms = 0;
-            segFlash();
-            dzFlash();
+            led_display->FlashSegment();
+            led_display->FlashDotMatrix();
             touch_screen->Test(); // 测试触摸屏
         }
 

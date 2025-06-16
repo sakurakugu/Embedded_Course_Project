@@ -3,6 +3,7 @@
 
 
 #include <inttypes.h>
+#include "stm32f10x.h"
 
 
 #define I2C_WR	0		/* 写控制bit */

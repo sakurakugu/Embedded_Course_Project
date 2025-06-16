@@ -3,30 +3,38 @@
 #include "bsp_GeneralTim.h"
 #include "bsp_SysTick.h"
 #include "bsp_adc.h"
-#include "bsp_segdz.h"
 #include "bsp_spi_bus.h"
 #include "config.h"
 #include "gpio_key.h"
 #include "gpio_led.h"
 #include "gui.h"
 #include "lcd_display.h"
+#include "led_display.h"
 #include "oled_display.h"
 #include "touch.h"
+#include "bsp_usart.h"
+#include "bsp_JQ8900.h"
+#include "bsp_ESPxx.h"
+#include "bsp_tlink.h"
+#include "bsp_i2c_gpio.h"
+#include "bsp_i2c_ee.h"
+#include "bsp_i2c_lm75.h"
 
 class SchoolSTM32F103VCT6 : public Board {
   private:
-    GpioKey *key_;               // 声明按钮指针
-    GpioLed *led_;               // 声明LED指针
+    GpioKey *key_;              // 声明按钮指针
+    GpioLed *led_;              // 声明LED指针
     LcdDisplay *lcd_display_;   // 声明液晶屏
     OledDisplay *oled_display_; // 声明OLED显示屏
     TouchScreen *touch_;        // 声明触摸屏
+    LedDisplay *led_display_;   // 声明LED显示屏
     Gui *gui_;                  // 声明GUI对象
   public:
     SchoolSTM32F103VCT6() {
         InitLed();
         InitKey();
         InitSpiBus(); // 初始化SPI总线
-        seg_dz_GPIOInit();
+        InitLedDisplay();
 #ifdef exti_key_demo // 如果是外部中断按键演示
         EXTI_Key_Config();
 #endif
@@ -70,9 +78,17 @@ class SchoolSTM32F103VCT6 : public Board {
         return oled_display_;
     }
 
+    virtual LedDisplay *GetLedDisplay() override {
+        return led_display_;
+    }
+
   private:
     void InitSpiBus() {
         bsp_InitSPIBus();
+    }
+
+    void InitLedDisplay() {
+        led_display_ = new LedDisplay();
     }
 
     void InitLcdDisplay() {

@@ -1,6 +1,5 @@
 #include "gui.h"
-#include "board.h"
-#include "lcd_display.h"
+
 
 // 构造函数
 Gui::Gui() {

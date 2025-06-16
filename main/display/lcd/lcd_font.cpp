@@ -1,7 +1,8 @@
 
 #ifndef __FONT_H
 #define __FONT_H 	
-#include "bsp.h"   
+
+#include "lcd_font.h"
 
 //常用ASCII表
 //偏移量32

@@ -1,5 +1,4 @@
-
-#include "bsp.h"
+#include "bsp_GeneralTim.h"
 
 static void GENERAL_TIM_GPIO_Config(void) {
     GPIO_InitTypeDef GPIO_InitStructure;

@@ -1,7 +1,9 @@
 #pragma once
 
-#include "bsp.h"
+#include "stm32f10x.h"
 #include "display.h"
+#include "bsp_spi_bus.h"
+#include "bsp_SysTick.h"
 
 // 定义颜色
 #define WHITE 0xFFFF

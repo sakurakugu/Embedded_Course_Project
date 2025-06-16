@@ -55,7 +55,8 @@
  */
 #pragma once
 #include "board.h"
-#include "bsp.h"
+#include "bsp_i2c_ee.h"
+#include "oled_display.h"
 
 // 前向声明
 class LcdDisplay;

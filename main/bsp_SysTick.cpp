@@ -1,4 +1,5 @@
-#include "bsp.h"
+#include "bsp_SysTick.h"
+#include "stm32f10x.h"
 
 static __IO u32 TimingDelay;
  

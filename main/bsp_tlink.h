@@ -7,8 +7,12 @@
 *********************************************************************************************************
 */
 
-#ifndef __TLINK_H
-#define __TLINK_H
+#pragma once
+
+#include "bsp_usart.h"
+#include "bsp_ESPxx.h"
+#include <string.h>
+#include <cstdint>
 
 /*
 	stm32f10x.h :STM32F10x系列CPU的标准外设固件库。这个固件包含了很多型号的CPU，
@@ -26,7 +30,6 @@
 	" " 一般表示源代码自带的h文件。编译时，编译器优先在工程配置指定的搜索路径列表中寻找头文件
 	< > 一般表示编译系统自带的h文件。编译时，编译器优先在IDE自带的库文件夹寻找头文件。
 */
-#include "bsp.h"
 
 #define  Tlink_OK_GPIO_CLK           (RCC_APB2Periph_GPIOA)
 #define  Tlink_OK_GPIO_APBxClkCmd    RCC_APB2PeriphClockCmd
@@ -46,7 +49,5 @@ extern unsigned char e8266tomcu_str[];
 extern unsigned int e8266tomcu_num;
 
 
-unsigned char E8266inittotlink(void);
-
-#endif
+uint8_t E8266inittotlink(void);
 

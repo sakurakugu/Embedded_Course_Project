@@ -4,6 +4,7 @@
 #include "led.h"
 #include "touch.h"
 #include "gui.h"
+#include "led_display.h"
 
 Board::Board() {
     // 初始化代码
@@ -35,4 +36,9 @@ TouchScreen *Board::GetTouchScreen() {
 
 Gui *Board::GetGui() {
     return &Gui::GetInstance();
+}
+
+LedDisplay *Board::GetLedDisplay() {
+    static NoLedDisplay display;
+    return &display;
 }

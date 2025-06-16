@@ -1,10 +1,15 @@
 #pragma once
 
-#include "bsp.h"
+#include "board.h"
 #include "display.h"
 #include "lcd_display.h"
+#include "lcd_font.h"
 #include "oled_display.h"
-#include <utility>  // 导入 std::swap
+#include "oled_font.h"
+#include <cstdint>
+#include <stm32f10x.h>
+#include <string.h>
+#include <utility> // 导入 std::swap
 
 // 前向声明
 class OledDisplay;

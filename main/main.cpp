@@ -1,6 +1,5 @@
 #include "application.h"
 #include "board.h"
-#include "bsp.h"
 #include "bsp_SysTick.h"
 #include "bsp_spi_bus.h"
 #include "bsp_AdvanceTim.h"
