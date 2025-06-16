@@ -35,6 +35,12 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
+// 声明全局变量
+extern uint8_t bsp_RunPer1ms;
+extern uint8_t bsp_RunPer10ms;
+extern uint8_t bsp_RunPer1s;
+extern uint32_t MsCount;
+
 void NMI_Handler(void);
 void HardFault_Handler(void);
 void MemManage_Handler(void);

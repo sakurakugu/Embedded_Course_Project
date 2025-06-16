@@ -14,6 +14,11 @@ Led *Board::GetLed() {
     return &led;
 }
 
+Key *Board::GetKey() {
+    static NoKey key;
+    return &key;
+}
+
 LcdDisplay *Board::GetLcdDisplay() {
     static NoLcdDisplay display;
     return &display;

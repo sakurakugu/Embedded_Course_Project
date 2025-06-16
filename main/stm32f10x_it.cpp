@@ -26,6 +26,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "bsp.h"
 
+// 定义全局变量
+uint8_t bsp_RunPer1ms = 0;
+uint8_t bsp_RunPer10ms = 0;
+uint8_t bsp_RunPer1s = 0;
+uint32_t MsCount = 0;
+
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */

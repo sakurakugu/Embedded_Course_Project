@@ -2,15 +2,22 @@
 
 #include "config.h"
 #include "led.h"
+#include "stm32f10x.h"
+#include "stm32f10x_gpio.h"
+#include "stm32f10x_rcc.h"
 
 /**
- * LED按下标置宏
+ * @brief LED状态定义
  * LED点亮为高电平，设置 LED_ON=1， LED_OFF=0
  * 若LED点亮为低电平，把宏设置成LED_ON=0 ，LED_OFF=1 即可
  */
-#define LED_ON	0
-#define LED_OFF	1
+#define LED_ON 0
+#define LED_OFF 1
 
+/**
+ * @brief GPIO控制的LED类
+ * 继承自Led基类，实现具体的LED控制功能
+ */
 class GpioLed : public Led {
   public:
     GpioLed();          // 构造函数
@@ -25,9 +32,9 @@ class GpioLed : public Led {
     void SetLed2(bool state);
     void SetLed3(bool state);
 
-    void ToggleLed1();
-    void ToggleLed2();
-    void ToggleLed3();
+    void ToggleLed1() override;
+    void ToggleLed2() override;
+    void ToggleLed3() override;
 
     void TurnOffAll();
     void TurnOnAll();

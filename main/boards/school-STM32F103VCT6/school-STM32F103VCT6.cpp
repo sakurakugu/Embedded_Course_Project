@@ -1,19 +1,17 @@
 #include "board.h"
+#include "bsp_AdvanceTim.h"
+#include "bsp_GeneralTim.h"
+#include "bsp_SysTick.h"
+#include "bsp_adc.h"
+#include "bsp_segdz.h"
+#include "bsp_spi_bus.h"
 #include "config.h"
 #include "gpio_key.h"
 #include "gpio_led.h"
+#include "gui.h"
 #include "lcd_display.h"
 #include "oled_display.h"
 #include "touch.h"
-#include "gui.h"
-
-#include "bsp.h"
-
-// 定义全局变量，这些变量在main.o中被引用
-uint8_t bsp_RunPer1ms = 0;
-uint8_t bsp_RunPer10ms = 0;
-uint8_t bsp_RunPer1s = 0;
-uint32_t MsCount = 0;
 
 class SchoolSTM32F103VCT6 : public Board {
   private:
@@ -22,7 +20,7 @@ class SchoolSTM32F103VCT6 : public Board {
     LcdDisplay *lcd_display_;   // 声明液晶屏
     OledDisplay *oled_display_; // 声明OLED显示屏
     TouchScreen *touch_;        // 声明触摸屏
-    Gui *gui_;                 // 声明GUI对象
+    Gui *gui_;                  // 声明GUI对象
   public:
     SchoolSTM32F103VCT6() {
         InitSpiBus(); // 初始化SPI总线
@@ -47,6 +45,11 @@ class SchoolSTM32F103VCT6 : public Board {
     virtual Led *GetLed() override {
         static GpioLed led; // 使用GPIO控制LED
         return &led;
+    }
+
+    virtual Key *GetKey() override {
+        static GpioKey key; // 使用GPIO控制按键
+        return &key;
     }
 
     virtual LcdDisplay *GetLcdDisplay() override {

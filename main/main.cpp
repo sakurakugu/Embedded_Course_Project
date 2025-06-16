@@ -1,17 +1,16 @@
-#include "bsp.h"
 #include "application.h"
 
-uint8_t JQ8900Buff[] = {0xAA, 0X07, 0X02, 0X00, 0X00, 0X00};
 
-void SetRGBColor(uint32_t rgb) {
-    // 根据颜色值修改定时器的比较寄存器值
-    TIM_SetCompare1(TIM8, (uint8_t)rgb);
-    TIM_SetCompare2(TIM8, (uint8_t)(rgb >> 16));
-    TIM_SetCompare3(TIM8, (uint8_t)(rgb >> 8));
-    // COLOR_TIMx->COLOR_RED_CCRx = (uint8_t)(rgb>>16);      //R
-    // COLOR_TIMx->COLOR_GREEN_CCRx = (uint8_t)(rgb>>8);     //G
-    // COLOR_TIMx->COLOR_BLUE_CCRx = (uint8_t)rgb;           //B
-}
+
+// void SetRGBColor(uint32_t rgb) {
+//     // 根据颜色值修改定时器的比较寄存器值
+//     TIM_SetCompare1(TIM8, (uint8_t)rgb);
+//     TIM_SetCompare2(TIM8, (uint8_t)(rgb >> 16));
+//     TIM_SetCompare3(TIM8, (uint8_t)(rgb >> 8));
+//     // COLOR_TIMx->COLOR_RED_CCRx = (uint8_t)(rgb>>16);      //R
+//     // COLOR_TIMx->COLOR_GREEN_CCRx = (uint8_t)(rgb>>8);     //G
+//     // COLOR_TIMx->COLOR_BLUE_CCRx = (uint8_t)rgb;           //B
+// }
 
 /**
  * @brief  主函数
@@ -19,12 +18,7 @@ void SetRGBColor(uint32_t rgb) {
  * @retval 无
  */
 int main(void) {
-    uint32_t time = 0, Key_time = 0, ESPReset = 0;
-    uint8_t KeyNum = 0, MotorSpeed = 170;
-    float temprature = 0, Rt, Temp;
-    uint16_t adcValue;
-
-    SetRGBColor(0x0000FF);
+    // SetRGBColor(0x0000FF);
 
     // 启动应用程序
     Application::GetInstance().Start();

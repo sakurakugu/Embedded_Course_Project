@@ -1,6 +1,10 @@
 #pragma once
 
-
+#include <cstdint>
+#include "board.h"
+#include "stm32f10x_it.h"
+#include "bsp_segdz.h"
+#include "bsp_usart.h"
 
 class Application {
   public:

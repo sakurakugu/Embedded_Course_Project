@@ -8,6 +8,7 @@ class LcdDisplay;
 class OledDisplay;
 class TouchScreen;
 class Gui;
+class Key;
 
 void *create_board();
 class Board {
@@ -22,6 +23,7 @@ class Board {
 
     virtual ~Board() = default;
     virtual Led *GetLed();
+    virtual Key *GetKey();
     virtual LcdDisplay *GetLcdDisplay();
     virtual OledDisplay *GetOledDisplay();
     virtual TouchScreen *GetTouchScreen();
