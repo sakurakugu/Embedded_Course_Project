@@ -47,12 +47,12 @@
 #include "bsp_i2c_ee.h"
 #include "bsp_i2c_lm75.h"
 
-#include "bsp_oled.h"
-#include "oledFont.h"
+#include "oled_display.h"
+#include "oled_font.h"
 
-#include "bsp_lcd.h"
-#include "lcdFont.h" 
-#include "bsp_gui.h"
+#include "lcd_display.h"
+#include "lcd_font.h" 
+#include "gui.h"
 
 #include "touch.h" 
 

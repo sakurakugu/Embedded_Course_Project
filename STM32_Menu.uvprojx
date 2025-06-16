@@ -565,11 +565,6 @@
               <FilePath>.\main\bsp_GeneralTim.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_gui.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_gui.cpp</FilePath>
-            </File>
-            <File>
               <FileName>bsp_i2c_ee.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\main\bsp_i2c_ee.cpp</FilePath>
@@ -610,19 +605,9 @@
               <FilePath>.\main\bsp_usart.cpp</FilePath>
             </File>
             <File>
-              <FileName>lcdFont.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\lcdFont.cpp</FilePath>
-            </File>
-            <File>
               <FileName>main.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\main\main.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>oledFont.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\oledFont.cpp</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_it.cpp</FileName>
@@ -640,19 +625,14 @@
           <GroupName>main/display</GroupName>
           <Files>
             <File>
-              <FileName>bsp_lcd.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\display\bsp_lcd.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_oled.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\display\bsp_oled.cpp</FilePath>
-            </File>
-            <File>
               <FileName>display.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\main\display\display.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>gui.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\display\gui.cpp</FilePath>
             </File>
             <File>
               <FileName>lcd_display.cpp</FileName>
@@ -660,9 +640,19 @@
               <FilePath>.\main\display\lcd_display.cpp</FilePath>
             </File>
             <File>
+              <FileName>lcd_font.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\display\lcd_font.cpp</FilePath>
+            </File>
+            <File>
               <FileName>oled_display.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\main\display\oled_display.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>oled_font.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\display\oled_font.cpp</FilePath>
             </File>
           </Files>
         </Group>

@@ -52,70 +52,294 @@
  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
  **************************************************************************************************/
-#ifndef __TOUCH_H__
-#define __TOUCH_H__
+#pragma once
 #include "bsp.h"
 
+// 触摸屏状态定义
 #define TP_PRES_DOWN 0x80 // 触屏被按下
 #define TP_CATH_PRES 0x40 // 有按键按下了
 
-// 触摸屏控制器
-typedef struct {
-    u8 (*init)(void);     // 初始化触摸屏控制器
-    u8 (*scan)(u8);       // 扫描触摸屏.0,屏幕扫描;1,物理坐标;
-    void (*adjust)(void); // 触摸屏校准
-    u16 x0;               // 原始坐标(第一次按下时的坐标)
+/**
+ * @brief 触摸屏控制类
+ * 
+ * 这个类封装了所有与触摸屏相关的操作，包括初始化、校准、扫描和坐标读取等。
+ * 该类使用单例模式，确保全局只有一个触摸屏控制实例。
+ */
+class TouchScreen {
+public:
+    /**
+     * @brief 获取TouchScreen的单例
+     * @return TouchScreen& 单例引用
+     */
+    static TouchScreen& GetInstance() {
+        static TouchScreen instance;
+        return instance;
+    }
+
+    // 禁止拷贝构造和赋值操作
+    TouchScreen(const TouchScreen&) = delete;
+    TouchScreen& operator=(const TouchScreen&) = delete;
+
+    /**
+     * @brief 初始化触摸屏
+     * @return u8 初始化结果，0表示成功，1表示失败
+     */
+    u8 Init();
+
+    /**
+     * @brief 扫描触摸屏
+     * @param tp 扫描模式：0-屏幕扫描，1-物理坐标
+     * @return u8 触摸状态
+     */
+    u8 Scan(u8 tp);
+
+    /**
+     * @brief 触摸屏校准
+     */
+    void Adjust();
+
+    /**
+     * @brief 保存校准参数
+     */
+    void SaveAdjData();
+
+    /**
+     * @brief 读取校准参数
+     * @return u8 读取结果，0表示成功，1表示失败
+     */
+    u8 GetAdjData();
+
+    /**
+     * @brief 读取触摸屏坐标
+     * @param x 指向X坐标的指针
+     * @param y 指向Y坐标的指针
+     * @return int 读取结果，1表示有触摸，0表示无触摸
+     */
+    int ReadTouch(uint16_t *x, uint16_t *y);
+
+    /**
+     * @brief 画一个坐标校准点
+     * @param x X坐标
+     * @param y Y坐标
+     * @param color 点的颜色
+     */
+    void DrawTouchPoint(u16 x, u16 y, u16 color);
+
+    /**
+     * @brief 画一个大点
+     * @param x X坐标
+     * @param y Y坐标
+     * @param color 点的颜色
+     */
+    void DrawBigPoint(u16 x, u16 y, u16 color);
+
+    /**
+     * @brief 显示校准信息
+     * @param x0 第一个点的X坐标
+     * @param y0 第一个点的Y坐标
+     * @param x1 第二个点的X坐标
+     * @param y1 第二个点的Y坐标
+     * @param x2 第三个点的X坐标
+     * @param y2 第三个点的Y坐标
+     * @param x3 第四个点的X坐标
+     * @param y3 第四个点的Y坐标
+     * @param fac 校准系数
+     */
+    void ShowAdjInfo(u16 x0, u16 y0, u16 x1, u16 y1, u16 x2, u16 y2, u16 x3, u16 y3, u16 fac);
+
+    /**
+     * @brief 运行触摸屏测试
+     */
+    void Test();
+
+    /**
+     * @brief 获取原始X坐标
+     * @return u16 原始X坐标
+     */
+    u16 GetX0() const { return x0; }
+
+    /**
+     * @brief 获取原始Y坐标
+     * @return u16 原始Y坐标
+     */
+    u16 GetY0() const { return y0; }
+
+    /**
+     * @brief 获取当前X坐标
+     * @return u16 当前X坐标
+     */
+    u16 GetX() const { return x; }
+
+    /**
+     * @brief 获取当前Y坐标
+     * @return u16 当前Y坐标
+     */
+    u16 GetY() const { return y; }
+
+    /**
+     * @brief 获取触摸状态
+     * @return u8 触摸状态
+     */
+    u8 GetStatus() const { return sta; }
+
+private:
+    // 私有构造函数，实现单例模式
+    TouchScreen();
+    ~TouchScreen();
+
+    /**
+     * @brief 向触摸屏控制芯片写入一个字节数据
+     * @param num 要写入的数据
+     */
+    void WriteByte(u8 num);
+
+    /**
+     * @brief 读取AD转换值
+     * @param CMD 命令
+     * @return u16 AD转换值
+     */
+    u16 ReadAD(u8 CMD);
+
+    /**
+     * @brief 带滤波的坐标读取
+     * @param xy 坐标类型：0-X坐标，1-Y坐标
+     * @return u16 读取的坐标值
+     */
+    u16 ReadXOY(u8 xy);
+
+    /**
+     * @brief 双方向读取坐标
+     * @param x 指向X坐标的指针
+     * @param y 指向Y坐标的指针
+     * @return u8 读取结果，0表示有效，1表示无效
+     */
+    u8 ReadXY(u16 *x, u16 *y);
+
+    /**
+     * @brief 带加强滤波的双方向坐标读取
+     * @param x 指向X坐标的指针
+     * @param y 指向Y坐标的指针
+     * @return u8 读取结果，0表示有效，1表示无效
+     */
+    u8 ReadXY2(u16 *x, u16 *y);
+
+    /**
+     * @brief 设置触摸片选信号
+     * @param bit 信号值
+     */
+    void SetTCS(uint8_t bit);
+
+    /**
+     * @brief 读取触摸中断信号
+     * @return uint8_t 中断信号值
+     */
+    uint8_t ReadPEN();
+
+    /**
+     * @brief 设置SPI速度
+     * @param SPI_BaudRatePrescaler SPI波特率预分频值
+     */
+    void SetSPISpeed(uint16_t SPI_BaudRatePrescaler);
+
+    /**
+     * @brief 写入EEPROM
+     * @param WriteAddr 写入地址
+     * @param DataToWrite 要写入的数据
+     * @param Len 长度
+     */
+    void WriteEEPROM(u16 WriteAddr, u32 DataToWrite, u8 Len);
+
+    /**
+     * @brief 读取EEPROM
+     * @param ReadAddr 读取地址
+     * @param Len 长度
+     * @return u32 读取的数据
+     */
+    u32 ReadEEPROM(u16 ReadAddr, u8 Len);
+
+private:
+    u16 x0;       // 原始坐标(第一次按下时的坐标)
     u16 y0;
-    u16 x; // 当前坐标(此次扫描时,触屏的坐标)
+    u16 x;        // 当前坐标(此次扫描时,触屏的坐标)
     u16 y;
-    u8 sta; // 笔的状态
-            // b7:按下1/松开0;
-            // b6:0,没有按键按下;1,有按键按下.
-    ////////////////////////触摸屏校准参数/////////////////////////
+    u8 sta;       // 笔的状态
+                  // b7:按下1/松开0;
+                  // b6:0,没有按键按下;1,有按键按下.
+
+    // 触摸屏校准参数
     float xfac;
     float yfac;
     short xoff;
     short yoff;
-    // 新增的参数,当触摸屏的左右上下完全颠倒时需要用到.
-    // touchtype=0的时候,适合左右为X坐标,上下为Y坐标的TP.
-    // touchtype=1的时候,适合左右为Y坐标,上下为X坐标的TP.
-    u8 touchtype;
-} _m_tp_dev;
+    u8 touchtype; // 触摸类型
+};
 
-extern _m_tp_dev tp_dev; // 触屏控制器在touch.c里面定义
+// 为了兼容旧代码，提供一些全局函数作为TouchScreen类方法的包装
+#ifdef __cplusplus
+extern "C" {
+#endif
+    /**
+     * @brief 初始化触摸屏，C接口包装
+     * @return u8 初始化结果
+     */
+    u8 TP_Init(void);
 
-// 与触摸屏芯片连接引脚
-// 与触摸屏芯片连接引脚
-//  #define PEN  PCin(10)    //PC10  INT
-//  #define TCS  PCout(13)   //PC13 CS
-//  #define DOUT PCin(2)     //PC2  MISO		 PC2--PB14
-//  #define TDIN PCout(3)    //PC3  MOSI		 PC3--PB15
-//  #define TCLK PCout(0)    //PC0  SCLK	     PC0--PB13
+    /**
+     * @brief 扫描触摸屏，C接口包装
+     * @param tp 扫描模式
+     * @return u8 触摸状态
+     */
+    u8 TP_Scan(u8 tp);
 
-void TCS(uint8_t bit);
-uint8_t PEN(void);
-void TPSPI_SpeedToggle(uint16_t SPI_BaudRatePrescaler);
+    /**
+     * @brief 触摸屏校准，C接口包装
+     */
+    void TP_Adjust(void);
 
-void TP_Write_Byte(u8 num);                        // 向控制芯片写入一个数据
-u16 TP_Read_AD(u8 CMD);                            // 读取AD转换值
-u16 TP_Read_XOY(u8 xy);                            // 带滤波的坐标读取(X/Y)
-u8 TP_Read_XY(u16 *x, u16 *y);                     // 双方向读取(X+Y)
-u8 TP_Read_XY2(u16 *x, u16 *y);                    // 带加强滤波的双方向坐标读取
-void TP_Drow_Touch_Point(u16 x, u16 y, u16 color); // 画一个坐标校准点
-void TP_Draw_Big_Point(u16 x, u16 y, u16 color);   // 画一个大点
-u8 TP_Scan(u8 tp);                                 // 扫描
-void TP_Save_Adjdata(void);                        // 保存校准参数
-u8 TP_Get_Adjdata(void);                           // 读取校准参数
-void TP_Adjust(void);                              // 触摸屏校准
-u8 TP_Init(void);                                  // 初始化
+    /**
+     * @brief 保存校准参数，C接口包装
+     */
+    void TP_Save_Adjdata(void);
 
-void TP_test(void);
+    /**
+     * @brief 读取校准参数，C接口包装
+     * @return u8 读取结果
+     */
+    u8 TP_Get_Adjdata(void);
 
-int touch_read(uint16_t *x, uint16_t *y);
+    /**
+     * @brief 读取触摸屏坐标，C接口包装
+     * @param x 指向X坐标的指针
+     * @param y 指向Y坐标的指针
+     * @return int 读取结果
+     */
+    int touch_read(uint16_t *x, uint16_t *y);
 
-void AT24CXX_WriteLenByte(u16 WriteAddr, u32 DataToWrite, u8 Len);
-u32 AT24CXX_ReadLenByte(u16 ReadAddr, u8 Len);
+    /**
+     * @brief 触摸屏测试，C接口包装
+     */
+    void TP_test(void);
 
-void TP_Adj_Info_Show(u16 x0, u16 y0, u16 x1, u16 y1, u16 x2, u16 y2, u16 x3, u16 y3, u16 fac); // 显示校准信息
+    /**
+     * @brief 显示校准信息，C接口包装
+     */
+    void TP_Adj_Info_Show(u16 x0, u16 y0, u16 x1, u16 y1, u16 x2, u16 y2, u16 x3, u16 y3, u16 fac);
 
+    // 低级函数，为兼容旧代码保留
+    void TCS(uint8_t bit);
+    uint8_t PEN(void);
+    void TPSPI_SpeedToggle(uint16_t SPI_BaudRatePrescaler);
+    void TP_Write_Byte(u8 num);
+    u16 TP_Read_AD(u8 CMD);
+    u16 TP_Read_XOY(u8 xy);
+    u8 TP_Read_XY(u16 *x, u16 *y);
+    u8 TP_Read_XY2(u16 *x, u16 *y);
+    void TP_Drow_Touch_Point(u16 x, u16 y, u16 color);
+    void TP_Draw_Big_Point(u16 x, u16 y, u16 color);
+    void AT24CXX_WriteLenByte(u16 WriteAddr, u32 DataToWrite, u8 Len);
+    u32 AT24CXX_ReadLenByte(u16 ReadAddr, u8 Len);
+}
+
+#ifdef __cplusplus
+}
 #endif
