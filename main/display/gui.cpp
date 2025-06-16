@@ -1,4 +1,4 @@
-#include "bsp_gui.h"
+#include "gui.h"
 #include "lcd_display.h"
 
 // 构造函数
