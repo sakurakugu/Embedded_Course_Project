@@ -1,4 +1,4 @@
-#include "bsp_GeneralTim.h"
+#include "general_tim.h"
 
 static void GENERAL_TIM_GPIO_Config(void) {
     GPIO_InitTypeDef GPIO_InitStructure;
@@ -84,7 +84,7 @@ static void GENERAL_TIM_Mode_Config(void) {
     TIM_OCInitTypeDef TIM_OCInitStructure;
     // 配置为PWM模式1
     TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
-    // 输出使能
+    // 输出开启
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
     // 输出通道电平极性配置
     TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
@@ -111,7 +111,7 @@ static void GENERAL_TIM_Mode_Config(void) {
 
     // 允许在定时器工作时向ARR缓冲器写入新值，并在更新事件发生时将新值载入当前寄存器
     TIM_ARRPreloadConfig(GENERAL_TIM, ENABLE);
-    // 使能计数器
+    // 开启计数器
     TIM_Cmd(GENERAL_TIM, ENABLE);
 }
 
@@ -141,7 +141,7 @@ void DCMotor_Dir_Config(uint8_t Dir) {
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(GENERAL_TIM_CH2_PORT, &GPIO_InitStructure);
-        TIM_CCxCmd(TIM4, TIM_Channel_2, TIM_CCx_Enable); // 使能通道2输出
+        TIM_CCxCmd(TIM4, TIM_Channel_2, TIM_CCx_Enable); // 开启通道2输出
         // 输出比较通道2 GPIO 初始化
     } else {
         TIM_CCxCmd(TIM4, TIM_Channel_2, TIM_CCx_Disable); // 禁用通道2输出
@@ -158,7 +158,7 @@ void DCMotor_Dir_Config(uint8_t Dir) {
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(GENERAL_TIM_CH3_PORT, &GPIO_InitStructure);
-        TIM_CCxCmd(TIM4, TIM_Channel_3, TIM_CCx_Enable); // 使能通道3输出
+        TIM_CCxCmd(TIM4, TIM_Channel_3, TIM_CCx_Enable); // 开启通道3输出
     }
 }
 

@@ -18,6 +18,8 @@ TouchScreen::TouchScreen() {
     CMD_RDY = 0X90;
     display = Board::GetInstance().GetLcdDisplay(); // 获取LCD显示实例
     gui = Board::GetInstance().GetGui();            // 获取GUI实例
+    eeprom = &EEPROM::GetInstance();                // 获取EEPROM实例
+    spi_bus = &SPIBus::GetInstance();              // 获取SPI总线实例
     Init();                                         // 调用初始化函数
 }
 
@@ -28,12 +30,12 @@ TouchScreen::~TouchScreen() {
 
 // 初始化触摸屏
 u8 TouchScreen::Init() {
-    // 注意,时钟使能之后,对GPIO的操作才有效
-    // 所以上拉之前,必须使能时钟.才能实现真正的上拉输出
+    // 注意,时钟开启之后,对GPIO的操作才有效
+    // 所以上拉之前,必须开启时钟.才能实现真正的上拉输出
     GPIO_InitTypeDef GPIO_InitStructure; // GPIO
 
-    // 注意,时钟使能之后,对GPIO的操作才有效
-    // 所以上拉之前,必须使能时钟.才能实现真正的上拉输出
+    // 注意,时钟开启之后,对GPIO的操作才有效
+    // 所以上拉之前,必须开启时钟.才能实现真正的上拉输出
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOE, ENABLE);
 
     // GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3|GPIO_Pin_0|GPIO_Pin_13;
@@ -285,23 +287,23 @@ void TouchScreen::SaveAdjData() {
     u8 flag;
     // 保存校正结果!
     temp = xfac * 100000000; // 保存x校正因素
-    AT24CXX_WriteLenByte(SAVE_ADDR_BASE, temp, 4);
-    // ee_WriteBytes((u8 *)&temp,SAVE_ADDR_BASE,4);
+    eeprom->WriteLenByte(SAVE_ADDR_BASE, temp, 4);
+    // eeprom->WriteBytes((u8 *)&temp,SAVE_ADDR_BASE,4);
     temp = yfac * 100000000; // 保存y校正因素
-    AT24CXX_WriteLenByte(SAVE_ADDR_BASE + 4, temp, 4);
-    // ee_WriteBytes((uint8_t *)&temp,SAVE_ADDR_BASE+4,4);
+    eeprom->WriteLenByte(SAVE_ADDR_BASE + 4, temp, 4);
+    // eeprom->WriteBytes((uint8_t *)&temp,SAVE_ADDR_BASE+4,4);
     // 保存x偏移量
-    AT24CXX_WriteLenByte(SAVE_ADDR_BASE + 8, xoff, 2);
-    // ee_WriteBytes((uint8_t *)&xoff,SAVE_ADDR_BASE+8,2);
+    eeprom->WriteLenByte(SAVE_ADDR_BASE + 8, xoff, 2);
+    // eeprom->WriteBytes((uint8_t *)&xoff,SAVE_ADDR_BASE+8,2);
     // 保存y偏移量
-    AT24CXX_WriteLenByte(SAVE_ADDR_BASE + 10, yoff, 2);
-    // ee_WriteBytes((uint8_t *)&yoff,SAVE_ADDR_BASE+10,2);
+    eeprom->WriteLenByte(SAVE_ADDR_BASE + 10, yoff, 2);
+    // eeprom->WriteBytes((uint8_t *)&yoff,SAVE_ADDR_BASE+10,2);
     // 保存触屏类型
     // AT24CXX_WriteOneByte(SAVE_ADDR_BASE+12,touchtype);
-    ee_WriteBytes(&touchtype, SAVE_ADDR_BASE + 12, 1);
+    eeprom->WriteBytes(&touchtype, SAVE_ADDR_BASE + 12, 1);
     flag = 0X0A; // 标记校准过了
     // AT24CXX_WriteOneByte(SAVE_ADDR_BASE+13,temp);
-    ee_WriteBytes(&flag, SAVE_ADDR_BASE + 13, 1);
+    eeprom->WriteBytes(&flag, SAVE_ADDR_BASE + 13, 1);
 }
 
 /**
@@ -312,23 +314,23 @@ u8 TouchScreen::GetAdjData() {
     s32 tempfac;
     u8 flag;
     // tempfac=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+13);//读取标记字,看是否校准过！
-    ee_ReadBytes(&flag, SAVE_ADDR_BASE + 13, 1);
+    eeprom->ReadBytes(&flag, SAVE_ADDR_BASE + 13, 1);
     if (flag == 0X0A) // 触摸屏已经校准过了
     {
-        tempfac = AT24CXX_ReadLenByte(SAVE_ADDR_BASE, 4);
-        // ee_ReadBytes((uint8_t *)&tempfac, SAVE_ADDR_BASE, 4);
+        tempfac = eeprom->ReadLenByte(SAVE_ADDR_BASE, 4);
+        // eeprom->ReadBytes((uint8_t *)&tempfac, SAVE_ADDR_BASE, 4);
         xfac = (float)tempfac / 100000000; // 得到x校准参数
-        tempfac = AT24CXX_ReadLenByte(SAVE_ADDR_BASE + 4, 4);
-        // ee_ReadBytes((uint8_t *)&tempfac, SAVE_ADDR_BASE+4, 4);
+        tempfac = eeprom->ReadLenByte(SAVE_ADDR_BASE + 4, 4);
+        // eeprom->ReadBytes((uint8_t *)&tempfac, SAVE_ADDR_BASE+4, 4);
         yfac = (float)tempfac / 100000000; // 得到y校准参数
         // 得到x偏移量
-        xoff = AT24CXX_ReadLenByte(SAVE_ADDR_BASE + 8, 2);
-        // ee_ReadBytes((uint8_t *)&xoff, SAVE_ADDR_BASE+8, 2);
+        xoff = eeprom->ReadLenByte(SAVE_ADDR_BASE + 8, 2);
+        // eeprom->ReadBytes((uint8_t *)&xoff, SAVE_ADDR_BASE+8, 2);
         // 得到y偏移量
-        yoff = AT24CXX_ReadLenByte(SAVE_ADDR_BASE + 10, 2);
-        // ee_ReadBytes((uint8_t *)&yoff, SAVE_ADDR_BASE+10, 2);
+        yoff = eeprom->ReadLenByte(SAVE_ADDR_BASE + 10, 2);
+        // eeprom->ReadBytes((uint8_t *)&yoff, SAVE_ADDR_BASE+10, 2);
         // touchtype=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+12);//读取触屏类型标记
-        ee_ReadBytes(&touchtype, SAVE_ADDR_BASE + 12, 1);
+        eeprom->ReadBytes(&touchtype, SAVE_ADDR_BASE + 12, 1);
         if (touchtype) // X,Y方向与屏幕相反
         {
             CMD_RDX = 0X90;
@@ -447,7 +449,7 @@ void TouchScreen::WriteByte(u8 num) {
     // 	TCLK=0;
     // 	TCLK=1;		//上升沿有效
     // }
-    bsp_spiWrite0(num);
+    spi_bus->Write0(num);
 }
 
 /**
@@ -475,9 +477,9 @@ u16 TouchScreen::ReadAD(u8 CMD) {
     // 	TCLK=1;
     // 	if(DOUT)Num++;
     // }
-    Num = (uint16_t)bsp_spiRead1();
+    Num = (uint16_t)spi_bus->Read1();
     Num <<= 8;
-    Num |= (uint16_t)bsp_spiRead1();
+    Num |= (uint16_t)spi_bus->Read1();
     Num >>= 4; // 只有高12位有效.
     SetTCS(1); // 释放片选
     return (Num);
@@ -568,12 +570,12 @@ uint8_t TouchScreen::ReadPEN() {
 
 // 设置SPI速度
 void TouchScreen::SetSPISpeed(uint16_t SPI_BaudRatePrescaler) {
-    bsp_SPI_Init(SPI_Direction_2Lines_FullDuplex | SPI_Mode_Master | SPI_DataSize_8b | SPI_CPOL_Low | SPI_CPHA_1Edge |
+    spi_bus->Configure(SPI_Direction_2Lines_FullDuplex | SPI_Mode_Master | SPI_DataSize_8b | SPI_CPOL_Low | SPI_CPHA_1Edge |
                  SPI_NSS_Soft | SPI_BaudRatePrescaler | SPI_FirstBit_MSB);
     SPI_HARD->I2SCFGR &= SPI_Mode_Select; /* 选择SPI模式，不是I2S模式 */
     SPI_HARD->CRCPR = 7;                  /* 一般不用 */
     SPI_Cmd(SPI_HARD, DISABLE);           /* 先禁止SPI  */
-    SPI_Cmd(SPI_HARD, ENABLE);            /* 使能SPI  */
+    SPI_Cmd(SPI_HARD, ENABLE);            /* 开启SPI  */
 }
 
 /**
@@ -587,7 +589,7 @@ void TouchScreen::WriteEEPROM(u16 WriteAddr, u32 DataToWrite, u8 Len) {
     for (t = 0; t < Len; t++) {
         // AT24CXX_WriteOneByte(WriteAddr+t,(DataToWrite>>(8*t))&0xff);
         data = DataToWrite >> (8 * t);
-        ee_WriteBytes(&data, WriteAddr + t, 1);
+        eeprom->WriteBytes(&data, WriteAddr + t, 1);
     }
 }
 
@@ -601,7 +603,7 @@ u32 TouchScreen::ReadEEPROM(u16 ReadAddr, u8 Len) {
     u8 t, data;
     u32 temp = 0;
     for (t = 0; t < Len; t++) {
-        ee_ReadBytes(&data, ReadAddr + Len - t - 1, 1);
+        eeprom->ReadBytes(&data, ReadAddr + Len - t - 1, 1);
         temp <<= 8;
         temp += data;
     }

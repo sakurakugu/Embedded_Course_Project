@@ -106,6 +106,16 @@ void GpioLed::SetLedColor(uint32_t color) {
     SetLed3((color & 0x0000FF) != 0);
 }
 
+void SetRGBColor(uint32_t rgb) {
+    // 根据颜色值修改定时器的比较寄存器值
+    TIM_SetCompare1(TIM8, (uint8_t)rgb);
+    TIM_SetCompare2(TIM8, (uint8_t)(rgb >> 16));
+    TIM_SetCompare3(TIM8, (uint8_t)(rgb >> 8));
+    // COLOR_TIMx->COLOR_RED_CCRx = (uint8_t)(rgb>>16);      //R
+    // COLOR_TIMx->COLOR_GREEN_CCRx = (uint8_t)(rgb>>8);     //G
+    // COLOR_TIMx->COLOR_BLUE_CCRx = (uint8_t)rgb;           //B
+}
+
 void GpioLed::OnStateChanged() {
     // 根据设备状态设置LED状态
     // if (getDeviceState() == DeviceState::ON) {

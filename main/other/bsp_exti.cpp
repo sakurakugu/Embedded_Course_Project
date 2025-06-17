@@ -35,7 +35,7 @@ static void NVIC_Configuration(void) {
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
     /* 配置子优先级 */
     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
-    /* 使能中断通道 */
+    /* 开启中断通道 */
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 
@@ -75,7 +75,7 @@ void EXTI_Key_Config(void) {
     EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
     /* 上升沿中断 */
     EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising; // EXTI_Trigger_Rising
-    /* 使能中断 */
+    /* 开启中断 */
     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
     EXTI_Init(&EXTI_InitStructure);
 
@@ -94,7 +94,7 @@ void EXTI_Key_Config(void) {
     EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
     /* 下降沿中断 */
     EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
-    /* 使能中断 */
+    /* 开启中断 */
     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
     EXTI_Init(&EXTI_InitStructure);
 }

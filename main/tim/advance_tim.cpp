@@ -1,5 +1,5 @@
 
-#include "bsp_AdvanceTim.h"
+#include "advance_tim.h"
 
 static void ADVANCE_TIM_GPIO_Config(void) {
     GPIO_InitTypeDef GPIO_InitStructure;
@@ -72,7 +72,7 @@ static void ADVANCE_TIM_Mode_Config(void) {
     TIM_OCInitTypeDef TIM_OCInitStructure;
     // 配置为PWM模式1
     TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
-    // 输出使能
+    // 输出开启
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
     // 互补输出禁用
     TIM_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Disable;
@@ -111,9 +111,9 @@ static void ADVANCE_TIM_Mode_Config(void) {
     //  TIM_BDTRConfig(ADVANCE_TIM, &TIM_BDTRInitStructure);
     // 允许在定时器工作时向ARR缓冲器写入新值，并在更新事件发生时将新值载入当前寄存器
     TIM_ARRPreloadConfig(ADVANCE_TIM, ENABLE);
-    // 使能计数器
+    // 开启计数器
     TIM_Cmd(ADVANCE_TIM, ENABLE);
-    // 主输出使能，当使用的是通用定时器时，这句不需要
+    // 主输出开启，当使用的是通用定时器时，这句不需要
     TIM_CtrlPWMOutputs(ADVANCE_TIM, ENABLE);
 }
 

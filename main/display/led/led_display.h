@@ -1,6 +1,6 @@
 #pragma once
 
-#include "bsp_spi_bus.h"
+#include "spi_bus.h"
 #include "config.h"
 #include "display.h"
 #include "led_font.h"
@@ -14,6 +14,7 @@ class LedDisplay : public Display {
     const uint8_t (*zdhz)[32]; // 汉字点阵数据
     int dzIndex;               // 点阵索引
     int segIndex;              // 段码索引
+    SPIBus &spi_bus_;          // 声明SPI总线
 
     inline void hc595Send(uint8_t data); // 向HC595七位数码管发送数据
     inline void SEG595_Enable();         // 开启数码管
@@ -23,6 +24,7 @@ class LedDisplay : public Display {
     inline void DZ595_Disable();         // 禁用点阵
     inline void DZ_ST_CLK();             // 点阵时钟脉冲
     inline void DISP_Enable();           // 开启显示
+
   public:
     LedDisplay();                     // 构造函数
     ~LedDisplay() override = default; // 析构函数

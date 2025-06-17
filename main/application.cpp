@@ -28,6 +28,8 @@ void Application::MainEventLoop() {
     auto touch_screen = board.GetTouchScreen(); // 获取触摸屏实例
     auto key = board.GetKey();                  // 获取按键实例
     auto led_display = board.GetLedDisplay(); // 获取LED显示屏实例
+    auto& lm75 = LM75::GetInstance(); // 获取LM75实例
+    auto& eeprom = EEPROM::GetInstance(); // 获取EEPROM实例
 
     printf("OLED测试例程\r\n");		//lm75A软件模拟i2c测试例程
 	oled_display->ShowCHStr(0,0,(u8 *)"我们");
@@ -68,7 +70,7 @@ void Application::MainEventLoop() {
             if (KeyNum == 3) {
                 led->ToggleLed2();
                 // JQ8x00_Command_Data(AppointTrack,2);
-                temprature = LM75_readTemp();
+                temprature = lm75.ReadTemp();
                 // temprature = -10.6;
                 printf("当前温度是 %.3f 度\r\n", temprature);
                 DCMotor_Dir_Config(0);
@@ -76,15 +78,15 @@ void Application::MainEventLoop() {
             if (KeyNum == 4) {
                 led->ToggleLed2();
                 // JQ8x00_Command_Data(SetVolume, 30);
-                ee_Test(); // EEPROM测试
+                eeprom.Test(); // EEPROM测试
             }
         }
         if (bsp_RunPer1s == 1) {
             bsp_RunPer1s = 0;
 
-            adcValue = getAdc(RV_ADC_CHANNEL);
+            adcValue = ADC::GetInstance().GetValue(RV_ADC_CHANNEL);
             // printf("RV_ADC值是 %d\r\n", adcValue);
-            adcValue = getAdc(NTC_ADC_CHANNEL);
+            adcValue = ADC::GetInstance().GetValue(NTC_ADC_CHANNEL);
 
             // printf("NTC_ADC值是 %d\r\n", adcValue);
             Rt = adcValue * 10000UL / (4095 - adcValue);

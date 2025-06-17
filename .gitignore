@@ -31,4 +31,4 @@ build/
 *.tmp
 *.temp
 
-系统定时器.BAT
+STM32菜单.BAT

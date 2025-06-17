@@ -2,7 +2,7 @@
 
 #include "stm32f10x.h"
 #include "display.h"
-#include "bsp_spi_bus.h"
+#include "spi_bus.h"
 #include "bsp_SysTick.h"
 
 // 定义颜色
@@ -93,6 +93,9 @@ class LcdDisplay : public Display {
     lcd_dev_ lcddev; // 管理LCD重要参数，默认为竖屏
     u16 POINT_COLOR; // 默认红色
     u16 BACK_COLOR;  // 背景颜色，默认为白色
+
+  private:
+    SPIBus &spi_bus_; // 声明SPI总线
 };
 
 class NoLcdDisplay : public LcdDisplay {

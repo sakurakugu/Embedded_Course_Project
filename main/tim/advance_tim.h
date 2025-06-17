@@ -19,27 +19,22 @@
 
 #define            ADVANCE_TIM_IRQ               TIM1_UP_IRQn
 #define            ADVANCE_TIM_IRQHandler        TIM1_UP_IRQHandler
-
 // TIM1 输出比较通道
 #define            ADVANCE_TIM_CH1_GPIO_CLK      RCC_APB2Periph_GPIOC
 #define            ADVANCE_TIM_CH1_PORT          GPIOC
 #define            ADVANCE_TIM_CH1_PIN           GPIO_Pin_6
-
 // TIM1 输出比较通道
 #define            ADVANCE_TIM_CH2_GPIO_CLK      RCC_APB2Periph_GPIOC
 #define            ADVANCE_TIM_CH2_PORT          GPIOC
 #define            ADVANCE_TIM_CH2_PIN           GPIO_Pin_7
-
 // TIM1 输出比较通道
 #define            ADVANCE_TIM_CH3_GPIO_CLK      RCC_APB2Periph_GPIOC
 #define            ADVANCE_TIM_CH3_PORT          GPIOC
 #define            ADVANCE_TIM_CH3_PIN           GPIO_Pin_8
-
 // TIM1 输出比较通道的互补通道
 //#define            ADVANCE_TIM_CH1N_GPIO_CLK      RCC_APB2Periph_GPIOB
 //#define            ADVANCE_TIM_CH1N_PORT          GPIOB
 //#define            ADVANCE_TIM_CH1N_PIN           GPIO_Pin_13
-
 // TIM1 输出比较通道的刹车通道
 //#define            ADVANCE_TIM_BKIN_GPIO_CLK      RCC_APB2Periph_GPIOB
 //#define            ADVANCE_TIM_BKIN_PORT          GPIOB

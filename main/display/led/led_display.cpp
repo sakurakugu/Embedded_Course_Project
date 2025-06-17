@@ -1,7 +1,7 @@
 #include "led_display.h"
 
 // 构造函数
-LedDisplay::LedDisplay() {
+LedDisplay::LedDisplay() : spi_bus_(SPIBus::GetInstance()) {
     sesg7Code = ::seg7Code;
     Disp_data = ::Disp_data;
     zdhz = ::zdhz;
@@ -28,7 +28,7 @@ void LedDisplay::FlashSegment(void) {
 }
 
 void LedDisplay::hc595Send(uint8_t data) {
-    bsp_spiWrite0(data);
+    spi_bus_.Write0(data);
 }
 
 // 选择段（数码管位置或点阵行）

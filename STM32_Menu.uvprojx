@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>系统定时器</TargetName>
+      <TargetName>STM32菜单</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>6230000::V6.23::ARMCLANG</pCCUsed>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\lib\CMSIS;.\lib\FWlib\inc;.\main;.\main\display;.\main\display\lcd;.\main\display\led;.\main\display\oled;.\main\key;.\main\led;.\main\spi;.\main\boards;.\main\boards\common;.\main\boards\school-STM32F103VCT6</IncludePath>
+              <IncludePath>.\lib\CMSIS;.\lib\FWlib\inc;.\main;.\main\adc;.\main\audio;.\main\display;.\main\display\lcd;.\main\display\led;.\main\display\oled;.\main\i2c;.\main\key;.\main\led;.\main\other;.\main\spi;.\main\tim;.\main\usart;.\main\util;.\main\boards;.\main\boards\common;.\main\boards\school-STM32F103VCT6</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -520,74 +520,29 @@
               <FilePath>.\main\application.cpp</FilePath>
             </File>
             <File>
-              <FileName>bsp_adc.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_adc.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_AdvanceTim.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_AdvanceTim.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_ESPxx.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_ESPxx.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_exti.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_exti.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_GeneralTim.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_GeneralTim.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_ee.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_i2c_ee.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_gpio.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_i2c_gpio.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_lm75.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_i2c_lm75.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_JQ8900.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_JQ8900.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_SysTick.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_SysTick.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_tlink.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_tlink.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_usart.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main\bsp_usart.cpp</FilePath>
-            </File>
-            <File>
               <FileName>main.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\main\main.cpp</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>main/adc</GroupName>
+          <Files>
             <File>
-              <FileName>stm32f10x_it.cpp</FileName>
+              <FileName>adc.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\main\stm32f10x_it.cpp</FilePath>
+              <FilePath>.\main\adc\adc.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>main/audio</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_JQ8900.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\audio\bsp_JQ8900.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -642,6 +597,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>main/i2c</GroupName>
+          <Files>
+            <File>
+              <FileName>eeprom.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\i2c\eeprom.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>i2c_bus.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\i2c\i2c_bus.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>lm75.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\i2c\lm75.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>main/key</GroupName>
           <Files>
             <File>
@@ -662,12 +637,82 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>main/other</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_exti.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\other\bsp_exti.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_SysTick.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\other\bsp_SysTick.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_tlink.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\other\bsp_tlink.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_it.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\other\stm32f10x_it.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\main\other\stm32f10x_conf.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>main/spi</GroupName>
           <Files>
             <File>
-              <FileName>bsp_spi_bus.cpp</FileName>
+              <FileName>spi_bus.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\main\spi\bsp_spi_bus.cpp</FilePath>
+              <FilePath>.\main\spi\spi_bus.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>main/tim</GroupName>
+          <Files>
+            <File>
+              <FileName>advance_tim.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\tim\advance_tim.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>general_tim.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\tim\general_tim.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>main/usart</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_ESPxx.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\usart\bsp_ESPxx.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_usart.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\usart\bsp_usart.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>main/util</GroupName>
+          <Files>
+            <File>
+              <FileName>util.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main\util\util.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -714,19 +759,19 @@
       <api Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDERR" condition="CortexDevice" exclusive="1">
         <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </api>
       <api Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDIN" condition="CortexDevice" exclusive="1">
         <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </api>
       <api Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDOUT" condition="CortexDevice" exclusive="1">
         <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </api>
     </apis>
@@ -734,37 +779,37 @@
       <component Cclass="CMSIS-Compiler" Cgroup="CORE" Cvendor="ARM" Cversion="1.1.0" condition="ARMCC CortexDevice">
         <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </component>
       <component Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDERR" Csub="ITM" Cvendor="ARM" Cversion="1.1.0" condition="CORE ITM">
         <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </component>
       <component Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDIN" Csub="ITM" Cvendor="ARM" Cversion="1.1.0" condition="CORE ITM">
         <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </component>
       <component Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="STDOUT" Csub="ITM" Cvendor="ARM" Cversion="1.1.0" condition="CORE ITM">
         <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </component>
       <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="6.1.0" condition="ARMv6_7_8-M Device">
         <package name="CMSIS" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="6.1.0"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </component>
       <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS">
         <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="https://www.keil.com/pack/" vendor="Keil" version="2.4.1"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </component>
     </components>
@@ -774,7 +819,7 @@
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
         <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="https://www.keil.com/pack/" vendor="Keil" version="2.4.1"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </file>
       <file attr="config" category="source" condition="STM32F1xx HD ARMCC" name="Device\Source\ARM\startup_stm32f10x_hd.s" version="1.0.1">
@@ -782,7 +827,7 @@
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
         <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="https://www.keil.com/pack/" vendor="Keil" version="2.4.1"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </file>
       <file attr="config" category="source" name="Device\StdPeriph_Driver\templates\stm32f10x_conf.h" version="3.6.0">
@@ -796,7 +841,7 @@
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
         <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="https://www.keil.com/pack/" vendor="Keil" version="2.4.1"/>
         <targetInfos>
-          <targetInfo name="系统定时器"/>
+          <targetInfo name="STM32菜单"/>
         </targetInfos>
       </file>
     </files>

@@ -42,7 +42,7 @@ void JQ8900_Config(void) {
     // 完成串口的初始化配置
     USART_Init(JQ8900_USARTx, &USART_InitStructure);
 
-    // 使能串口
+    // 开启串口
     USART_Cmd(JQ8900_USARTx, ENABLE);
 
     // 清除发送完成标志

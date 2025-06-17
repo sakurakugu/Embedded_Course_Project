@@ -1,6 +1,6 @@
 #include "lcd_display.h"
 
-LcdDisplay::LcdDisplay() {
+LcdDisplay::LcdDisplay() : spi_bus_(SPIBus::GetInstance()) {
     POINT_COLOR = RED;  // 默认红色
     BACK_COLOR = WHITE; // 默认背景白色
     Init();             // 初始化LCD显示
@@ -134,7 +134,7 @@ void LcdDisplay::WR_DATA(u8 data) {
     LCD_DC_SET();
     // DISABLE_INT();
     LCD_CS_CLR();
-    bsp_spiWrite0(data);
+    spi_bus_.Write0(data);
     LCD_CS_SET();
     // ENABLE_INT();
 }
@@ -147,7 +147,7 @@ void LcdDisplay::WR_REG(u8 data) {
     LCD_DC_CLR();
     // DISABLE_INT();
     LCD_CS_CLR();
-    bsp_spiWrite0(data);
+    spi_bus_.Write0(data);
     LCD_CS_SET();
     // ENABLE_INT();
 }
@@ -247,9 +247,9 @@ void LcdDisplay::Clear(u16 Color) {
     LCD_DC_SET();
     for (i = 0; i < lcddev.height; i++) {
         for (m = 0; m < lcddev.width; m++) {
-            bsp_spiWrite0((Color >> 8) & 0xF8);
-            bsp_spiWrite0((Color >> 3) & 0xFC);
-            bsp_spiWrite0(Color << 3);
+            spi_bus_.Write0((Color >> 8) & 0xF8);
+            spi_bus_.Write0((Color >> 3) & 0xFC);
+            spi_bus_.Write0(Color << 3);
         }
     }
     LCD_CS_SET();
@@ -303,8 +303,8 @@ void LcdDisplay::WriteData_16Bit(u16 Data) {
     // WR_DATA(Data<<3);//BLUE												左移3位将低5位蓝色移到高位
     LCD_DC_SET();
     LCD_CS_CLR();
-    bsp_spiWrite0((Data >> 8) & 0xF8);
-    bsp_spiWrite0((Data >> 3) & 0xFC);
-    bsp_spiWrite0(Data << 3);
+    spi_bus_.Write0((Data >> 8) & 0xF8);
+    spi_bus_.Write0((Data >> 3) & 0xFC);
+    spi_bus_.Write0(Data << 3);
     LCD_CS_SET();
 }

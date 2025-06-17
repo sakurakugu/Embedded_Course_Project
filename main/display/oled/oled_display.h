@@ -1,11 +1,10 @@
 #pragma once
 
-#include <stm32f10x_gpio.h>
-#include <stm32f10x_rcc.h>
+#include "stm32f10x.h"
 #include "oled_font.h"
 #include "display.h"
 #include "bsp_SysTick.h"
-#include "bsp_spi_bus.h"
+#include "spi_bus.h"
 
 // 前向声明
 class Board;
@@ -20,17 +19,17 @@ class Board;
 // 1:并行8080模式
 
 // OLED尺寸常量
-#define SIZE        16
-#define XLevelL     0x02
-#define XLevelH     0x10
-#define Max_Column  128
-#define Max_Row     64
-#define Brightness  0xFF 
-#define X_WIDTH     128
-#define Y_WIDTH     64     
-#define OLED_W      X_WIDTH
-#define OLED_H      Y_WIDTH        
-#define GRAM_H      OLED_H/8
+#define OLED_SIZE        16
+#define OLED_XLevelL     0x02
+#define OLED_XLevelH     0x10
+#define OLED_Max_Column  128
+#define OLED_Max_Row     64
+#define OLED_Brightness  0xFF 
+#define OLED_X_WIDTH     128
+#define OLED_Y_WIDTH     64     
+#define OLED_W      OLED_X_WIDTH
+#define OLED_H      OLED_Y_WIDTH        
+#define OLED_GRAM_H      OLED_H/8
 
 #define OLED_DC_SET() GPIO_WriteBit(GPIOB, GPIO_Pin_2, Bit_SET)
 #define OLED_DC_CLR() GPIO_WriteBit(GPIOB, GPIO_Pin_2, Bit_RESET)
@@ -61,6 +60,9 @@ class OledDisplay : public Display {
     void SetPos(uint8_t x, uint8_t y);
     void ShowCHStr(uint8_t X, uint8_t Y, uint8_t *pstr);
     void DrawBMP(uint8_t X, uint8_t Y, uint8_t Pix_x, uint8_t Pix_y, const uint8_t *BMP);
+
+  private:
+    SPIBus &spi_bus_; // 声明SPI总线
 };
 
 class NoOledDisplay : public OledDisplay {

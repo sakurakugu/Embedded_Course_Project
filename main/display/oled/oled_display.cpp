@@ -1,6 +1,6 @@
 #include "oled_display.h"
 
-OledDisplay::OledDisplay() {
+OledDisplay::OledDisplay() : spi_bus_(SPIBus::GetInstance()) {
     // 初始化OLED显示屏
     Init();
 }
@@ -108,11 +108,11 @@ void OledDisplay::ShowChar(uint8_t x, uint8_t y, uint8_t ch) {
     uint8_t c = 0, i = 0;
     c = ch - ' '; // 得到偏移后的值
     // 如果设定的X值大于127时，在下一行显示这个字符
-    if (x > Max_Column - 1) {
+    if (x > OLED_Max_Column - 1) {
         x = 0;
         y = y + 2;
     }
-    if (SIZE == 16) // 8*16字模
+    if (OLED_SIZE == 16) // 8*16字模
     {
         SetPos(x, y);
         for (i = 0; i < 8; i++)
@@ -138,7 +138,7 @@ void OledDisplay::WriteByte(u8 dat, u8 cmd) {
     }
     OLED_CS_CLR();
     // DISABLE_INT();
-    bsp_spiWrite0(dat);
+    spi_bus_.Write0(dat);
     OLED_CS_SET();
     // ENABLE_INT();
     OLED_DC_SET();

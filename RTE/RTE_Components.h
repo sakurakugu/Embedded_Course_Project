@@ -4,7 +4,7 @@
  *      *** Do not modify ! ***
  *
  * Project: 'STM32_Menu' 
- * Target:  '����' 
+ * Target:  'STM32菜单' 
  */
 
 #ifndef RTE_COMPONENTS_H

@@ -1,9 +1,9 @@
 #include "board.h"
-#include "bsp_AdvanceTim.h"
-#include "bsp_GeneralTim.h"
+#include "advance_tim.h"
+#include "general_tim.h"
 #include "bsp_SysTick.h"
-#include "bsp_adc.h"
-#include "bsp_spi_bus.h"
+#include "adc.h"
+#include "spi_bus.h"
 #include "config.h"
 #include "gpio_key.h"
 #include "gpio_led.h"
@@ -16,9 +16,7 @@
 #include "bsp_JQ8900.h"
 #include "bsp_ESPxx.h"
 #include "bsp_tlink.h"
-#include "bsp_i2c_gpio.h"
-#include "bsp_i2c_ee.h"
-#include "bsp_i2c_lm75.h"
+#include "eeprom.h"
 
 class SchoolSTM32F103VCT6 : public Board {
   private:
@@ -29,6 +27,7 @@ class SchoolSTM32F103VCT6 : public Board {
     TouchScreen *touch_;        // 声明触摸屏
     LedDisplay *led_display_;   // 声明LED显示屏
     Gui *gui_;                  // 声明GUI对象
+    SPIBus *spi_bus_;           // 声明SPI总线
   public:
     SchoolSTM32F103VCT6() {
         InitLed();
@@ -45,9 +44,9 @@ class SchoolSTM32F103VCT6 : public Board {
         printf("USART_Config\r\n");
         JQ8900setup();
         ESP_Config();
-        ee_CheckOk();
+        InitEEPROM();
         InitTouchScreen(); // 初始化触摸屏
-        ADCx_Init();
+        ADC::GetInstance().Init();
         GENERAL_TIM_Init();
         ADVANCE_TIM_Init();
     }
@@ -83,34 +82,18 @@ class SchoolSTM32F103VCT6 : public Board {
     }
 
   private:
-    void InitSpiBus() {
-        bsp_InitSPIBus();
-    }
-
-    void InitLedDisplay() {
-        led_display_ = new LedDisplay();
-    }
-
-    void InitLcdDisplay() {
-        lcd_display_ = new LcdDisplay();
-    }
-
+    void InitSpiBus() {spi_bus_ = &SPIBus::GetInstance();}
+    void InitLedDisplay() {led_display_ = new LedDisplay();}
+    void InitLcdDisplay() {lcd_display_ = new LcdDisplay();}
     void InitTouchScreen() {
         gui_ = new Gui();
         touch_ = &TouchScreen::GetInstance();
     }
 
-    void InitLed() {
-        led_ = new GpioLed();
-    }
-
-    void InitKey() {
-        key_ = new GpioKey();
-    }
-
-    void InitOledDisplay() {
-        oled_display_ = new OledDisplay();
-    }
+    void InitLed() {led_ = new GpioLed();}
+    void InitKey() {key_ = new GpioKey();}
+    void InitOledDisplay() {oled_display_ = new OledDisplay();}
+    void InitEEPROM() {EEPROM::GetInstance().CheckOk();}
 };
 
 DECLARE_BOARD(SchoolSTM32F103VCT6);

@@ -40,7 +40,7 @@ void Delay_us(__IO u32 nTime)
 { 
 	TimingDelay = nTime;	
 
-	// 使能滴答定时器  
+	// 开启滴答定时器  
 	SysTick->CTRL |=  SysTick_CTRL_ENABLE_Msk;
 
 	while(TimingDelay != 0);
@@ -77,8 +77,8 @@ static __INLINE uint32_t SysTick_Config(uint32_t ticks)
   SysTick->VAL   = 0;
 	
 	// 配置systick 的时钟为 72M
-	// 使能中断
-	// 使能systick
+	// 开启中断
+	// 开启systick
   SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk | 
                    SysTick_CTRL_TICKINT_Msk   | 
                    SysTick_CTRL_ENABLE_Msk;                    

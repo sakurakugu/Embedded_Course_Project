@@ -55,16 +55,12 @@
  */
 #pragma once
 #include "board.h"
-#include "bsp_i2c_ee.h"
+#include "eeprom.h"
 #include "oled_display.h"
 
 // 前向声明
 class LcdDisplay;
 class Gui;
-
-// AT24CXX函数声明
-void AT24CXX_WriteLenByte(u16 WriteAddr, u32 DataToWrite, u8 Len);
-u32 AT24CXX_ReadLenByte(u16 ReadAddr, u8 Len);
 
 #define SPI_Mode_Select ((uint16_t)0xF7FF)
 #define SPI_HARD SPI1
@@ -130,8 +126,8 @@ class TouchScreen {
     void SetTCS(uint8_t bit);
     uint8_t ReadPEN();
     void SetSPISpeed(uint16_t SPI_BaudRatePrescaler);
-    void WriteEEPROM(u16 WriteAddr, u32 DataToWrite, u8 Len);
-    u32 ReadEEPROM(u16 ReadAddr, u8 Len);
+    void WriteEEPROM(uint16_t WriteAddr, uint32_t DataToWrite, uint8_t Len);
+    uint32_t ReadEEPROM(uint16_t ReadAddr, uint8_t Len);
 
   private:
     u16 x0; // 原始坐标(第一次按下时的坐标)
@@ -154,4 +150,6 @@ class TouchScreen {
 
     LcdDisplay *display;
     Gui *gui;
+    EEPROM *eeprom;
+    SPIBus *spi_bus;
 };
