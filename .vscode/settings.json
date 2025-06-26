@@ -1,0 +1,25 @@
+{
+    "files.associations": {
+        "*.dbclient-js": "javascript",
+        "menu.h": "c",
+        "bsp_oled.h": "c",
+        "board.h": "c",
+        "bsp_i2c_lm75.h": "c",
+        "bsp_segdz.h": "c",
+        "lcdfont.h": "c",
+        "bsp_lcd.h": "c",
+        "bsp_spi_bus.h": "c",
+        "bsp_exti.h": "c",
+        "application.h": "c",
+        "stm32f10x_rcc.h": "c",
+        "cstdint": "c",
+        "stm32f10x.h": "c",
+        "bsp_i2c_gpio.h": "c",
+        "bsp_systick.h": "c",
+        "stm32f10x_spi.h": "c",
+        "bsp_tlink.h": "c",
+        "touch.h": "c",
+        "bsp_i2c_ee.h": "c",
+        "new": "cpp"
+    }
+}

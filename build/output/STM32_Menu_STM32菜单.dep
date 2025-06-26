@@ -1,0 +1,1476 @@
+Dependencies for Project 'STM32_Menu', Target 'STM32菜单': (DO NOT MODIFY !)
+CompilerVersion: 6230000::V6.23::ARMCLANG
+F (.\README.md)(0x6852D3C5)()
+F (.\lib\CMSIS\startup\startup_stm32f10x_hd.s)(0x6853146F)(--cpu Cortex-M3 -g --pd "__MICROLIB SETA 1" --diag_suppress=A1950W-ID:\Software\Apps\Keil\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include--pd "__UVISION_VERSION SETA 542"--pd "STM32F10X_HD SETA 1"--list .\build\listing\startup_stm32f10x_hd.lst--xref -o .\build\output\startup_stm32f10x_hd.o--depend .\build\output\startup_stm32f10x_hd.d)
+F (.\lib\CMSIS\core_cm3.h)(0x6852DCF5)()
+F (.\lib\CMSIS\stm32f10x.h)(0x6852DCF5)()
+F (.\lib\CMSIS\system_stm32f10x.c)(0x67CE9750)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/system_stm32f10x.o -MMD)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)()
+F (.\lib\FWlib\src\stm32f10x_gpio.c)(0x6852DC89)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/stm32f10x_gpio.o -MMD)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\lib\FWlib\src\stm32f10x_rcc.c)(0x6551DD3F)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/stm32f10x_rcc.o -MMD)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\lib\FWlib\src\misc.c)(0x6551DD3F)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/misc.o -MMD)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+F (.\lib\FWlib\src\stm32f10x_exti.c)(0x6551DD3F)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/stm32f10x_exti.o -MMD)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\lib\FWlib\src\stm32f10x_flash.c)(0x6551DD3F)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/stm32f10x_flash.o -MMD)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\lib\FWlib\src\stm32f10x_usart.c)(0x6852DC96)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/stm32f10x_usart.o -MMD)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\lib\FWlib\src\stm32f10x_spi.c)(0x6551DD3F)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/stm32f10x_spi.o -MMD)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\lib\FWlib\src\stm32f10x_adc.c)(0x6551DD3F)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/stm32f10x_adc.o -MMD)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\lib\FWlib\src\stm32f10x_tim.c)(0x6551DD3F)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/stm32f10x_tim.o -MMD)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\lib\FreeRTOS\croutine.c)(0x67C64A90)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/croutine.o -MMD)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (lib\FreeRTOS\include\croutine.h)(0x67C64A90)
+F (.\lib\FreeRTOS\event_groups.c)(0x67C64A90)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/event_groups.o -MMD)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (lib\FreeRTOS\include\timers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\event_groups.h)(0x67C64A90)
+F (.\lib\FreeRTOS\list.c)(0x67C64A90)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/list.o -MMD)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+F (.\lib\FreeRTOS\queue.c)(0x67C64A90)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/queue.o -MMD)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (lib\FreeRTOS\include\queue.h)(0x67C64A90)
+F (.\lib\FreeRTOS\stream_buffer.c)(0x67C64A90)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/stream_buffer.o -MMD)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (lib\FreeRTOS\include\stream_buffer.h)(0x67C64A90)
+F (.\lib\FreeRTOS\tasks.c)(0x67C64A90)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/tasks.o -MMD)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (lib\FreeRTOS\include\timers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\stack_macros.h)(0x67C64A90)
+F (.\lib\FreeRTOS\timers.c)(0x67C64A90)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/timers.o -MMD)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (lib\FreeRTOS\include\queue.h)(0x67C64A90)
+I (lib\FreeRTOS\include\timers.h)(0x67C64A90)
+F (.\lib\FreeRTOS\portable\heap_4.c)(0x67C64A90)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/heap_4.o -MMD)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+F (.\lib\FreeRTOS\portable\port.c)(0x67C64A90)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/port.o -MMD)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+F (.\main\main.cpp)(0x685407A4)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/main.o -MMD)
+I (main\boards\common\board.h)(0x68554F94)
+I (main\led\bsp_led.h)(0x6852EB3B)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\key\key_board.h)(0x68554EC4)
+I (main\key\key.h)(0x68554FEE)
+I (main\display\led\bsp_segdz.h)(0x6852E98A)
+I (main\spi\bsp_spi_bus.h)(0x6852E181)
+I (main\display\lcd\bsp_lcd.h)(0x6852E954)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (main\bsp_JQ8900.h)(0x6852ED1B)
+I (main\bsp_usart.h)(0x6852ED16)
+I (main\tlink\bsp_tlink.h)(0x6852EB86)
+I (main\bsp_ESPxx.h)(0x6852EC30)
+I (main\i2c\bsp_i2c_lm75.h)(0x6852E1DC)
+I (main\display\oled\bsp_oled.h)(0x6852EAD8)
+I (main\display\oled\oledFont.h)(0x6853FA02)
+I (main\display\lcd\touch.h)(0x6852E5AE)
+I (main\display\lcd\bsp_gui.h)(0x6852E5E2)
+I (main\bsp_adc.h)(0x6852ED83)
+I (main\bsp_GeneralTim.h)(0x6852ED2B)
+I (main\bsp_AdvanceTim.h)(0x6852EC33)
+I (main\stm32f10x_it.h)(0x6551DD3F)
+I (main\bsp_exti.h)(0x6852ED39)
+I (main\application.h)(0x68553ACB)
+F (.\main\stm32f10x_conf.h)(0x6551DD3F)()
+F (.\main\stm32f10x_it.cpp)(0x6852E689)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/stm32f10x_it.o -MMD)
+I (main\stm32f10x_it.h)(0x6551DD3F)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\spi\bsp_spi_bus.h)(0x6852E181)
+I (main\display\lcd\bsp_lcd.h)(0x6852E954)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (main\bsp_usart.h)(0x6852ED16)
+I (main\bsp_ESPxx.h)(0x6852EC30)
+I (main\tlink\bsp_tlink.h)(0x6852EB86)
+I (main\bsp_exti.h)(0x6852ED39)
+I (main\led\bsp_led.h)(0x6852EB3B)
+F (.\main\stm32f10x_it.h)(0x6551DD3F)()
+F (.\main\bsp_exti.cpp)(0x6852D908)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_exti.o -MMD)
+I (main\bsp_exti.h)(0x6852ED39)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+F (.\main\bsp_SysTick.cpp)(0x6852DCF5)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_systick.o -MMD)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\main\bsp_usart.cpp)(0x6853F984)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_usart.o -MMD)
+I (main\bsp_usart.h)(0x6852ED16)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+F (.\main\bsp_JQ8900.cpp)(0x6852DC89)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_jq8900.o -MMD)
+I (main\bsp_JQ8900.h)(0x6852ED1B)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\bsp_usart.h)(0x6852ED16)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+F (.\main\bsp_ESPxx.cpp)(0x6852D900)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_espxx.o -MMD)
+I (main\bsp_ESPxx.h)(0x6852EC30)
+I (main\tlink\bsp_tlink.h)(0x6852EB86)
+I (main\bsp_usart.h)(0x6852ED16)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+F (.\main\bsp_adc.cpp)(0x68554E65)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_adc.o -MMD)
+I (main\bsp_adc.h)(0x6852ED83)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+F (.\main\bsp_AdvanceTim.cpp)(0x684831F4)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_advancetim.o -MMD)
+I (main\bsp_AdvanceTim.h)(0x6852EC33)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+F (.\main\bsp_GeneralTim.cpp)(0x6852D90F)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_generaltim.o -MMD)
+I (main\bsp_GeneralTim.h)(0x6852ED2B)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+F (.\main\application.cpp)(0x68554CF1)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/application.o -MMD)
+I (main\application.h)(0x68553ACB)
+I (main\boards\common\board.h)(0x68554F94)
+I (main\led\bsp_led.h)(0x6852EB3B)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\key\key_board.h)(0x68554EC4)
+I (main\key\key.h)(0x68554FEE)
+I (main\display\led\bsp_segdz.h)(0x6852E98A)
+I (main\spi\bsp_spi_bus.h)(0x6852E181)
+I (main\display\lcd\bsp_lcd.h)(0x6852E954)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (main\bsp_JQ8900.h)(0x6852ED1B)
+I (main\bsp_usart.h)(0x6852ED16)
+I (main\tlink\bsp_tlink.h)(0x6852EB86)
+I (main\bsp_ESPxx.h)(0x6852EC30)
+I (main\i2c\bsp_i2c_lm75.h)(0x6852E1DC)
+I (main\display\oled\bsp_oled.h)(0x6852EAD8)
+I (main\display\oled\oledFont.h)(0x6853FA02)
+I (main\display\lcd\touch.h)(0x6852E5AE)
+I (main\display\lcd\bsp_gui.h)(0x6852E5E2)
+I (main\bsp_adc.h)(0x6852ED83)
+I (main\bsp_GeneralTim.h)(0x6852ED2B)
+I (main\bsp_AdvanceTim.h)(0x6852EC33)
+I (main\stm32f10x_it.h)(0x6551DD3F)
+I (main\bsp_exti.h)(0x6852ED39)
+F (.\main\display\lcd\bsp_lcd.cpp)(0x6852E347)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_lcd.o -MMD)
+I (main\display\lcd\bsp_lcd.h)(0x6852E954)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+I (main\spi\bsp_spi_bus.h)(0x6852E181)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+F (.\main\display\lcd\lcdFont.cpp)(0x68553BC1)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/lcdfont.o -MMD)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+F (.\main\display\led\bsp_segdz.cpp)(0x6852D886)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_segdz.o -MMD)
+I (main\display\led\bsp_segdz.h)(0x6852E98A)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\spi\bsp_spi_bus.h)(0x6852E181)
+I (main\display\lcd\bsp_lcd.h)(0x6852E954)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+F (.\main\display\oled\bsp_oled.cpp)(0x6853FB28)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_oled.o -MMD)
+I (main\display\oled\bsp_oled.h)(0x6852EAD8)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\display\oled\oledFont.h)(0x6853FA02)
+I (main\spi\bsp_spi_bus.h)(0x6852E181)
+I (main\display\lcd\bsp_lcd.h)(0x6852E954)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+F (.\main\display\oled\oledFont.cpp)(0x6853F676)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/oledfont.o -MMD)
+I (main\display\oled\oledFont.h)(0x6853FA02)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\main\display\lcd\bsp_gui.cpp)(0x6853F9DA)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_gui.o -MMD)
+I (main\display\lcd\bsp_gui.h)(0x6852E5E2)
+I (main\bsp_ESPxx.h)(0x6852EC30)
+I (main\tlink\bsp_tlink.h)(0x6852EB86)
+I (main\bsp_usart.h)(0x6852ED16)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\display\lcd\bsp_lcd.h)(0x6852E954)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+I (main\spi\bsp_spi_bus.h)(0x6852E181)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+F (.\main\display\lcd\touch.cpp)(0x6852DCF5)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/touch.o -MMD)
+I (main\display\lcd\touch.h)(0x6852E5AE)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\spi\bsp_spi_bus.h)(0x6852E181)
+I (main\display\lcd\bsp_lcd.h)(0x6852E954)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (main\display\lcd\bsp_gui.h)(0x6852E5E2)
+I (main\bsp_ESPxx.h)(0x6852EC30)
+I (main\tlink\bsp_tlink.h)(0x6852EB86)
+I (main\bsp_usart.h)(0x6852ED16)
+F (.\main\i2c\bsp_i2c_ee.cpp)(0x6852D87C)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_i2c_ee.o -MMD)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+F (.\main\i2c\bsp_i2c_gpio.cpp)(0x6852D85D)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_i2c_gpio.o -MMD)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+F (.\main\i2c\bsp_i2c_lm75.cpp)(0x6852D870)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_i2c_lm75.o -MMD)
+I (main\i2c\bsp_i2c_lm75.h)(0x6852E1DC)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+F (.\main\key\key_board.cpp)(0x68554FAC)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/key_board.o -MMD)
+I (main\key\key_board.h)(0x68554EC4)
+I (main\key\key.h)(0x68554FEE)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+F (.\main\led\bsp_led.cpp)(0x6853F10A)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_led.o -MMD)
+I (main\led\bsp_led.h)(0x6852EB3B)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+F (.\main\spi\bsp_spi_bus.cpp)(0x6852D8E1)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_spi_bus.o -MMD)
+I (main\spi\bsp_spi_bus.h)(0x6852E181)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\display\lcd\bsp_lcd.h)(0x6852E954)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+F (.\main\tlink\bsp_tlink.cpp)(0x685407A4)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/bsp_tlink.o -MMD)
+I (main\tlink\bsp_tlink.h)(0x6852EB86)
+I (main\bsp_ESPxx.h)(0x6852EC30)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\bsp_usart.h)(0x6852ED16)
+F (.\main\util\util.cpp)(0x6854FE6E)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/util.o -MMD)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+F (.\main\boards\common\board.cpp)(0x68554C31)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/board.o -MMD)
+I (main\boards\common\board.h)(0x68554F94)
+I (main\led\bsp_led.h)(0x6852EB3B)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\key\key_board.h)(0x68554EC4)
+I (main\key\key.h)(0x68554FEE)
+I (main\display\led\bsp_segdz.h)(0x6852E98A)
+I (main\spi\bsp_spi_bus.h)(0x6852E181)
+I (main\display\lcd\bsp_lcd.h)(0x6852E954)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (main\bsp_JQ8900.h)(0x6852ED1B)
+I (main\bsp_usart.h)(0x6852ED16)
+I (main\tlink\bsp_tlink.h)(0x6852EB86)
+I (main\bsp_ESPxx.h)(0x6852EC30)
+I (main\i2c\bsp_i2c_lm75.h)(0x6852E1DC)
+I (main\display\oled\bsp_oled.h)(0x6852EAD8)
+I (main\display\oled\oledFont.h)(0x6853FA02)
+I (main\display\lcd\touch.h)(0x6852E5AE)
+I (main\display\lcd\bsp_gui.h)(0x6852E5E2)
+I (main\bsp_adc.h)(0x6852ED83)
+I (main\bsp_GeneralTim.h)(0x6852ED2B)
+I (main\bsp_AdvanceTim.h)(0x6852EC33)
+I (main\stm32f10x_it.h)(0x6551DD3F)
+I (main\bsp_exti.h)(0x6852ED39)
+F (.\main\boards\school-STM32F103VCT6\school-STM32F103VCT6.cpp)(0x68554EDD)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config-ID:/Software/Apps/Keil/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ./build/output/school-stm32f103vct6.o -MMD)
+I (main\boards\common\board.h)(0x68554F94)
+I (main\led\bsp_led.h)(0x6852EB3B)
+I (lib\CMSIS\stm32f10x.h)(0x6852DCF5)
+I (lib\CMSIS\core_cm3.h)(0x6852DCF5)
+I (lib\CMSIS\system_stm32f10x.h)(0x6551DD3F)
+I (main\stm32f10x_conf.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_adc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_bkp.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_can.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_cec.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_crc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dac.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dbgmcu.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_dma.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_exti.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_flash.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_fsmc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_gpio.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_i2c.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_iwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_pwr.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rcc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_rtc.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_sdio.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_spi.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_tim.h)(0x6551DD3F)
+I (lib\FWlib\inc\stm32f10x_usart.h)(0x6852DCF5)
+I (lib\FWlib\inc\stm32f10x_wwdg.h)(0x6551DD3F)
+I (lib\FWlib\inc\misc.h)(0x6551DD3F)
+I (main\boards\school-STM32F103VCT6\config.h)(0x685584B8)
+I (main\key\key_board.h)(0x68554EC4)
+I (main\key\key.h)(0x68554FEE)
+I (main\display\led\bsp_segdz.h)(0x6852E98A)
+I (main\spi\bsp_spi_bus.h)(0x6852E181)
+I (main\display\lcd\bsp_lcd.h)(0x6852E954)
+I (main\display\lcd\lcdFont.h)(0x6853F9B5)
+I (main\i2c\bsp_i2c_ee.h)(0x6852E20B)
+I (main\i2c\bsp_i2c_gpio.h)(0x6852EAD1)
+I (main\bsp_SysTick.h)(0x6852ED14)
+I (main\util\util.h)(0x6854FE00)
+I (lib\FreeRTOS\include\FreeRTOS.h)(0x67C64A90)
+I (main\config\FreeRTOSConfig.h)(0x68530D7B)
+I (lib\FreeRTOS\include\projdefs.h)(0x67C64A90)
+I (lib\FreeRTOS\include\portable.h)(0x67C64A90)
+I (lib\FreeRTOS\include\deprecated_definitions.h)(0x67C64A90)
+I (lib\FreeRTOS\portable\portmacro.h)(0x67C64A90)
+I (lib\FreeRTOS\include\mpu_wrappers.h)(0x67C64A90)
+I (lib\FreeRTOS\include\task.h)(0x67C64A90)
+I (lib\FreeRTOS\include\list.h)(0x67C64A90)
+I (main\bsp_JQ8900.h)(0x6852ED1B)
+I (main\bsp_usart.h)(0x6852ED16)
+I (main\tlink\bsp_tlink.h)(0x6852EB86)
+I (main\bsp_ESPxx.h)(0x6852EC30)
+I (main\i2c\bsp_i2c_lm75.h)(0x6852E1DC)
+I (main\display\oled\bsp_oled.h)(0x6852EAD8)
+I (main\display\oled\oledFont.h)(0x6853FA02)
+I (main\display\lcd\touch.h)(0x6852E5AE)
+I (main\display\lcd\bsp_gui.h)(0x6852E5E2)
+I (main\bsp_adc.h)(0x6852ED83)
+I (main\bsp_GeneralTim.h)(0x6852ED2B)
+I (main\bsp_AdvanceTim.h)(0x6852EC33)
+I (main\stm32f10x_it.h)(0x6551DD3F)
+I (main\bsp_exti.h)(0x6852ED39)
+F (.\main\boards\school-STM32F103VCT6\config.h)(0x685584B8)()
+F (.\main\config\FreeRTOSConfig.h)(0x68530D7B)()

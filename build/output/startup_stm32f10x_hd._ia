@@ -1,0 +1,7 @@
+--cpu Cortex-M3 -g --pd "__MICROLIB SETA 1" --diag_suppress=A1950W
+-ID:\Software\Apps\Keil\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include
+--pd "__UVISION_VERSION SETA 542"
+--pd "STM32F10X_HD SETA 1"
+--list .\build\listing\startup_stm32f10x_hd.lst
+--xref -o .\build\output\startup_stm32f10x_hd.o
+--depend .\build\output\startup_stm32f10x_hd.d "lib\CMSIS\startup\startup_stm32f10x_hd.s"

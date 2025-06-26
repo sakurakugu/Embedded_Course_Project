@@ -1,0 +1,6 @@
+-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c
+-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions
+-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib/CMSIS -I ./lib/FWlib/inc -I ./lib/FreeRTOS/include -I ./lib/FreeRTOS/portable -I ./main -I ./main/display -I ./main/display/lcd -I ./main/display/led -I ./main/display/oled -I ./main/i2c -I ./main/key -I ./main/led -I ./main/spi -I ./main/tlink -I ./main/util -I ./main/boards/common -I ./main/boards/school-STM32F103VCT6 -I ./main/config
+-IC:/Users/Administrator/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.3.0/Device/Include
+-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER
+-o ./build/output/bsp_key.o -MD "main/key/bsp_key.cpp"
